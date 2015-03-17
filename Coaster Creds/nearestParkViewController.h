@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  nearestParkViewController.h
 //  Coaster Creds
 //
 //  Created by Mike Fudge on 16/03/2015.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface nearestParkViewController : UIViewController
 
 
 @end
