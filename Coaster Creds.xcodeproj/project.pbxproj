@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
+		278323A81AB9D8A100F7B5A3 /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A71AB9D8A100F7B5A3 /* Coaster.m */; };
+		278323AB1AB9D8A200F7B5A3 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323AA1AB9D8A200F7B5A3 /* Park.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
 		27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B771AB7529C00E86C63 /* AppDelegate.m */; };
 		27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */; };
@@ -16,8 +18,6 @@
 		27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DC5B821AB7529C00E86C63 /* Images.xcassets */; };
 		27DC5B861AB7529C00E86C63 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27DC5B841AB7529C00E86C63 /* LaunchScreen.xib */; };
 		27DC5B921AB7529C00E86C63 /* Coaster_CredsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */; };
-		27F614531AB8888E00D7D5AC /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F614521AB8888E00D7D5AC /* Park.m */; };
-		27F614561AB8888F00D7D5AC /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 27F614551AB8888F00D7D5AC /* Coaster.m */; };
 		27F614581AB88E9A00D7D5AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F614571AB88E9A00D7D5AC /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +32,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
-		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
+		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "Coaster Creds/CoreDataStack.h"; sourceTree = "<group>"; };
+		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
+		278323A61AB9D8A100F7B5A3 /* Coaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coaster.h; sourceTree = "<group>"; };
+		278323A71AB9D8A100F7B5A3 /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
+		278323A91AB9D8A200F7B5A3 /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
+		278323AA1AB9D8A200F7B5A3 /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
 		27DC5B6F1AB7529C00E86C63 /* Coaster Creds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coaster Creds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B731AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B741AB7529C00E86C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -48,10 +52,6 @@
 		27DC5B8B1AB7529C00E86C63 /* Coaster CredsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coaster CredsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B901AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coaster_CredsTests.m; sourceTree = "<group>"; };
-		27F614511AB8888E00D7D5AC /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
-		27F614521AB8888E00D7D5AC /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
-		27F614541AB8888F00D7D5AC /* Coaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coaster.h; sourceTree = "<group>"; };
-		27F614551AB8888F00D7D5AC /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
 		27F614571AB88E9A00D7D5AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -74,6 +74,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		278323A21AB9CF4300F7B5A3 /* Model and Model Classes */ = {
+			isa = PBXGroup;
+			children = (
+				278323A91AB9D8A200F7B5A3 /* Park.h */,
+				278323AA1AB9D8A200F7B5A3 /* Park.m */,
+				278323A61AB9D8A100F7B5A3 /* Coaster.h */,
+				278323A71AB9D8A100F7B5A3 /* Coaster.m */,
+				27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */,
+				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
+				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
+			);
+			name = "Model and Model Classes";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		278323A31AB9CF6600F7B5A3 /* Application Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27DC5B841AB7529C00E86C63 /* LaunchScreen.xib */,
+				27DC5B7F1AB7529C00E86C63 /* Main.storyboard */,
+				27DC5B821AB7529C00E86C63 /* Images.xcassets */,
+				27DC5B731AB7529C00E86C63 /* Info.plist */,
+			);
+			name = "Application Resources";
+			sourceTree = "<group>";
+		};
+		278323A41AB9CF9A00F7B5A3 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				27DC5B761AB7529C00E86C63 /* AppDelegate.h */,
+				27DC5B771AB7529C00E86C63 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		278323A51AB9CFF300F7B5A3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				27DC5B7C1AB7529C00E86C63 /* nearestParkViewController.h */,
+				27DC5B7D1AB7529C00E86C63 /* nearestParkViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		27DC5B661AB7529B00E86C63 = {
 			isa = PBXGroup;
 			children = (
@@ -96,20 +140,10 @@
 		27DC5B711AB7529C00E86C63 /* Coaster Creds */ = {
 			isa = PBXGroup;
 			children = (
-				27DC5B761AB7529C00E86C63 /* AppDelegate.h */,
-				27DC5B771AB7529C00E86C63 /* AppDelegate.m */,
-				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
-				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
-				27DC5B7C1AB7529C00E86C63 /* nearestParkViewController.h */,
-				27DC5B7D1AB7529C00E86C63 /* nearestParkViewController.m */,
-				27DC5B7F1AB7529C00E86C63 /* Main.storyboard */,
-				27DC5B821AB7529C00E86C63 /* Images.xcassets */,
-				27DC5B841AB7529C00E86C63 /* LaunchScreen.xib */,
-				27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */,
-				27F614541AB8888F00D7D5AC /* Coaster.h */,
-				27F614551AB8888F00D7D5AC /* Coaster.m */,
-				27F614511AB8888E00D7D5AC /* Park.h */,
-				27F614521AB8888E00D7D5AC /* Park.m */,
+				278323A41AB9CF9A00F7B5A3 /* Application */,
+				278323A21AB9CF4300F7B5A3 /* Model and Model Classes */,
+				278323A51AB9CFF300F7B5A3 /* View Controllers */,
+				278323A31AB9CF6600F7B5A3 /* Application Resources */,
 				27DC5B721AB7529C00E86C63 /* Supporting Files */,
 			);
 			path = "Coaster Creds";
@@ -118,7 +152,6 @@
 		27DC5B721AB7529C00E86C63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				27DC5B731AB7529C00E86C63 /* Info.plist */,
 				27DC5B741AB7529C00E86C63 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -241,13 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27F614531AB8888E00D7D5AC /* Park.m in Sources */,
-				27F614561AB8888F00D7D5AC /* Coaster.m in Sources */,
 				278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */,
+				278323A81AB9D8A100F7B5A3 /* Coaster.m in Sources */,
 				27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */,
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* nearestParkViewController.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
+				278323AB1AB9D8A200F7B5A3 /* Park.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,7 +491,8 @@
 				27DC5B7A1AB7529C00E86C63 /* Coaster_Creds.xcdatamodel */,
 			);
 			currentVersion = 27DC5B7A1AB7529C00E86C63 /* Coaster_Creds.xcdatamodel */;
-			path = Coaster_Creds.xcdatamodeld;
+			name = Coaster_Creds.xcdatamodeld;
+			path = "Coaster Creds/Coaster_Creds.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
