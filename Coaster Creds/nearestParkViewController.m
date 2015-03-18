@@ -16,7 +16,6 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
-@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 @end
 

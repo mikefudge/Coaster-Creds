@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
 		27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B771AB7529C00E86C63 /* AppDelegate.m */; };
 		27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		27DC5B6F1AB7529C00E86C63 /* Coaster Creds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coaster Creds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B731AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B741AB7529C00E86C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 			children = (
 				27DC5B761AB7529C00E86C63 /* AppDelegate.h */,
 				27DC5B771AB7529C00E86C63 /* AppDelegate.m */,
+				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
+				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
 				27DC5B7C1AB7529C00E86C63 /* nearestParkViewController.h */,
 				27DC5B7D1AB7529C00E86C63 /* nearestParkViewController.m */,
 				27DC5B7F1AB7529C00E86C63 /* Main.storyboard */,
@@ -238,6 +243,7 @@
 			files = (
 				27F614531AB8888E00D7D5AC /* Park.m in Sources */,
 				27F614561AB8888F00D7D5AC /* Coaster.m in Sources */,
+				278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */,
 				27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */,
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* nearestParkViewController.m in Sources */,
