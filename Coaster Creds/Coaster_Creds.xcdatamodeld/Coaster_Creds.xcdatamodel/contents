@@ -3,35 +3,25 @@
     <entity name="Coaster" representedClassName="Coaster" syncable="YES">
         <attribute name="dateFirstRidden" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateLastRidden" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="timesRidden" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="manufacturer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoasterManufacturer" inverseName="coasters" inverseEntity="CoasterManufacturer" syncable="YES"/>
-        <relationship name="park" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Park" inverseName="coasters" inverseEntity="Park" syncable="YES"/>
-        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CoasterType" inverseName="coasters" inverseEntity="CoasterType" syncable="YES"/>
-    </entity>
-    <entity name="CoasterManufacturer" representedClassName="NSManagedObject" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="coasters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Coaster" inverseName="manufacturer" inverseEntity="Coaster" syncable="YES"/>
-    </entity>
-    <entity name="CoasterType" representedClassName="NSManagedObject" syncable="YES">
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="coasters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Coaster" inverseName="type" inverseEntity="Coaster" syncable="YES"/>
+        <attribute name="design" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" minValueString="1" maxValueString="5" defaultValueString="3" syncable="YES"/>
+        <attribute name="timesRidden" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
+        <relationship name="park" maxCount="1" deletionRule="Nullify" destinationEntity="Park" inverseName="coasters" inverseEntity="Park" syncable="YES"/>
     </entity>
     <entity name="Park" representedClassName="Park" syncable="YES">
-        <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="country" attributeType="String" syncable="YES"/>
         <attribute name="dateLastVisited" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="numberOfVisits" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfVisits" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="state" attributeType="String" syncable="YES"/>
         <relationship name="coasters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coaster" inverseName="park" inverseEntity="Coaster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Coaster" positionX="-146" positionY="-243" width="128" height="163"/>
-        <element name="CoasterManufacturer" positionX="27" positionY="-9" width="128" height="73"/>
-        <element name="CoasterType" positionX="-378" positionY="72" width="128" height="73"/>
+        <element name="Coaster" positionX="-119" positionY="-351" width="128" height="163"/>
         <element name="Park" positionX="-479" positionY="-199" width="128" height="163"/>
     </elements>
 </model>
