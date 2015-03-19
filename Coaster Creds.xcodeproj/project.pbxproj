@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		270454D91ABB03E100EC451A /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 270454D81ABB03E100EC451A /* Coaster.m */; };
 		270454DC1ABB03E200EC451A /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 270454DB1ABB03E200EC451A /* Park.m */; };
+		27688E301ABB420D00A8D102 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27688E2F1ABB420D00A8D102 /* data.sqlite */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
 		27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B771AB7529C00E86C63 /* AppDelegate.m */; };
@@ -36,6 +37,7 @@
 		270454D81ABB03E100EC451A /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
 		270454DA1ABB03E200EC451A /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
 		270454DB1ABB03E200EC451A /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
+		27688E2F1ABB420D00A8D102 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = "Coaster Creds/data.sqlite"; sourceTree = "<group>"; };
 		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "Coaster Creds/CoreDataStack.h"; sourceTree = "<group>"; };
 		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
 		27DC5B6F1AB7529C00E86C63 /* Coaster Creds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coaster Creds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 				270454D81ABB03E100EC451A /* Coaster.m */,
 				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
 				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
+				27688E2F1ABB420D00A8D102 /* data.sqlite */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DC5B811AB7529C00E86C63 /* Main.storyboard in Resources */,
+				27688E301ABB420D00A8D102 /* data.sqlite in Resources */,
 				27DC5B861AB7529C00E86C63 /* LaunchScreen.xib in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
 			);

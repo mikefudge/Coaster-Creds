@@ -77,23 +77,6 @@
 - (IBAction)buttonPressed:(id)sender {
     
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
-    Park *newPark = [NSEntityDescription insertNewObjectForEntityForName:@"Park" inManagedObjectContext:coreDataStack.managedObjectContext];
-    Park *newPark2 = [NSEntityDescription insertNewObjectForEntityForName:@"Park" inManagedObjectContext:coreDataStack.managedObjectContext];
-
-    Coaster *coaster1 = [NSEntityDescription insertNewObjectForEntityForName:@"Coaster" inManagedObjectContext:coreDataStack.managedObjectContext];
-    Coaster *coaster2 = [NSEntityDescription insertNewObjectForEntityForName:@"Coaster" inManagedObjectContext:coreDataStack.managedObjectContext];
-    Coaster *coaster3 = [NSEntityDescription insertNewObjectForEntityForName:@"Coaster" inManagedObjectContext:coreDataStack.managedObjectContext];
-
-    
-    coaster1.name = @"Nemesis";
-    coaster2.name = @"Oblivion";
-    coaster3.name = @"LolCoaster";
-    newPark.name = @"Alton Towers";
-    newPark2.name = @"LolLand";
-    
-    coaster1.park = newPark;
-    coaster2.park = newPark;
-    coaster3.park = newPark2;
     
     [coreDataStack saveContext];
     
