@@ -1,20 +1,20 @@
 //
-//  nearestParkViewController.m
+//  NearestParkViewController.m
 //  Coaster Creds
 //
 //  Created by Mike Fudge on 16/03/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
-#import "nearestParkViewController.h"
+#import "NearestParkViewController.h"
 #import "Park.h"
-#import "Coaster.h"
 #import "CoreDataStack.h"
 #import "Haversine.h"
+#import "CoasterTableViewController.h"
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface nearestParkViewController () <CLLocationManagerDelegate>
+@interface NearestParkViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
@@ -22,10 +22,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *nearestParkStateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nearestParkNumCoastersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nearestParkDistance;
+@property (weak, nonatomic) IBOutlet UILabel *otherParkLabel1;
+@property (weak, nonatomic) IBOutlet UILabel *otherParkLabel2;
+@property (strong, nonatomic) Park *chosenPark;
 
 @end
 
-@implementation nearestParkViewController
+@implementation NearestParkViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,28 +69,26 @@
     
 }
 
-- (double)distanceToPark:(Park *)park fromLocation:(CLLocation *)location {
-    CLLocationDegrees lat = park.latitude;
-    CLLocationDegrees lon = park.longitude;
-    CLLocation *parkLocation = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-    return [location distanceFromLocation:parkLocation];
-}
-
 - (IBAction)buttonPressed:(id)sender {
     
-    CLLocationDegrees lat = 52.344139;
-    CLLocationDegrees lon = -2.265646;
+    CLLocationDegrees lat = 53.230479;
+    CLLocationDegrees lon = -0.539961;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
     
     
     NSArray *resultsArray = [self findNearestParksFromLocation:location];
     Park *nearestPark = [resultsArray firstObject];
+    Park *otherPark1 = [resultsArray objectAtIndex:1];
+    Park *otherPart2 = [resultsArray objectAtIndex:2];
     self.nearestParkLabel.text = nearestPark.name;
     self.nearestParkStateLabel.text = [NSString stringWithFormat:@"%@, %@", nearestPark.state, nearestPark.country];
     self.nearestParkNumCoastersLabel.text = [NSString stringWithFormat:@"%lu coasters", (unsigned long)[nearestPark.coasters count]];
     self.nearestParkDistance.text = [NSString stringWithFormat:@"%.1f miles away", nearestPark.distance];
+    self.otherParkLabel1.text = otherPark1.name;
+    self.otherParkLabel2.text = otherPart2.name;
     
-    //[self loadLocation];
+    self.chosenPark = nearestPark;
+    
 }
 
 - (NSArray *)findNearestParksFromLocation:(CLLocation *)location {
@@ -104,9 +105,13 @@
     NSArray *sortDescriptor = @[[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES]];
     NSArray *sortedArray = [parkList sortedArrayUsingDescriptors:sortDescriptor];
     
+    /*
+    
     for (Park *park in sortedArray) {
         NSLog(@"%@ - %.1f miles away", park.name, park.distance);
     }
+     
+     */
     
     return sortedArray;
     
@@ -119,6 +124,19 @@
     [request setEntity:entity];
     NSArray *result = [coreDataStack.managedObjectContext executeFetchRequest:request error:nil];
     return result;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"coastersInPark"]) {
+        
+        
+        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        coasterTableViewController.park = self.chosenPark;
+        
+    }
+    
+    
+    
 }
 
 
