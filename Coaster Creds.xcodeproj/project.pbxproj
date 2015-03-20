@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		270454D91ABB03E100EC451A /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 270454D81ABB03E100EC451A /* Coaster.m */; };
-		270454DC1ABB03E200EC451A /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 270454DB1ABB03E200EC451A /* Park.m */; };
-		27688E301ABB420D00A8D102 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27688E2F1ABB420D00A8D102 /* data.sqlite */; };
+		27688E331ABC74DB00A8D102 /* Haversine.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E321ABC74DB00A8D102 /* Haversine.m */; };
+		27688E3B1ABC80B200A8D102 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E3A1ABC80B200A8D102 /* Park.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
+		279453941ABC992500801760 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 279453931ABC992500801760 /* data.sqlite */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
 		27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B771AB7529C00E86C63 /* AppDelegate.m */; };
 		27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */; };
@@ -35,11 +36,13 @@
 /* Begin PBXFileReference section */
 		270454D71ABB03E100EC451A /* Coaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coaster.h; sourceTree = "<group>"; };
 		270454D81ABB03E100EC451A /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
-		270454DA1ABB03E200EC451A /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
-		270454DB1ABB03E200EC451A /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
-		27688E2F1ABB420D00A8D102 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = "Coaster Creds/data.sqlite"; sourceTree = "<group>"; };
+		27688E311ABC74DB00A8D102 /* Haversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haversine.h; sourceTree = "<group>"; };
+		27688E321ABC74DB00A8D102 /* Haversine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Haversine.m; sourceTree = "<group>"; };
+		27688E391ABC80B200A8D102 /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
+		27688E3A1ABC80B200A8D102 /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
 		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "Coaster Creds/CoreDataStack.h"; sourceTree = "<group>"; };
 		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
+		279453931ABC992500801760 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = "../../../../Library/Developer/CoreSimulator/Devices/8B531426-DA28-40E0-9618-C6B81E5BCEB2/data/Containers/Data/Application/58CE2BE0-3226-4108-A8D3-C936BABA8045/data.sqlite"; sourceTree = "<group>"; };
 		27DC5B6F1AB7529C00E86C63 /* Coaster Creds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coaster Creds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B731AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B741AB7529C00E86C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,13 +83,13 @@
 			isa = PBXGroup;
 			children = (
 				27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */,
-				270454DA1ABB03E200EC451A /* Park.h */,
-				270454DB1ABB03E200EC451A /* Park.m */,
+				27688E391ABC80B200A8D102 /* Park.h */,
+				27688E3A1ABC80B200A8D102 /* Park.m */,
 				270454D71ABB03E100EC451A /* Coaster.h */,
 				270454D81ABB03E100EC451A /* Coaster.m */,
 				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
 				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
-				27688E2F1ABB420D00A8D102 /* data.sqlite */,
+				279453931ABC992500801760 /* data.sqlite */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -117,6 +120,8 @@
 			children = (
 				27DC5B7C1AB7529C00E86C63 /* nearestParkViewController.h */,
 				27DC5B7D1AB7529C00E86C63 /* nearestParkViewController.m */,
+				27688E311ABC74DB00A8D102 /* Haversine.h */,
+				27688E321ABC74DB00A8D102 /* Haversine.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -258,9 +263,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				27DC5B811AB7529C00E86C63 /* Main.storyboard in Resources */,
-				27688E301ABB420D00A8D102 /* data.sqlite in Resources */,
 				27DC5B861AB7529C00E86C63 /* LaunchScreen.xib in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
+				279453941ABC992500801760 /* data.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,10 +286,11 @@
 				278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */,
 				270454D91ABB03E100EC451A /* Coaster.m in Sources */,
 				27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */,
+				27688E331ABC74DB00A8D102 /* Haversine.m in Sources */,
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* nearestParkViewController.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
-				270454DC1ABB03E200EC451A /* Park.m in Sources */,
+				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

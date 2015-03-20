@@ -13,6 +13,7 @@
     <entity name="Park" representedClassName="Park" syncable="YES">
         <attribute name="country" attributeType="String" syncable="YES"/>
         <attribute name="dateLastVisited" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
@@ -22,6 +23,6 @@
     </entity>
     <elements>
         <element name="Coaster" positionX="-119" positionY="-351" width="128" height="163"/>
-        <element name="Park" positionX="-479" positionY="-199" width="128" height="163"/>
+        <element name="Park" positionX="-479" positionY="-199" width="128" height="180"/>
     </elements>
 </model>

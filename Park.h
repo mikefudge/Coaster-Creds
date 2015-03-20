@@ -2,7 +2,7 @@
 //  Park.h
 //  Coaster Creds
 //
-//  Created by Mike Fudge on 19/03/2015.
+//  Created by Mike Fudge on 20/03/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic) int32_t numberOfVisits;
 @property (nonatomic, retain) NSString * state;
+@property (nonatomic) float distance;
 @property (nonatomic, retain) NSSet *coasters;
 @end
 
