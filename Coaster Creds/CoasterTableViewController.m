@@ -10,6 +10,7 @@
 #import "Coaster.h"
 #import "CoreDataStack.h"
 #import "Park.h"
+#import "CoasterTableViewCell.h"
 
 #import <CoreData/CoreData.h>
 
@@ -25,11 +26,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = self.park.name;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.estimatedRowHeight = 68.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     
     [self.fetchedResultsController performFetch:nil];
 }
@@ -42,19 +48,20 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.fetchedResultsController.sections.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    //id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    
+    return self.fetchedResultsController.fetchedObjects.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = coaster.name;
+    [cell configureCellForCoaster:coaster];
     return cell;
 }
 
@@ -123,5 +130,9 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)backWasPressed:(id)sender {
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

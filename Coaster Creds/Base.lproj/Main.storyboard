@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Nearest Park View Controller-->
@@ -79,7 +80,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="74J-mS-SQA" kind="modal" identifier="coastersInPark" id="0fa-25-qkp"/>
+                                    <segue destination="H1g-ca-f3k" kind="modal" identifier="coastersInPark" modalTransitionStyle="coverVertical" id="0fa-25-qkp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -102,24 +103,46 @@
         <scene sceneID="aFp-cs-kpq">
             <objects>
                 <tableViewController id="74J-mS-SQA" customClass="CoasterTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cfY-nV-XHC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" id="cfY-nV-XHC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="hdD-mP-G9L" style="IBUITableViewCellStyleDefault" id="Hsp-Se-78y">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="77" id="Hsp-Se-78y" customClass="CoasterTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hsp-Se-78y" id="Gjm-MP-mKo">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdD-mP-G9L">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rollercoaster Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6d5-xF-yaC">
+                                            <rect key="frame" x="8" y="10" width="304" height="29"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="21"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type, Design" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gic-gy-2SE">
+                                            <rect key="frame" x="8" y="40" width="172" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="5jJ-Pw-n8S"/>
+                                                <constraint firstAttribute="width" constant="172" id="xGE-JT-xJx"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="6d5-xF-yaC" firstAttribute="top" secondItem="Gjm-MP-mKo" secondAttribute="topMargin" constant="2" id="0jk-4V-FZ8"/>
+                                        <constraint firstItem="6d5-xF-yaC" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" id="1NM-C7-xu8"/>
+                                        <constraint firstItem="gic-gy-2SE" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" id="86M-yU-tuJ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="gic-gy-2SE" secondAttribute="bottom" constant="5" id="S5m-89-yn4"/>
+                                        <constraint firstItem="gic-gy-2SE" firstAttribute="top" secondItem="6d5-xF-yaC" secondAttribute="bottom" constant="1" id="TeX-ys-6Gv"/>
+                                        <constraint firstItem="6d5-xF-yaC" firstAttribute="trailing" secondItem="Gjm-MP-mKo" secondAttribute="trailingMargin" id="yB4-Zk-CMd"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="6d5-xF-yaC" id="Rq4-ax-fNw"/>
+                                    <outlet property="typeLabel" destination="gic-gy-2SE" id="W76-v6-dc7"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -127,11 +150,36 @@
                             <outlet property="delegate" destination="74J-mS-SQA" id="bgs-I9-hxg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="gbe-dk-4JG"/>
+                    <navigationItem key="navigationItem" id="vcu-IS-rY3">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="600-Yu-Jrv">
+                            <connections>
+                                <action selector="backWasPressed:" destination="74J-mS-SQA" id="44h-0K-AVE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqH-b9-wCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="695" y="414"/>
+            <point key="canvasLocation" x="1064" y="410"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Cqn-Fg-O92">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="H1g-ca-f3k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="GCs-45-cR2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="egE-Bz-N1o">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="74J-mS-SQA" kind="relationship" relationship="rootViewController" id="xNv-mv-6Tc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCH-ej-cFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="415"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

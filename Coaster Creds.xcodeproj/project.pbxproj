@@ -13,6 +13,7 @@
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
 		279453941ABC992500801760 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 279453931ABC992500801760 /* data.sqlite */; };
 		279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279453961ABCA69300801760 /* CoasterTableViewController.m */; };
+		27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D753D21ABD970E00484615 /* CoasterTableViewCell.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
 		27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B771AB7529C00E86C63 /* AppDelegate.m */; };
 		27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */; };
@@ -46,6 +47,8 @@
 		279453931ABC992500801760 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.sqlite; path = "../../../../Library/Developer/CoreSimulator/Devices/8B531426-DA28-40E0-9618-C6B81E5BCEB2/data/Containers/Data/Application/58CE2BE0-3226-4108-A8D3-C936BABA8045/data.sqlite"; sourceTree = "<group>"; };
 		279453951ABCA69300801760 /* CoasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterTableViewController.h; sourceTree = "<group>"; };
 		279453961ABCA69300801760 /* CoasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterTableViewController.m; sourceTree = "<group>"; };
+		27D753D11ABD970E00484615 /* CoasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterTableViewCell.h; sourceTree = "<group>"; };
+		27D753D21ABD970E00484615 /* CoasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterTableViewCell.m; sourceTree = "<group>"; };
 		27DC5B6F1AB7529C00E86C63 /* Coaster Creds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coaster Creds.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B731AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B741AB7529C00E86C63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -129,6 +132,15 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		27D753D51ABD975F00484615 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				27D753D11ABD970E00484615 /* CoasterTableViewCell.h */,
+				27D753D21ABD970E00484615 /* CoasterTableViewCell.m */,
+			);
+			name = "Table Cells";
+			sourceTree = "<group>";
+		};
 		27DC5B661AB7529B00E86C63 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +166,7 @@
 				278323A41AB9CF9A00F7B5A3 /* Application */,
 				278323A21AB9CF4300F7B5A3 /* Model and Model Classes */,
 				278323A51AB9CFF300F7B5A3 /* View Controllers */,
+				27D753D51ABD975F00484615 /* Table Cells */,
 				278323A31AB9CF6600F7B5A3 /* Application Resources */,
 				27DC5B721AB7529C00E86C63 /* Supporting Files */,
 			);
@@ -297,6 +310,7 @@
 				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,
+				27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
