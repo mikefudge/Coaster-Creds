@@ -12,6 +12,9 @@
 
 @interface CoasterTableViewCell : UITableViewCell
 
-- (void)configureCellForCoaster:(Coaster *)coaster;
+@property (weak, nonatomic) UIButton *rideButton;
+@property (strong, nonatomic) Coaster *coaster;
+
+- (void)configureCell;
 
 @end

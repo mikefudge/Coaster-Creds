@@ -13,11 +13,11 @@
 
 @interface Coaster : NSManagedObject
 
-@property (nonatomic) NSTimeInterval dateFirstRidden;
-@property (nonatomic) NSTimeInterval dateLastRidden;
+@property (nonatomic, retain) NSDate * dateFirstRidden;
+@property (nonatomic, retain) NSDate * dateLastRidden;
 @property (nonatomic, retain) NSString * design;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic) int16_t rating;
+@property (nonatomic) float rating;
 @property (nonatomic) int32_t timesRidden;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) Park *park;

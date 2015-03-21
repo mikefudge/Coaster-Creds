@@ -61,7 +61,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [cell configureCellForCoaster:coaster];
+    cell.coaster = coaster;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell configureCell];
     return cell;
 }
 

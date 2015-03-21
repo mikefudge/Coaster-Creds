@@ -63,16 +63,12 @@
     
     NSLog(@"%@", self.currentLocation);
     
-    //CLLocation *location = [[CLLocation alloc] initWithLatitude:52.987465 longitude:-1.886477];
-    
-    //NSLog(@"%.1f miles away", ([location distanceFromLocation:self.currentLocation] / 1609.344));
-    
 }
 
 - (IBAction)buttonPressed:(id)sender {
     
-    CLLocationDegrees lat = 53.230479;
-    CLLocationDegrees lon = -0.539961;
+    CLLocationDegrees lat = 52.976626;
+    CLLocationDegrees lon = -1.891880;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
     
     
@@ -130,14 +126,10 @@
     if ([segue.identifier isEqualToString:@"coastersInPark"]) {
         
         
-        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        UINavigationController *navigationController = segue.destinationViewController;
+        CoasterTableViewController *coasterTableViewController = (CoasterTableViewController *)navigationController.topViewController;
         coasterTableViewController.park = self.chosenPark;
-        
     }
-    
-    
-    
 }
-
 
 @end
