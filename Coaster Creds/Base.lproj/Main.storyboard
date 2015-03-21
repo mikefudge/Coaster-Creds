@@ -166,6 +166,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DFG-w1-wvA" customClass="HCSStarRatingView">
                                             <rect key="frame" x="206" y="76" width="106" height="19"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="19" id="U86-gc-2pQ"/>
                                                 <constraint firstAttribute="width" constant="106" id="XEO-GJ-dmZ"/>
@@ -216,6 +217,27 @@
                                     <outlet property="starRating" destination="DFG-w1-wvA" id="Cax-Nn-0lp"/>
                                     <outlet property="typeLabel" destination="gic-gy-2SE" id="W76-v6-dc7"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" id="3bl-2V-kG5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3bl-2V-kG5" id="NWC-pm-Yw4">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No rollercoasters in park!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcQ-jD-2Bv">
+                                            <rect key="frame" x="49" y="38" width="222" height="26"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bcQ-jD-2Bv" firstAttribute="leading" secondItem="NWC-pm-Yw4" secondAttribute="leadingMargin" constant="41" id="8pU-hR-ExJ"/>
+                                        <constraint firstItem="bcQ-jD-2Bv" firstAttribute="top" secondItem="NWC-pm-Yw4" secondAttribute="topMargin" constant="30" id="Hhc-ff-CNd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bcQ-jD-2Bv" secondAttribute="trailing" constant="41" id="aXz-Zi-JSK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="bcQ-jD-2Bv" secondAttribute="bottom" constant="30" id="gGk-TE-Acp"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

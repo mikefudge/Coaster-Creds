@@ -54,17 +54,27 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     //id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     
-    return self.fetchedResultsController.fetchedObjects.count;
+    if (self.fetchedResultsController.fetchedObjects.count > 0) {
+        return self.fetchedResultsController.fetchedObjects.count;
+    } else {
+        return 1;
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.coaster = coaster;
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    [cell configureCell];
-    return cell;
+    if (self.fetchedResultsController.fetchedObjects.count == 0) {
+        CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    } else {
+        CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        cell.coaster = coaster;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell configureCell];
+        return cell;
+    }
 }
 
 - (NSFetchedResultsController *)fetchedResultsController {

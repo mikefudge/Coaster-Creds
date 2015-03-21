@@ -67,8 +67,8 @@
 
 - (IBAction)buttonPressed:(id)sender {
     
-    CLLocationDegrees lat = 52.976626;
-    CLLocationDegrees lon = -1.891880;
+    CLLocationDegrees lat = 53.790719;
+    CLLocationDegrees lon = -3.054993;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
     
     
