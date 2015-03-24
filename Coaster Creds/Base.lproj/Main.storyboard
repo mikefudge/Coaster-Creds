@@ -216,7 +216,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="rideButtonPressed:" destination="Hsp-Se-78y" eventType="touchUpInside" id="xZs-Bj-7V5"/>
+                                                <action selector="rideButtonWasPressed:" destination="74J-mS-SQA" eventType="touchUpInside" id="8nE-Al-Xe1"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last ridden 12/12/12 at 12:43" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdy-8f-dof">
@@ -278,7 +278,7 @@
                                     <outlet property="lastDateLabel" destination="jdy-8f-dof" id="WxN-CR-cy5"/>
                                     <outlet property="nameLabel" destination="6d5-xF-yaC" id="Rq4-ax-fNw"/>
                                     <outlet property="riddenLabel" destination="4rd-Uu-7YT" id="2hI-s9-nl7"/>
-                                    <outlet property="rideButton" destination="x5Q-N9-17b" id="uGT-bU-ZN0"/>
+                                    <outlet property="rideButton" destination="x5Q-N9-17b" id="zRg-O0-C2x"/>
                                     <outlet property="starRating" destination="DFG-w1-wvA" id="Cax-Nn-0lp"/>
                                     <outlet property="typeLabel" destination="gic-gy-2SE" id="W76-v6-dc7"/>
                                 </connections>
@@ -310,6 +310,7 @@
                             <outlet property="delegate" destination="74J-mS-SQA" id="bgs-I9-hxg"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="vcu-IS-rY3">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="600-Yu-Jrv">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -317,7 +318,14 @@
                                 <action selector="backWasPressed:" destination="74J-mS-SQA" id="44h-0K-AVE"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Count" id="Hg2-mk-wMT">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="rideCount" destination="Hg2-mk-wMT" id="8q2-sV-Pdy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqH-b9-wCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

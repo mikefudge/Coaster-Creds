@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIView *nearestView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *rideCount;
+
 
 @end
 
@@ -40,6 +40,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.rideCount.title = [[NSString alloc] initWithFormat:@"%lu", (unsigned long)[self getCoasterCount]];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,14 +154,6 @@
     return result;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"coastersInPark"]) {
-        
-        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
-        coasterTableViewController.park = self.chosenPark;
-    }
-}
-
 - (NSUInteger)getCoasterCount {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -167,6 +163,15 @@
     [request setPredicate:predicate];
     NSArray *result = [coreDataStack.managedObjectContext executeFetchRequest:request error:nil];
     return result.count;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"coastersInPark"]) {
+        
+        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        coasterTableViewController.park = self.chosenPark;
+        coasterTableViewController.rideCount.title = self.rideCount.title;
+    }
 }
 
 @end

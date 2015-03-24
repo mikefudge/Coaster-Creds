@@ -13,5 +13,7 @@
 @interface CoasterTableViewController : UITableViewController
 
 @property (strong, nonatomic) Park *park;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rideCount;
+
 
 @end

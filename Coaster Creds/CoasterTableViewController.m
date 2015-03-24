@@ -11,6 +11,7 @@
 #import "CoreDataStack.h"
 #import "Park.h"
 #import "CoasterTableViewCell.h"
+#import "NearestParkViewController.h"
 
 #import <CoreData/CoreData.h>
 
@@ -18,6 +19,9 @@
 @interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+
+
 
 @end
 
@@ -61,7 +65,6 @@
     }
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.fetchedResultsController.fetchedObjects.count == 0) {
         CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
@@ -71,6 +74,7 @@
         CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.coaster = coaster;
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell configureCell];
         return cell;
@@ -96,6 +100,39 @@
     return fetchRequest;
 }
 
+- (IBAction)rideButtonWasPressed:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    CoasterTableViewCell *cell = (CoasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    NSDate *date = [NSDate date];
+    cell.coaster.dateLastRidden = date;
+    cell.coaster.timesRidden++;
+    if (cell.coaster.timesRidden == 1) {
+        [self updateRideCountLabel];
+    }
+    [self updateLabelsInCell:cell];
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    [coreDataStack saveContext];
+}
+
+- (void)updateRideCountLabel {
+    int count = [self.rideCount.title intValue];
+    count++;
+    self.rideCount.title = [[NSString alloc] initWithFormat:@"%d", count];
+}
+
+- (void)updateLabelsInCell:(CoasterTableViewCell *)cell {
+    NSString *rodeString;
+    if (cell.coaster.timesRidden == 1) {
+        rodeString = @"time";
+    } else {
+        rodeString = @"times";
+    }
+    cell.riddenLabel.text = [NSString stringWithFormat:@"Rode %d %@", cell.coaster.timesRidden, rodeString];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd/MM/yy 'at' HH:mm"];
+    cell.lastDateLabel.text = [NSString stringWithFormat:@"Last ridden: %@", [dateFormatter stringFromDate:cell.coaster.dateLastRidden]];
+}
 
 
 
@@ -144,6 +181,10 @@
 */
 
 - (IBAction)backWasPressed:(id)sender {
+    
+    
+    NearestParkViewController *parentView = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+    parentView.rideCount.title = self.rideCount.title;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

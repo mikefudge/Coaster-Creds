@@ -10,6 +10,7 @@
 
 @interface NearestParkViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rideCount;
 
 @end
 

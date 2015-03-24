@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HCSStarRatingView.h"
 
 @class Coaster;
 
 @interface CoasterTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) UIButton *rideButton;
+@property (weak, nonatomic) IBOutlet UIButton *rideButton;
 @property (strong, nonatomic) Coaster *coaster;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *riddenLabel;
+@property (weak, nonatomic) IBOutlet UILabel *lastDateLabel;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *starRating;
 
 - (void)configureCell;
 
