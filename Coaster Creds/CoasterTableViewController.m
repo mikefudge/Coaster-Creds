@@ -144,7 +144,7 @@
 */
 
 - (IBAction)backWasPressed:(id)sender {
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

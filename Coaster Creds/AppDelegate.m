@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CoreDataStack.h"
+#import "Color.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    [[UINavigationBar appearance] setBarTintColor:[Color colorWithR:30 G:44 B:107 A:1]];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           [UIColor whiteColor], NSForegroundColorAttributeName,
+                                                           [UIFont fontWithName:@"AvenirNextRegular" size:20.0], NSFontAttributeName,
+                                                           nil]];
+     
     
     return YES;
 }
