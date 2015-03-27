@@ -11,6 +11,7 @@
 		272161731ABDEC3D0015ED87 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272161721ABDEC3D0015ED87 /* HCSStarRatingView.m */; };
 		272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272B139F1AC0A240005B78D6 /* MapKit.framework */; };
 		272B13A31AC0B0EF005B78D6 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B13A21AC0B0EF005B78D6 /* Color.m */; };
+		274C82431AC5B75E00825FC2 /* NearbyParkTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 274C82421AC5B75E00825FC2 /* NearbyParkTableViewCell.m */; };
 		27688E331ABC74DB00A8D102 /* Haversine.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E321ABC74DB00A8D102 /* Haversine.m */; };
 		27688E3B1ABC80B200A8D102 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E3A1ABC80B200A8D102 /* Park.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
@@ -47,6 +48,8 @@
 		272B139F1AC0A240005B78D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		272B13A11AC0B0EF005B78D6 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		272B13A21AC0B0EF005B78D6 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		274C82411AC5B75E00825FC2 /* NearbyParkTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyParkTableViewCell.h; sourceTree = "<group>"; };
+		274C82421AC5B75E00825FC2 /* NearbyParkTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyParkTableViewCell.m; sourceTree = "<group>"; };
 		27688E311ABC74DB00A8D102 /* Haversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haversine.h; sourceTree = "<group>"; };
 		27688E321ABC74DB00A8D102 /* Haversine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Haversine.m; sourceTree = "<group>"; };
 		27688E391ABC80B200A8D102 /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
@@ -135,10 +138,10 @@
 		278323A51AB9CFF300F7B5A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				27DC5B7C1AB7529C00E86C63 /* NearestParkViewController.h */,
-				27DC5B7D1AB7529C00E86C63 /* NearestParkViewController.m */,
 				279453951ABCA69300801760 /* CoasterTableViewController.h */,
 				279453961ABCA69300801760 /* CoasterTableViewController.m */,
+				27DC5B7C1AB7529C00E86C63 /* NearestParkViewController.h */,
+				27DC5B7D1AB7529C00E86C63 /* NearestParkViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -148,6 +151,8 @@
 			children = (
 				27D753D11ABD970E00484615 /* CoasterTableViewCell.h */,
 				27D753D21ABD970E00484615 /* CoasterTableViewCell.m */,
+				274C82411AC5B75E00825FC2 /* NearbyParkTableViewCell.h */,
+				274C82421AC5B75E00825FC2 /* NearbyParkTableViewCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* NearestParkViewController.m in Sources */,
 				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
+				274C82431AC5B75E00825FC2 /* NearbyParkTableViewCell.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,
