@@ -12,7 +12,7 @@
 #import "CoreDataStack.h"
 #import "HCSStarRatingView.h"
 
-#define BUTTON_WIDTH_HEIGHT 50
+#define BUTTON_WIDTH_HEIGHT 60
 
 @interface CoasterTableViewCell ()
 
@@ -36,38 +36,11 @@
     // Change name, type and ride count, then configure buttons
     self.nameLabel.text = self.coaster.name;
     self.typeLabel.text = [NSString stringWithFormat:@"%@, %@", self.coaster.type, self.coaster.design];
-    self.starRating.value = self.coaster.rating;
-    NSString *rodeString = [[NSString alloc] init];
-    if (self.coaster.timesRidden == 1) {
-        rodeString = @"time";
+    if (self.coaster.ridden) {
+        [self.rideButton setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
     } else {
-        rodeString = @"times";
+        [self.rideButton setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
     }
-    if (self.coaster.timesRidden == 0) {
-        self.riddenLabel.text = @"Not ridden yet";
-        self.lastDateLabel.text = @"Last ridden: never";
-    } else {
-        self.riddenLabel.text = [NSString stringWithFormat:@"Rode %d %@", self.coaster.timesRidden, rodeString];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"dd/MM/yy 'at' HH:mm"];
-        self.lastDateLabel.text = [NSString stringWithFormat:@"Last ridden: %@", [dateFormatter stringFromDate:self.coaster.dateLastRidden]];
-    }
-    [self configureButtons];
 }
-
-- (void)configureButtons {
-    self.rideButton.frame = CGRectMake(0, 0, BUTTON_WIDTH_HEIGHT, BUTTON_WIDTH_HEIGHT);
-    self.rideButton.clipsToBounds = YES;
-    self.rideButton.layer.cornerRadius = BUTTON_WIDTH_HEIGHT/2.0f;
-    [self.rideButton.superview addSubview:self.rideButton];
-}
-
-- (IBAction)ratingWasChanged:(HCSStarRatingView *)sender {
-    self.coaster.rating = sender.value;
-    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
-    [coreDataStack saveContext];
-}
-
-
 
 @end

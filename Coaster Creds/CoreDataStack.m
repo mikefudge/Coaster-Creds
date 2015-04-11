@@ -40,6 +40,7 @@
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    
     // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it.
     if (_persistentStoreCoordinator != nil) {
         return _persistentStoreCoordinator;
@@ -55,6 +56,7 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
         NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"data" ofType:@"sqlite"]];
         NSError* err = nil;
+        NSLog(@"Data has been loaded.");
         
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {
             NSLog(@"Oops, couldn't copy preloaded data");

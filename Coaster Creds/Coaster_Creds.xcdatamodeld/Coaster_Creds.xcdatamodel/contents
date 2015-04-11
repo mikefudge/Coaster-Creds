@@ -6,7 +6,7 @@
         <attribute name="design" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Float" minValueString="0" maxValueString="5" defaultValueString="0" syncable="YES"/>
-        <attribute name="timesRidden" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="ridden" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="park" maxCount="1" deletionRule="Nullify" destinationEntity="Park" inverseName="coasters" inverseEntity="Park" syncable="YES"/>
     </entity>
@@ -22,7 +22,7 @@
         <relationship name="coasters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coaster" inverseName="park" inverseEntity="Coaster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Coaster" positionX="-297" positionY="-307" width="128" height="165"/>
+        <element name="Coaster" positionX="-297" positionY="-307" width="128" height="163"/>
         <element name="Park" positionX="-479" positionY="-199" width="128" height="180"/>
     </elements>
 </model>

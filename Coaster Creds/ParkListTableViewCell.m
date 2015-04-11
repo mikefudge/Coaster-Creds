@@ -1,14 +1,14 @@
 //
-//  NearbyParkTableViewCell.m
+//  ParkListTableViewCell.m
 //  Coaster Creds
 //
-//  Created by Mike Fudge on 27/03/2015.
+//  Created by Mike Fudge on 11/04/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
-#import "NearbyParkTableViewCell.h"
+#import "ParkListTableViewCell.h"
 
-@implementation NearbyParkTableViewCell
+@implementation ParkListTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code

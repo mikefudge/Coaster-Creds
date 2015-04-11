@@ -11,7 +11,7 @@
 #import "CoreDataStack.h"
 #import "Park.h"
 #import "CoasterTableViewCell.h"
-#import "NearestParkViewController.h"
+#import "HomeViewController.h"
 
 #import <CoreData/CoreData.h>
 
@@ -19,9 +19,11 @@
 @interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
-
-
+@property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *parkOpenedDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *parkNumCoastersLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *topCoasterImageView;
+@property (strong, nonatomic) NSArray *coasterImagesArray;
 
 @end
 
@@ -29,18 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = self.park.name;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+    [self displayRandomCoasterImage];
     self.tableView.estimatedRowHeight = 68.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
+    self.parkNameLabel.text = self.park.name;
+    self.parkNumCoastersLabel.text = [NSString stringWithFormat:@"%lu rollercoasters in park", (unsigned long)[self.park.coasters count]];
     [self.fetchedResultsController performFetch:nil];
 }
 
@@ -48,6 +43,24 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+
+}
+
+- (void)displayRandomCoasterImage {
+    
+    NSArray *coasterImageArray = [[NSArray alloc] initWithObjects: [UIImage imageNamed:@"coaster1-header.png"],  [UIImage imageNamed:@"coaster2-header.png"], [UIImage imageNamed:@"coaster3-header.png"], [UIImage imageNamed:@"coaster4-header.png"], nil];
+    int rand = arc4random() % 4;
+    self.topCoasterImageView.image = [coasterImageArray objectAtIndex:rand];
+}
+
+
 
 #pragma mark - Table view data source
 
@@ -104,32 +117,15 @@
     CoasterTableViewCell *cell = (CoasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
     NSDate *date = [NSDate date];
     cell.coaster.dateLastRidden = date;
-    cell.coaster.timesRidden++;
-    if (cell.coaster.timesRidden == 1) {
-        [self updateRideCountLabel];
+    [cell.coaster toggleRidden];
+    if (cell.coaster.ridden) {
+        [sender setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
+    } else {
+        [sender setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
     }
-    [self updateLabelsInCell:cell];
+    
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
-}
-
-- (void)updateRideCountLabel {
-    int count = [self.rideCount.title intValue];
-    count++;
-    self.rideCount.title = [[NSString alloc] initWithFormat:@"%d", count];
-}
-
-- (void)updateLabelsInCell:(CoasterTableViewCell *)cell {
-    NSString *rodeString;
-    if (cell.coaster.timesRidden == 1) {
-        rodeString = @"time";
-    } else {
-        rodeString = @"times";
-    }
-    cell.riddenLabel.text = [NSString stringWithFormat:@"Rode %d %@", cell.coaster.timesRidden, rodeString];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd/MM/yy 'at' HH:mm"];
-    cell.lastDateLabel.text = [NSString stringWithFormat:@"Last ridden: %@", [dateFormatter stringFromDate:cell.coaster.dateLastRidden]];
 }
 
 /*
@@ -143,10 +139,6 @@
 */
 
 - (IBAction)backWasPressed:(id)sender {
-    
-    
-    NearestParkViewController *parentView = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-    parentView.rideCount.title = self.rideCount.title;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
