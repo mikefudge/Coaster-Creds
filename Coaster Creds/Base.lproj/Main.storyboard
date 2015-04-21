@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uVR-qv-Wqu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uVR-qv-Wqu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +94,9 @@
                             <outlet property="delegate" destination="UxQ-CT-H5u" id="bz4-d7-7rs"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="R6B-rE-kNX"/>
+                    <navigationItem key="navigationItem" id="R6B-rE-kNX">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Pry-LU-94o"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="74J-mS-SQA" kind="push" identifier="coastersInPark" id="8Yr-9a-jtT"/>
                     </connections>
@@ -106,7 +108,7 @@
         <!--Home Navigation-->
         <scene sceneID="Cio-yb-agT">
             <objects>
-                <navigationController id="poN-Ki-3o4" userLabel="Home Navigation" sceneMemberID="viewController">
+                <navigationController id="poN-Ki-3o4" userLabel="Home Navigation" customClass="TranslucentNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" id="ffV-nm-eLq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dWL-It-LDZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -294,43 +296,48 @@
             <objects>
                 <tableViewController id="74J-mS-SQA" customClass="CoasterTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" sectionHeaderHeight="22" sectionFooterHeight="22" id="cfY-nV-XHC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="qGL-Nm-KkO">
-                            <rect key="frame" x="0.0" y="64" width="320" height="174"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="150"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l7E-Gs-P87" userLabel="Top Coaster Graphic View">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yU6-pM-ERB">
+                                    <rect key="frame" x="0.0" y="-64" width="320" height="214"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UcU-2a-1ed">
+                                    <rect key="frame" x="0.0" y="73" width="320" height="77"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="coaster4-header" translatesAutoresizingMaskIntoConstraints="NO" id="Io3-bS-k3e">
-                                            <rect key="frame" x="0.0" y="3" width="320" height="87"/>
-                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 coasters remaining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-ma-QtW">
+                                            <rect key="frame" x="8" y="49" width="304" height="20"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opened in 1972" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-4t-TD0">
+                                            <rect key="frame" x="8" y="30" width="304" height="20"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alton Towers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d3r-lw-aI6">
+                                            <rect key="frame" x="32" y="0.0" width="256" height="32"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="23"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.0" green="0.49359906329999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.33000000000000002" colorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Opened in 1972" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-4t-TD0">
-                                    <rect key="frame" x="8" y="131" width="304" height="20"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5 coasters remaining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-ma-QtW">
-                                    <rect key="frame" x="8" y="149" width="304" height="20"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Blackpool gggSjffds" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d3r-lw-aI6">
-                                    <rect key="frame" x="8" y="98" width="304" height="32"/>
-                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="23"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
-                            <color key="backgroundColor" red="0.0" green="0.49359906330629372" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="yU6-pM-ERB" secondAttribute="bottom" id="3XM-PL-ayB"/>
+                                <constraint firstAttribute="trailing" secondItem="yU6-pM-ERB" secondAttribute="trailing" id="Lbq-Up-geE"/>
+                                <constraint firstItem="yU6-pM-ERB" firstAttribute="top" secondItem="qGL-Nm-KkO" secondAttribute="top" constant="-64" id="Lr5-8I-wTf"/>
+                                <constraint firstItem="yU6-pM-ERB" firstAttribute="leading" secondItem="qGL-Nm-KkO" secondAttribute="leading" id="n5O-aw-xnQ"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="93" id="Hsp-Se-78y" customClass="CoasterTableViewCell">
@@ -420,17 +427,17 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3bl-2V-kG5" id="NWC-pm-Yw4">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No rollercoasters in park!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcQ-jD-2Bv">
-                                            <rect key="frame" x="49" y="38" width="222" height="27"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No rollercoasters in park!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcQ-jD-2Bv">
+                                            <rect key="frame" x="8" y="38" width="304" height="36"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bcQ-jD-2Bv" firstAttribute="leading" secondItem="NWC-pm-Yw4" secondAttribute="leadingMargin" constant="41" id="8pU-hR-ExJ"/>
+                                        <constraint firstItem="bcQ-jD-2Bv" firstAttribute="leading" secondItem="NWC-pm-Yw4" secondAttribute="leadingMargin" id="CYg-7C-Tak"/>
                                         <constraint firstItem="bcQ-jD-2Bv" firstAttribute="top" secondItem="NWC-pm-Yw4" secondAttribute="topMargin" constant="30" id="Hhc-ff-CNd"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bcQ-jD-2Bv" secondAttribute="trailing" constant="41" id="aXz-Zi-JSK"/>
+                                        <constraint firstItem="bcQ-jD-2Bv" firstAttribute="trailing" secondItem="NWC-pm-Yw4" secondAttribute="trailingMargin" id="NhX-5X-c5W"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="bcQ-jD-2Bv" secondAttribute="bottom" constant="30" id="gGk-TE-Acp"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -446,11 +453,14 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="8ca-Oi-hRe"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="1000"/>
                     <connections>
+                        <outlet property="headerImageView" destination="yU6-pM-ERB" id="X37-Gl-QJg"/>
+                        <outlet property="parkLabelsDarkView" destination="UcU-2a-1ed" id="IGf-hL-dji"/>
                         <outlet property="parkNameLabel" destination="d3r-lw-aI6" id="TqY-mk-8iF"/>
                         <outlet property="parkNumCoastersLabel" destination="pkz-ma-QtW" id="yxs-e9-z0q"/>
                         <outlet property="parkOpenedDateLabel" destination="tuP-4t-TD0" id="ZTw-gI-zte"/>
-                        <outlet property="topCoasterImageView" destination="Io3-bS-k3e" id="iXZ-fY-GMN"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqH-b9-wCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,7 +470,7 @@
         <!--Park List Navigation-->
         <scene sceneID="uy7-OH-3e8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NsX-mK-cwU" userLabel="Park List Navigation" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NsX-mK-cwU" userLabel="Park List Navigation" customClass="TranslucentNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Park List" id="xz4-tg-vfL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kfb-hI-Hi6">
@@ -556,7 +566,6 @@
     </scenes>
     <resources>
         <image name="checkbutton_empty" width="60" height="60"/>
-        <image name="coaster4-header" width="320" height="87"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

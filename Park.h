@@ -22,6 +22,9 @@
 @property (nonatomic, retain) NSString * state;
 @property (nonatomic) float distance;
 @property (nonatomic, retain) NSSet *coasters;
+@property (nonatomic) BOOL hasImage;
+@property (nonatomic, retain) NSString * imagePath;
+@property (nonatomic) int16_t year;
 @end
 
 @interface Park (CoreDataGeneratedAccessors)

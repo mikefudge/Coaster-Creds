@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		272161731ABDEC3D0015ED87 /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 272161721ABDEC3D0015ED87 /* HCSStarRatingView.m */; };
+		2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */; };
 		272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272B139F1AC0A240005B78D6 /* MapKit.framework */; };
 		272B13A31AC0B0EF005B78D6 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B13A21AC0B0EF005B78D6 /* Color.m */; };
 		272CD7C71AD9695A00D67F81 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272CD7C61AD9695A00D67F81 /* HomeTableViewController.m */; };
+		2738F58F1AE617A100A4E12A /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2738F58E1AE617A100A4E12A /* data.sqlite */; };
 		276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276736DB1ACF107A0078A54D /* MainTabBarController.m */; };
 		27688E331ABC74DB00A8D102 /* Haversine.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E321ABC74DB00A8D102 /* Haversine.m */; };
 		27688E3B1ABC80B200A8D102 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E3A1ABC80B200A8D102 /* Park.m */; };
 		277424641AD821B9007EC643 /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 277424631AD821B9007EC643 /* Coaster.m */; };
-		277424661AD82315007EC643 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 277424651AD82315007EC643 /* data.sqlite */; };
 		2779F1A01AD9B39700215D79 /* ParkListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F19F1AD9B39700215D79 /* ParkListTableViewController.m */; };
 		2779F1A31AD9D0F900215D79 /* ParkListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
@@ -46,11 +47,14 @@
 /* Begin PBXFileReference section */
 		272161711ABDEC3D0015ED87 /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HCSStarRatingView.h; path = "../../../../../Downloads/HCSStarRatingView-master/HCSStarRatingView/HCSStarRatingView.h"; sourceTree = "<group>"; };
 		272161721ABDEC3D0015ED87 /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HCSStarRatingView.m; path = "../../../../../Downloads/HCSStarRatingView-master/HCSStarRatingView/HCSStarRatingView.m"; sourceTree = "<group>"; };
+		2721F73B1AE317A200AFAD5E /* TranslucentNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslucentNavigationController.h; sourceTree = "<group>"; };
+		2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslucentNavigationController.m; sourceTree = "<group>"; };
 		272B139F1AC0A240005B78D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		272B13A11AC0B0EF005B78D6 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		272B13A21AC0B0EF005B78D6 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
 		272CD7C51AD9695A00D67F81 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		272CD7C61AD9695A00D67F81 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		2738F58E1AE617A100A4E12A /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		276736DA1ACF107A0078A54D /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		276736DB1ACF107A0078A54D /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		27688E311ABC74DB00A8D102 /* Haversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haversine.h; sourceTree = "<group>"; };
@@ -59,7 +63,6 @@
 		27688E3A1ABC80B200A8D102 /* Park.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Park.m; sourceTree = "<group>"; };
 		277424621AD821B9007EC643 /* Coaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coaster.h; sourceTree = "<group>"; };
 		277424631AD821B9007EC643 /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
-		277424651AD82315007EC643 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		2779F19E1AD9B39700215D79 /* ParkListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkListTableViewController.h; sourceTree = "<group>"; };
 		2779F19F1AD9B39700215D79 /* ParkListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkListTableViewController.m; sourceTree = "<group>"; };
 		2779F1A11AD9D0F900215D79 /* ParkListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkListTableViewCell.h; sourceTree = "<group>"; };
@@ -118,7 +121,7 @@
 				27688E3A1ABC80B200A8D102 /* Park.m */,
 				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
 				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
-				277424651AD82315007EC643 /* data.sqlite */,
+				2738F58E1AE617A100A4E12A /* data.sqlite */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -147,6 +150,8 @@
 		278323A51AB9CFF300F7B5A3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2721F73B1AE317A200AFAD5E /* TranslucentNavigationController.h */,
+				2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */,
 				276736DA1ACF107A0078A54D /* MainTabBarController.h */,
 				276736DB1ACF107A0078A54D /* MainTabBarController.m */,
 				27DC5B7C1AB7529C00E86C63 /* HomeViewController.h */,
@@ -321,7 +326,7 @@
 				27DC5B861AB7529C00E86C63 /* LaunchScreen.xib in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
 				27E2A9B01ABE35C700FDA170 /* ideas in Resources */,
-				277424661AD82315007EC643 /* data.sqlite in Resources */,
+				2738F58F1AE617A100A4E12A /* data.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +359,7 @@
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,
 				272161731ABDEC3D0015ED87 /* HCSStarRatingView.m in Sources */,
 				27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */,
+				2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */,
 				2779F1A31AD9D0F900215D79 /* ParkListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

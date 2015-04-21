@@ -21,5 +21,8 @@
 @dynamic state;
 @dynamic distance;
 @dynamic coasters;
+@dynamic hasImage;
+@dynamic imagePath;
+@dynamic year;
 
 @end

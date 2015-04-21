@@ -24,7 +24,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nearbyPark2DistanceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nearbyPark2CoastersLabel;
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) Park *selectedPark;
 
 

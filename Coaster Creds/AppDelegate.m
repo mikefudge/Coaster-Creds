@@ -21,7 +21,7 @@
     // Override point for customization after application launch.
     
     
-    [[UINavigationBar appearance] setBarTintColor:[Color colorWithR:0 G:126 B:255 A:1]];
+    [[UINavigationBar appearance] setBarTintColor:[Color colorWithR:70 G:70 B:70 A:1]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
