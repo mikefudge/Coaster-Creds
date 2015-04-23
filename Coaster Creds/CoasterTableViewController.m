@@ -13,6 +13,7 @@
 #import "CoasterTableViewCell.h"
 #import "HomeViewController.h"
 #import "TranslucentNavigationController.h"
+#import "PopupRatingViewController.h"
 
 #import <CoreData/CoreData.h>
 
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerDarkView;
 
 @property (weak, nonatomic) IBOutlet UIView *parkLabelsDarkView;
+@property (strong, nonatomic) PopupRatingViewController *popupRatingViewController;
 
 @end
 
@@ -35,16 +37,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self displayRandomCoasterImage];
     self.tableView.estimatedRowHeight = 68.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.fetchedResultsController performFetch:nil];
-    
     [_headerImageView setImage:[self getParkImage]];
-    
     // Disable scroll until animation is completed
     self.tableView.scrollEnabled = NO;
-
     [self setLabels];
     [self animateLabels];
     [(TranslucentNavigationController *)self.navigationController presentTranslucentNavigationBar];
@@ -81,7 +79,6 @@
         return [UIImage imageNamed:@"coaster1-header"];
     }
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
@@ -131,7 +128,7 @@
 
 - (void)setLabels {
     _parkNameLabel.text = self.park.name;
-    _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%lu rollercoasters in park", (unsigned long)[self.park.coasters count]];
+    [self updateNumCoastersLabel];
     if (self.park.year != 0) {
         _parkOpenedDateLabel.text = [NSString stringWithFormat:@"Opened in %hd", self.park.year];
     } else {
@@ -142,22 +139,44 @@
     [_parkNumCoastersLabel setAlpha:0];
 }
 
+- (void)updateNumCoastersLabel {
+    int total = (int)[_park.coasters count];
+    int rideCount = 0;
+    NSString *grammar;
+    for (Coaster *coaster in _park.coasters) {
+        if (coaster.ridden) {
+            rideCount++;
+        }
+    }
+    if (total == 1) {
+        grammar = @"coaster";
+    } else {
+        grammar = @"coasters";
+    }
+    if (total-rideCount == 0) {
+        _parkNumCoastersLabel.text = @"All coasters ridden!";
+    } else {
+        _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d out of %d %@ remaining", total-rideCount, total, grammar];
+    }
+}
+
 - (void)animateLabels {
     // Create origin frames and move labels offscreen
     CGRect parkNameFrame = [self prepareLabel:_parkNameLabel byMovingToX:200];
     CGRect parkOpenedFrame = [self prepareLabel:_parkOpenedDateLabel byMovingToX:200];
     CGRect parkNumCoastersFrame = [self prepareLabel:_parkNumCoastersLabel byMovingToX:200];
     // Move labels back into view
-    [UIView animateKeyframesWithDuration:2.0 delay:0.0 options:0 animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.2 animations:^{
+    
+    [UIView animateKeyframesWithDuration:1.0 delay:0.0 options:0 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.6 animations:^{
             _parkNameLabel.frame = parkNameFrame;
             [_parkNameLabel setAlpha:1];
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.1 relativeDuration:0.2 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.6 animations:^{
             _parkOpenedDateLabel.frame = parkOpenedFrame;
             [_parkOpenedDateLabel setAlpha:1];
         }];
-        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.2 animations:^{
+        [UIView addKeyframeWithRelativeStartTime:0.4 relativeDuration:0.5 animations:^{
             _parkNumCoastersLabel.frame = parkNumCoastersFrame;
             [_parkNumCoastersLabel setAlpha:1];
         }];
@@ -197,12 +216,13 @@
         CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         Coaster *coaster = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.coaster = coaster;
-        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell configureCell];
         return cell;
     }
 }
+
+#pragma mark - Core Data
 
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController) {
@@ -223,32 +243,45 @@
     return fetchRequest;
 }
 
+#pragma mark - IBActions
+
 - (IBAction)rideButtonWasPressed:(id)sender {
-    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
-    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
-    CoasterTableViewCell *cell = (CoasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    CoasterTableViewCell *cell = [self getCellForSender:sender];
     NSDate *date = [NSDate date];
     cell.coaster.dateLastRidden = date;
     [cell.coaster toggleRidden];
     if (cell.coaster.ridden) {
-        [sender setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
+        [cell configureCell];
+        [self showRatingViewForCell:cell];
     } else {
-        [sender setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
+        cell.coaster.rating = 0;
+        [cell configureCell];
     }
-    
+    [self updateNumCoastersLabel];
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)ratingViewWasPressed:(id)sender {
+    CoasterTableViewCell *cell = [self getCellForSender:sender];
+    if (cell.coaster.ridden) {
+        [self showRatingViewForCell:cell];
+    }
 }
-*/
+
+- (CoasterTableViewCell *)getCellForSender:(id)sender {
+    CGPoint senderPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderPosition];
+    CoasterTableViewCell *cell = (CoasterTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+    return cell;
+}
+
+
+- (void)showRatingViewForCell:(CoasterTableViewCell *)cell {
+    _popupRatingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupRatingViewController"];
+    _popupRatingViewController.cell = cell;
+    [_popupRatingViewController showInView:self.view.superview animated:YES];
+}
 
 - (IBAction)backWasPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];

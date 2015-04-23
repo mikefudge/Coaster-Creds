@@ -17,6 +17,7 @@
 @property (strong, nonatomic) Coaster *coaster;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
+@property (weak, nonatomic) IBOutlet HCSStarRatingView *ratingView;
 
 - (void)configureCell;
 

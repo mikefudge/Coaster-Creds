@@ -34,13 +34,14 @@
 
 - (void)configureCell {
     // Change name, type and ride count, then configure buttons
-    self.nameLabel.text = self.coaster.name;
-    self.typeLabel.text = [NSString stringWithFormat:@"%@, %@", self.coaster.type, self.coaster.design];
-    if (self.coaster.ridden) {
-        [self.rideButton setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
+    _nameLabel.text = self.coaster.name;
+    _typeLabel.text = [NSString stringWithFormat:@"%@, %@", _coaster.type, _coaster.design];
+    if (_coaster.ridden) {
+        [_rideButton setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
     } else {
-        [self.rideButton setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
+        [_rideButton setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
     }
+    _ratingView.value = [_coaster.rating floatValue];
 }
 
 @end

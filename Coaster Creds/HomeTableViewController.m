@@ -103,6 +103,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"coastersInPark"]) {
         CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        coasterTableViewController.hidesBottomBarWhenPushed = YES;
         coasterTableViewController.park = self.selectedPark;
     }  
 }

@@ -329,7 +329,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.33000000000000002" colorSpace="calibratedWhite"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
                             <constraints>
@@ -367,16 +367,35 @@
                                                 <action selector="rideButtonWasPressed:" destination="74J-mS-SQA" eventType="touchUpInside" id="8nE-Al-Xe1"/>
                                             </connections>
                                         </button>
-                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-i7-t8O" customClass="HCSStarRatingView">
-                                            <rect key="frame" x="5" y="64" width="104" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type, Design" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gic-gy-2SE">
+                                            <rect key="frame" x="8" y="33" width="201" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="201" id="Sal-LC-HBY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dcV-i7-t8O" customClass="HCSStarRatingView">
+                                            <rect key="frame" x="8" y="60" width="119" height="20"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlh-w0-ao2">
+                                                    <rect key="frame" x="0.0" y="-10" width="119" height="39"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="ratingViewWasPressed:" destination="74J-mS-SQA" eventType="touchUpInside" id="W7w-v0-Qno"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="tintColor" red="0.0" green="0.49359906329999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="104" id="1mR-bA-NHX"/>
-                                                <constraint firstAttribute="height" constant="15" id="bms-J1-3xh"/>
+                                                <constraint firstAttribute="width" constant="119" id="A56-X5-16w"/>
+                                                <constraint firstAttribute="height" constant="20" id="c5H-e4-lI2"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="spacing">
@@ -394,32 +413,32 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type, Design" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gic-gy-2SE">
-                                            <rect key="frame" x="8" y="33" width="201" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="201" id="Sal-LC-HBY"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="dcV-i7-t8O" secondAttribute="bottom" constant="4" id="4Fa-Se-8VU"/>
                                         <constraint firstItem="gic-gy-2SE" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" id="61N-Gx-yk4"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="x5Q-N9-17b" secondAttribute="trailing" constant="15" id="Bqg-M9-2jt"/>
-                                        <constraint firstItem="dcV-i7-t8O" firstAttribute="top" secondItem="gic-gy-2SE" secondAttribute="bottom" constant="7" id="FmC-Cj-qbS"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="dcV-i7-t8O" secondAttribute="bottom" constant="5" id="HFJ-s7-pk7"/>
-                                        <constraint firstItem="dcV-i7-t8O" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" constant="-3" id="HOn-pN-lPt"/>
+                                        <constraint firstItem="dcV-i7-t8O" firstAttribute="top" secondItem="gic-gy-2SE" secondAttribute="bottom" constant="3" id="GcF-CO-9vW"/>
                                         <constraint firstItem="6d5-xF-yaC" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" id="Psl-Ut-ZHI"/>
                                         <constraint firstAttribute="centerY" secondItem="x5Q-N9-17b" secondAttribute="centerY" id="Weu-RQ-9XX"/>
                                         <constraint firstItem="6d5-xF-yaC" firstAttribute="top" secondItem="Gjm-MP-mKo" secondAttribute="topMargin" id="cOu-KH-71l"/>
+                                        <constraint firstItem="dcV-i7-t8O" firstAttribute="leading" secondItem="Gjm-MP-mKo" secondAttribute="leadingMargin" id="jnV-yS-CZ6"/>
                                         <constraint firstItem="gic-gy-2SE" firstAttribute="top" secondItem="6d5-xF-yaC" secondAttribute="bottom" constant="-1" id="t5u-Fn-aFO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="6d5-xF-yaC" id="Rq4-ax-fNw"/>
+                                    <outlet property="ratingView" destination="dcV-i7-t8O" id="ead-9e-eg1"/>
                                     <outlet property="rideButton" destination="x5Q-N9-17b" id="zRg-O0-C2x"/>
                                     <outlet property="typeLabel" destination="gic-gy-2SE" id="W76-v6-dc7"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xC5-hy-z4V">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xC5-hy-z4V" id="r6i-oc-WtS">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmptyCell" rowHeight="113" id="3bl-2V-kG5">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -465,7 +484,70 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqH-b9-wCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486" y="-1231"/>
+            <point key="canvasLocation" x="-473" y="-1314"/>
+        </scene>
+        <!--Popup Rating View Controller-->
+        <scene sceneID="FD5-aB-we3">
+            <objects>
+                <viewController storyboardIdentifier="PopupRatingViewController" id="biZ-Bf-JP8" customClass="PopupRatingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RdL-qj-S83"/>
+                        <viewControllerLayoutGuide type="bottom" id="piv-oj-Bb8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w5g-Oh-xax">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBu-IH-dgo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="viewWasDismissed:" destination="biZ-Bf-JP8" eventType="touchUpInside" id="6vY-am-Tc5"/>
+                                </connections>
+                            </button>
+                            <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHp-aH-Zvd">
+                                <rect key="frame" x="16" y="197" width="288" height="173"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4ZP-Hs-whf" customClass="HCSStarRatingView">
+                                        <rect key="frame" x="8" y="80" width="272" height="61"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="allowsHalfStars" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minimumValue">
+                                                <integer key="value" value="0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rate that coaster!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2U-Nw-gmC">
+                                        <rect key="frame" x="8" y="25" width="272" height="39"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="28"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <gestureRecognizers/>
+                    </view>
+                    <connections>
+                        <outlet property="dismissViewButton" destination="lBu-IH-dgo" id="hQv-Jd-16J"/>
+                        <outlet property="popupView" destination="AHp-aH-Zvd" id="Yox-qq-6Va"/>
+                        <outlet property="ratingView" destination="4ZP-Hs-whf" id="oWW-WZ-7aI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UwE-XN-V5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-75" y="-1196"/>
         </scene>
         <!--Park List Navigation-->
         <scene sceneID="uy7-OH-3e8">
@@ -573,6 +655,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8Yr-9a-jtT"/>
+        <segue reference="huO-dJ-Bj1"/>
     </inferredMetricsTieBreakers>
 </document>
