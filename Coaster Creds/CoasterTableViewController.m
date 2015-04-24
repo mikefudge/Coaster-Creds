@@ -252,7 +252,7 @@
     [cell.coaster toggleRidden];
     if (cell.coaster.ridden) {
         [cell configureCell];
-        [self showRatingViewForCell:cell];
+        //[self showRatingViewForCell:cell];
     } else {
         cell.coaster.rating = 0;
         [cell configureCell];

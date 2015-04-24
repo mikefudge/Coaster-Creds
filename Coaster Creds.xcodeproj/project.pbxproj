@@ -15,6 +15,7 @@
 		2738F5921AE662C300A4E12A /* PopupRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5911AE662C300A4E12A /* PopupRatingViewController.m */; };
 		2738F5941AE6631A00A4E12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738F5931AE6631A00A4E12A /* QuartzCore.framework */; };
 		2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */; };
+		2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */; };
 		276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276736DB1ACF107A0078A54D /* MainTabBarController.m */; };
 		27688E331ABC74DB00A8D102 /* Haversine.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E321ABC74DB00A8D102 /* Haversine.m */; };
 		27688E3B1ABC80B200A8D102 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E3A1ABC80B200A8D102 /* Park.m */; };
@@ -60,6 +61,8 @@
 		2738F5931AE6631A00A4E12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		2738F5951AE89E2400A4E12A /* HCSStarRatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCSStarRatingView.h; sourceTree = "<group>"; };
 		2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
+		2738F59B1AEA103E00A4E12A /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
+		2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
 		276736DA1ACF107A0078A54D /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		276736DB1ACF107A0078A54D /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		27688E311ABC74DB00A8D102 /* Haversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haversine.h; sourceTree = "<group>"; };
@@ -222,6 +225,8 @@
 		27DC5B721AB7529C00E86C63 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2738F59B1AEA103E00A4E12A /* BFPaperCheckbox.h */,
+				2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */,
 				272B13A11AC0B0EF005B78D6 /* Color.h */,
 				272B13A21AC0B0EF005B78D6 /* Color.m */,
 				2738F5951AE89E2400A4E12A /* HCSStarRatingView.h */,
@@ -363,6 +368,7 @@
 				27DC5B7E1AB7529C00E86C63 /* HomeViewController.m in Sources */,
 				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
+				2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */,
 				2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,

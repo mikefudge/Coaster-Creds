@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "HCSStarRatingView.h"
+#import "BFPaperCheckbox.h"
 
 @class Coaster;
 
 @interface CoasterTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *rideButton;
+@property (weak, nonatomic) IBOutlet BFPaperCheckbox *rideButton;
 @property (strong, nonatomic) Coaster *coaster;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;

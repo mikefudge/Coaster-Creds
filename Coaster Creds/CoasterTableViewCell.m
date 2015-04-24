@@ -37,9 +37,9 @@
     _nameLabel.text = self.coaster.name;
     _typeLabel.text = [NSString stringWithFormat:@"%@, %@", _coaster.type, _coaster.design];
     if (_coaster.ridden) {
-        [_rideButton setImage:[UIImage imageNamed:@"checkbutton_checked.png"] forState:UIControlStateNormal];
+        [self.rideButton checkAnimated:NO];
     } else {
-        [_rideButton setImage:[UIImage imageNamed:@"checkbutton_empty.png"] forState:UIControlStateNormal];
+        [self.rideButton uncheckAnimated:NO];
     }
     _ratingView.value = [_coaster.rating floatValue];
 }
