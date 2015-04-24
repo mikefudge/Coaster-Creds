@@ -12,8 +12,6 @@
 #import "CoreDataStack.h"
 #import "HCSStarRatingView.h"
 
-#define BUTTON_WIDTH_HEIGHT 60
-
 @interface CoasterTableViewCell ()
 
 @end
@@ -35,13 +33,29 @@
 - (void)configureCell {
     // Change name, type and ride count, then configure buttons
     _nameLabel.text = self.coaster.name;
-    _typeLabel.text = [NSString stringWithFormat:@"%@, %@", _coaster.type, _coaster.design];
+    
     if (_coaster.ridden) {
         [self.rideButton checkAnimated:NO];
     } else {
         [self.rideButton uncheckAnimated:NO];
     }
     _ratingView.value = [_coaster.rating floatValue];
+    _typeLabel.text = [NSString stringWithFormat:@"%@", _coaster.type];
+    _designLabel.text = [NSString stringWithFormat:@"%@", _coaster.design];
+    _typeImage.image = [self getTypeIconImage];
+    _designImage.image = [self getDesignIconImage];
+}
+
+- (UIImage *)getTypeIconImage {
+    NSString *type = [_coaster.type lowercaseString];
+    NSString *imagePath = [[NSString alloc] initWithFormat:@"icon_type_%@", type];
+    return [UIImage imageNamed:imagePath];
+}
+
+- (UIImage *)getDesignIconImage {
+    NSString *design = [[_coaster.design lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *imagePath = [[NSString alloc] initWithFormat:@"icon_design_%@", design];
+    return [UIImage imageNamed:imagePath];
 }
 
 @end

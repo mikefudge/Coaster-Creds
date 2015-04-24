@@ -17,13 +17,14 @@
 
 #import <CoreData/CoreData.h>
 
+static const int kNumberOfDefaultHeaderImages = 14;
+
 @interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *parkOpenedDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *parkNumCoastersLabel;
-@property (strong, nonatomic) NSArray *coasterImagesArray;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
 @property (weak, nonatomic) IBOutlet UIView *headerDarkView;
@@ -37,7 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.estimatedRowHeight = 68.0;
+    self.tableView.estimatedRowHeight = 98.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.fetchedResultsController performFetch:nil];
     [_headerImageView setImage:[self getParkImage]];
@@ -46,7 +47,6 @@
     [self setLabels];
     [self animateLabels];
     [(TranslucentNavigationController *)self.navigationController presentTranslucentNavigationBar];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,9 +64,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    
-  
-    
+    [self.tableView reloadData];
     
 }
 
@@ -76,7 +74,14 @@
         UIImage *image = [UIImage imageNamed:filename];
         return image;
     } else {
-        return [UIImage imageNamed:@"coaster1-header"];
+        NSMutableArray *defaultHeaderImages = [[NSMutableArray alloc] init];
+        for (int i = 1; i <= kNumberOfDefaultHeaderImages; i++) {
+            NSString *imageName = [[NSString alloc] initWithFormat:@"header_default%d.png", i];
+            UIImage *image = [UIImage imageNamed:imageName];
+            [defaultHeaderImages addObject:image];
+        }
+        int r = arc4random_uniform(kNumberOfDefaultHeaderImages-1);
+        return [defaultHeaderImages objectAtIndex:r];
     }
 }
 

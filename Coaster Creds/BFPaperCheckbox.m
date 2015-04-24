@@ -56,7 +56,7 @@ static CGFloat const bfPaperCheckbox_tapCircleDiameterStartValue     = 1.f;// fo
 // -tap-circle's beauty:
 static CGFloat const bfPaperCheckbox_tapFillConstant                 = 0.3f;
 // -checkbox's beauty:
-static CGFloat const bfPaperCheckbox_checkboxSideLength              = 8.f;
+static CGFloat const bfPaperCheckbox_checkboxSideLength              = 9.f;
 // -animation function names:
 // For spinning box clockwise while shrinking:
 static NSString *const box_spinClockwiseAnimationLeftLine = @"leftLineSpin";
