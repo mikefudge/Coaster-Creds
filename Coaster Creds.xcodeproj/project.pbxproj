@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */; };
+		2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */; };
 		2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */; };
 		272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272B139F1AC0A240005B78D6 /* MapKit.framework */; };
 		272B13A31AC0B0EF005B78D6 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B13A21AC0B0EF005B78D6 /* Color.m */; };
@@ -48,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2715A78A1AF112B000C0C9A5 /* ParkAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkAnnotation.h; sourceTree = "<group>"; };
+		2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkAnnotation.m; sourceTree = "<group>"; };
+		2715A78D1AF7B3DB00C0C9A5 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
+		2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		2721F73B1AE317A200AFAD5E /* TranslucentNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslucentNavigationController.h; sourceTree = "<group>"; };
 		2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslucentNavigationController.m; sourceTree = "<group>"; };
 		272B139F1AC0A240005B78D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -180,6 +186,8 @@
 		27D753D51ABD975F00484615 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2715A78D1AF7B3DB00C0C9A5 /* HomeTableViewCell.h */,
+				2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */,
 				2779F1A11AD9D0F900215D79 /* ParkListTableViewCell.h */,
 				2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */,
 				27D753D11ABD970E00484615 /* CoasterTableViewCell.h */,
@@ -235,6 +243,8 @@
 				27688E321ABC74DB00A8D102 /* Haversine.m */,
 				27DC5B741AB7529C00E86C63 /* main.m */,
 				27E2A9AF1ABE35C700FDA170 /* ideas */,
+				2715A78A1AF112B000C0C9A5 /* ParkAnnotation.h */,
+				2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -369,7 +379,9 @@
 				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
 				2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */,
+				2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */,
 				2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */,
+				2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,

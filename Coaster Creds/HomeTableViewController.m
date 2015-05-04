@@ -8,21 +8,14 @@
 
 #import "HomeTableViewController.h"
 #import "CoasterTableViewController.h"
+#import "HomeTableViewCell.h"
 #import "Park.h"
+#import "Coaster.h"
+
+#import <CoreLocation/CoreLocation.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface HomeTableViewController ()
-
-@property (weak, nonatomic) IBOutlet UILabel *nearestParkNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearestParkDistanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearestParkCoastersLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark1NameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark1DistanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark1CoastersLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark2NameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark2DistanceLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nearbyPark2CoastersLabel;
 
 @property (strong, nonatomic) Park *selectedPark;
 
@@ -32,9 +25,14 @@
 @implementation HomeTableViewController
 
 - (void)viewDidLoad {
+    self.tableView.estimatedRowHeight = 98.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
     [super viewDidLoad];
-    Park *park = [self.parksArray objectAtIndex:0];
-    self.nearestParkNameLabel.text = park.name;
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,57 +41,65 @@
 }
 
 - (void)reloadTableWithArray:(NSMutableArray *)array {
-    self.parksArray = array;
-    Park *park = [self.parksArray objectAtIndex:0];
-    self.nearestParkNameLabel.text = park.name;
-    self.nearestParkDistanceLabel.text = [NSString stringWithFormat:@"%.1f miles away", park.distance];
-    self.nearestParkCoastersLabel.text = [self formatStringForNumber:[park.coasters count]];
-    park = [self.parksArray objectAtIndex:1];
-    self.nearbyPark1NameLabel.text = park.name;
-    self.nearbyPark1DistanceLabel.text = [NSString stringWithFormat:@"%.1f miles away", park.distance];
-    self.nearbyPark1CoastersLabel.text = [self formatStringForNumber:[park.coasters count]];
-    park = [self.parksArray objectAtIndex:2];
-    self.nearbyPark2NameLabel.text = park.name;
-    self.nearbyPark2DistanceLabel.text = [NSString stringWithFormat:@"%.1f miles away", park.distance];
-    self.nearbyPark2CoastersLabel.text = [self formatStringForNumber:[park.coasters count]];
-    [self hideLabels:NO];
+    _parksArray = array;
     [self.tableView reloadData];
 }
 
 - (NSString *)formatStringForNumber:(long)number {
     NSString *string = [[NSString alloc] init];
     if (number == 0) {
-        string = @"No coasters in park";
+        string = @"No coasters";
     } else if (number == 1) {
-        string = @"1 coaster in park";
+        string = @"1 coaster";
     } else {
-        string = [NSString stringWithFormat:@"%lu coasters in park", number];
+        string = [NSString stringWithFormat:@"%lu coasters", number];
     }
     return string;
 }
 
-- (void)hideLabels:(BOOL)value {
-    self.nearestParkNameLabel.hidden =  value;
-    self.nearestParkDistanceLabel.hidden = value;
-    self.nearestParkCoastersLabel.hidden = value;
-    self.nearbyPark1NameLabel.hidden = value;
-    self.nearbyPark1DistanceLabel.hidden = value;
-    self.nearbyPark1CoastersLabel.hidden = value;
-    self.nearbyPark2NameLabel.hidden = value;
-    self.nearbyPark2DistanceLabel.hidden = value;
-    self.nearbyPark2CoastersLabel.hidden = value;
+- (void)hideLabel:(UILabel *)label isHidden:(BOOL)value {
+    label.hidden = value;
+}
+
+- (NSString *)setNumCoastersLabelForPark:(Park *)park {
+    int count = 0;
+    for (Coaster *coaster in park.coasters) {
+        if (coaster.ridden == YES) {
+            count++;
+        }
+    }
+    NSString *string = [[NSString alloc] initWithFormat:@"%d/%lu", count, (unsigned long)[park.coasters count]];
+    return string;
+}
+
+#pragma mark Table View Delegate Methods
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_parksArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    Park *park = [_parksArray objectAtIndex:indexPath.row];
+    cell.parkNameLabel.text = park.name;
+    cell.parkDistanceLabel.text = [[NSString alloc] initWithFormat:@"%.1f mi", park.distance];
+    cell.numCoastersLabel.layer.cornerRadius = 17;
+    cell.numCoastersLabel.clipsToBounds = YES;
+    cell.numCoastersLabel.text = [self setNumCoastersLabelForPark:park];
+    cell.parkAreaLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", park.state, park.country];
+    cell.numTotalCoastersLabel.text = [self formatStringForNumber:[park.coasters count]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        self.selectedPark = [self.parksArray objectAtIndex:0];
-    } else {
-        if (indexPath.row == 0) {
-            self.selectedPark = [self.parksArray objectAtIndex:1];
-        } else {
-            self.selectedPark = [self.parksArray objectAtIndex:2];
-        }
-    }
+    _selectedPark = [_parksArray objectAtIndex:indexPath.row];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSegueWithIdentifier:@"coastersInPark" sender:self];
 }

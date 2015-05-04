@@ -17,7 +17,8 @@
 
 #import <CoreData/CoreData.h>
 
-static const int kNumberOfDefaultHeaderImages = 14;
+#define NUMBER_OF_FOOTER_IMAGES 4
+#define NUMBER_OF_HEADER_IMAGES 14
 
 @interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
 
@@ -31,6 +32,7 @@ static const int kNumberOfDefaultHeaderImages = 14;
 
 @property (weak, nonatomic) IBOutlet UIView *parkLabelsDarkView;
 @property (strong, nonatomic) PopupRatingViewController *popupRatingViewController;
+@property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
 
 @end
 
@@ -42,6 +44,7 @@ static const int kNumberOfDefaultHeaderImages = 14;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.fetchedResultsController performFetch:nil];
     [_headerImageView setImage:[self getParkImage]];
+    [_footerImageView setImage:[self getFooterImage]];
     // Disable scroll until animation is completed
     self.tableView.scrollEnabled = NO;
     [self setLabels];
@@ -68,6 +71,7 @@ static const int kNumberOfDefaultHeaderImages = 14;
     
 }
 
+// Returns image associated with park. If there is no image, will return a random image from a selection of default images
 - (UIImage *)getParkImage {
     if (self.park.hasImage == YES) {
         NSString *filename = [NSString stringWithFormat:@"header_%@.png", self.park.imagePath];
@@ -75,14 +79,27 @@ static const int kNumberOfDefaultHeaderImages = 14;
         return image;
     } else {
         NSMutableArray *defaultHeaderImages = [[NSMutableArray alloc] init];
-        for (int i = 1; i <= kNumberOfDefaultHeaderImages; i++) {
+        for (int i = 1; i <= NUMBER_OF_HEADER_IMAGES; i++) {
             NSString *imageName = [[NSString alloc] initWithFormat:@"header_default%d.png", i];
             UIImage *image = [UIImage imageNamed:imageName];
             [defaultHeaderImages addObject:image];
         }
-        int r = arc4random_uniform(kNumberOfDefaultHeaderImages-1);
+        int r = arc4random_uniform(NUMBER_OF_HEADER_IMAGES-1);
         return [defaultHeaderImages objectAtIndex:r];
     }
+}
+
+// Returns a random footer image
+- (UIImage *)getFooterImage {
+    
+    NSMutableArray *footerImagesArray = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= NUMBER_OF_FOOTER_IMAGES; i++) {
+        NSString *imageName = [[NSString alloc] initWithFormat:@"footer_coaster%d.png", i];
+        UIImage *image = [UIImage imageNamed:imageName];
+        [footerImagesArray addObject:image];
+    }
+    int r = arc4random_uniform(NUMBER_OF_FOOTER_IMAGES-1);
+    return [footerImagesArray objectAtIndex:r];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

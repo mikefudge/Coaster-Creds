@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *designImage;
 
 
+
+
 - (void)configureCell;
 
 @end
