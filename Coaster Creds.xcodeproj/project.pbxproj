@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */; };
 		2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */; };
+		2715A7981AFA4B0E00C0C9A5 /* ErrorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7971AFA4B0E00C0C9A5 /* ErrorTableViewCell.m */; };
 		2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */; };
 		272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272B139F1AC0A240005B78D6 /* MapKit.framework */; };
 		272B13A31AC0B0EF005B78D6 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B13A21AC0B0EF005B78D6 /* Color.m */; };
-		272CD7C71AD9695A00D67F81 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 272CD7C61AD9695A00D67F81 /* HomeTableViewController.m */; };
 		2738F58F1AE617A100A4E12A /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2738F58E1AE617A100A4E12A /* data.sqlite */; };
 		2738F5921AE662C300A4E12A /* PopupRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5911AE662C300A4E12A /* PopupRatingViewController.m */; };
 		2738F5941AE6631A00A4E12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738F5931AE6631A00A4E12A /* QuartzCore.framework */; };
@@ -54,13 +54,13 @@
 		2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkAnnotation.m; sourceTree = "<group>"; };
 		2715A78D1AF7B3DB00C0C9A5 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
+		2715A7961AFA4B0E00C0C9A5 /* ErrorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorTableViewCell.h; sourceTree = "<group>"; };
+		2715A7971AFA4B0E00C0C9A5 /* ErrorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorTableViewCell.m; sourceTree = "<group>"; };
 		2721F73B1AE317A200AFAD5E /* TranslucentNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TranslucentNavigationController.h; sourceTree = "<group>"; };
 		2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TranslucentNavigationController.m; sourceTree = "<group>"; };
 		272B139F1AC0A240005B78D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		272B13A11AC0B0EF005B78D6 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		272B13A21AC0B0EF005B78D6 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
-		272CD7C51AD9695A00D67F81 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
-		272CD7C61AD9695A00D67F81 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 		2738F58E1AE617A100A4E12A /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		2738F5901AE662C300A4E12A /* PopupRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupRatingViewController.h; sourceTree = "<group>"; };
 		2738F5911AE662C300A4E12A /* PopupRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupRatingViewController.m; sourceTree = "<group>"; };
@@ -173,8 +173,6 @@
 				276736DB1ACF107A0078A54D /* MainTabBarController.m */,
 				27DC5B7C1AB7529C00E86C63 /* HomeViewController.h */,
 				27DC5B7D1AB7529C00E86C63 /* HomeViewController.m */,
-				272CD7C51AD9695A00D67F81 /* HomeTableViewController.h */,
-				272CD7C61AD9695A00D67F81 /* HomeTableViewController.m */,
 				279453951ABCA69300801760 /* CoasterTableViewController.h */,
 				279453961ABCA69300801760 /* CoasterTableViewController.m */,
 				2779F19E1AD9B39700215D79 /* ParkListTableViewController.h */,
@@ -192,6 +190,8 @@
 				2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */,
 				27D753D11ABD970E00484615 /* CoasterTableViewCell.h */,
 				27D753D21ABD970E00484615 /* CoasterTableViewCell.m */,
+				2715A7961AFA4B0E00C0C9A5 /* ErrorTableViewCell.h */,
+				2715A7971AFA4B0E00C0C9A5 /* ErrorTableViewCell.m */,
 			);
 			name = "Table Cells";
 			sourceTree = "<group>";
@@ -369,7 +369,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */,
-				272CD7C71AD9695A00D67F81 /* HomeTableViewController.m in Sources */,
 				2779F1A01AD9B39700215D79 /* ParkListTableViewController.m in Sources */,
 				277424641AD821B9007EC643 /* Coaster.m in Sources */,
 				27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */,
@@ -380,6 +379,7 @@
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
 				2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */,
 				2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */,
+				2715A7981AFA4B0E00C0C9A5 /* ErrorTableViewCell.m in Sources */,
 				2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */,
 				2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
