@@ -24,6 +24,8 @@
 		27524F8F1AFD009100993A05 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F871AFD009100993A05 /* UIColor+Chameleon.m */; };
 		27524F901AFD009100993A05 /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F891AFD009100993A05 /* UIColor+CIELAB.m */; };
 		27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F8B1AFD009100993A05 /* UIViewController+Chameleon.m */; };
+		276654631AFD128400C2B8BA /* UICountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 276654621AFD128400C2B8BA /* UICountingLabel.m */; };
+		276654661AFD132000C2B8BA /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276654651AFD132000C2B8BA /* UserViewController.m */; };
 		276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 276736DB1ACF107A0078A54D /* MainTabBarController.m */; };
 		27688E331ABC74DB00A8D102 /* Haversine.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E321ABC74DB00A8D102 /* Haversine.m */; };
 		27688E3B1ABC80B200A8D102 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27688E3A1ABC80B200A8D102 /* Park.m */; };
@@ -88,6 +90,10 @@
 		27524F891AFD009100993A05 /* UIColor+CIELAB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CIELAB.m"; sourceTree = "<group>"; };
 		27524F8A1AFD009100993A05 /* UIViewController+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Chameleon.h"; sourceTree = "<group>"; };
 		27524F8B1AFD009100993A05 /* UIViewController+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Chameleon.m"; sourceTree = "<group>"; };
+		276654611AFD128400C2B8BA /* UICountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICountingLabel.h; sourceTree = "<group>"; };
+		276654621AFD128400C2B8BA /* UICountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICountingLabel.m; sourceTree = "<group>"; };
+		276654641AFD132000C2B8BA /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		276654651AFD132000C2B8BA /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 		276736DA1ACF107A0078A54D /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		276736DB1ACF107A0078A54D /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
 		27688E311ABC74DB00A8D102 /* Haversine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haversine.h; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 		27524F7E1AFD009100993A05 /* Chameleon */ = {
 			isa = PBXGroup;
 			children = (
+				276654611AFD128400C2B8BA /* UICountingLabel.h */,
+				276654621AFD128400C2B8BA /* UICountingLabel.m */,
 				27524F7F1AFD009100993A05 /* Chameleon.h */,
 				27524F801AFD009100993A05 /* ChameleonMacros.h */,
 				27524F811AFD009100993A05 /* ChameleonStatusBar.h */,
@@ -216,6 +224,8 @@
 				279453961ABCA69300801760 /* CoasterTableViewController.m */,
 				2779F19E1AD9B39700215D79 /* ParkListTableViewController.h */,
 				2779F19F1AD9B39700215D79 /* ParkListTableViewController.m */,
+				276654641AFD132000C2B8BA /* UserViewController.h */,
+				276654651AFD132000C2B8BA /* UserViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -420,6 +430,7 @@
 				27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */,
 				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
+				276654631AFD128400C2B8BA /* UICountingLabel.m in Sources */,
 				2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */,
 				2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */,
 				2715A7981AFA4B0E00C0C9A5 /* ErrorTableViewCell.m in Sources */,
@@ -429,6 +440,7 @@
 				2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				27688E3B1ABC80B200A8D102 /* Park.m in Sources */,
+				276654661AFD132000C2B8BA /* UserViewController.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,
 				27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */,
 				2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */,
