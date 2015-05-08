@@ -21,6 +21,7 @@
 // THE SOFTWARE.
 
 #import "HCSStarRatingView.h"
+#import "Chameleon.h"
 
 @implementation HCSStarRatingView {
     NSUInteger _minimumValue;
@@ -128,7 +129,8 @@
     starShapePath.miterLimit = 4;
     
     if (highlighted) {
-        [[UIColor colorWithRed:1.000 green:0.889 blue:0.000 alpha:1.000] setFill];
+        
+        [[UIColor flatYellowColor] setFill];
         [starShapePath fill];
     }
     

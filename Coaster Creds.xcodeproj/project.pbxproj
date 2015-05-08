@@ -20,7 +20,6 @@
 		2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */; };
 		27524F7D1AFD008000993A05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27524F7C1AFD008000993A05 /* CoreGraphics.framework */; };
 		27524F8C1AFD009100993A05 /* ChameleonStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F821AFD009100993A05 /* ChameleonStatusBar.m */; };
-		27524F8D1AFD009100993A05 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27524F831AFD009100993A05 /* Constants.swift */; };
 		27524F8E1AFD009100993A05 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F851AFD009100993A05 /* NSArray+Chameleon.m */; };
 		27524F8F1AFD009100993A05 /* UIColor+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F871AFD009100993A05 /* UIColor+Chameleon.m */; };
 		27524F901AFD009100993A05 /* UIColor+CIELAB.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F891AFD009100993A05 /* UIColor+CIELAB.m */; };
@@ -81,7 +80,6 @@
 		27524F801AFD009100993A05 /* ChameleonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonMacros.h; sourceTree = "<group>"; };
 		27524F811AFD009100993A05 /* ChameleonStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonStatusBar.h; sourceTree = "<group>"; };
 		27524F821AFD009100993A05 /* ChameleonStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonStatusBar.m; sourceTree = "<group>"; };
-		27524F831AFD009100993A05 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		27524F841AFD009100993A05 /* NSArray+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Chameleon.h"; sourceTree = "<group>"; };
 		27524F851AFD009100993A05 /* NSArray+Chameleon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Chameleon.m"; sourceTree = "<group>"; };
 		27524F861AFD009100993A05 /* UIColor+Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Chameleon.h"; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 				27524F801AFD009100993A05 /* ChameleonMacros.h */,
 				27524F811AFD009100993A05 /* ChameleonStatusBar.h */,
 				27524F821AFD009100993A05 /* ChameleonStatusBar.m */,
-				27524F831AFD009100993A05 /* Constants.swift */,
 				27524F841AFD009100993A05 /* NSArray+Chameleon.h */,
 				27524F851AFD009100993A05 /* NSArray+Chameleon.m */,
 				27524F861AFD009100993A05 /* UIColor+Chameleon.h */,
@@ -418,7 +415,6 @@
 				27DC5B7B1AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld in Sources */,
 				27688E331ABC74DB00A8D102 /* Haversine.m in Sources */,
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
-				27524F8D1AFD009100993A05 /* Constants.swift in Sources */,
 				27524F901AFD009100993A05 /* UIColor+CIELAB.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* HomeViewController.m in Sources */,
 				27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */,

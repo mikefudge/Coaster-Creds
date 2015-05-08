@@ -16,9 +16,10 @@
 #import "ErrorTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "Chameleon.h"
 
 #define METERS_PER_MILE 1609.344
-#define NUMBER_OF_PARKS 4
+#define NUMBER_OF_PARKS 10
 
 @interface HomeViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -143,19 +144,21 @@
     
     // Red - < 25% ridden
     if (percentage >= 0 && percentage < 0.25 && total != 0) {
-        return [UIColor colorWithRed:0.692 green:0.147 blue:0.129 alpha:1.000];
+        return [UIColor flatRedColor];
     }
     // Orange - < 50% ridden
     else if (percentage >= 0.25 && percentage < 0.5) {
-        return [UIColor colorWithRed:0.869 green:0.413 blue:0.106 alpha:1.000];
+        return [UIColor flatOrangeColor];
     }
     // Yellow - < 75% ridden
     else if (percentage >= 0.5 && percentage < 0.75) {
-        return [UIColor colorWithRed:0.927 green:0.728 blue:0.064 alpha:1.000];
+        return [UIColor flatYellowColor];
     }
     // Otherwise green
-    else {
-        return [UIColor colorWithRed:0.174 green:0.774 blue:0.368 alpha:1.000];
+    else if (percentage >= 0.75 && percentage < 1) {
+        return [UIColor flatLimeColor];
+    } else {
+        return [UIColor flatGreenColor];
     }
 }
 
