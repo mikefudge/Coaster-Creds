@@ -186,13 +186,16 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
     static NSString *identifier = @"Park";
-    MKAnnotationView *annotationView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
     if (annotationView == nil) {
-        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
+        annotationView.animatesDrop = YES;
+        [annotationView setSelected:YES animated:YES];
     } else {
         annotationView.annotation = annotation;
+        annotationView.animatesDrop = YES;
     }
     
     return annotationView;
@@ -241,6 +244,7 @@
 
 - (void)loadLocation {
     self.locationManager = [[CLLocationManager alloc] init];
+    [_mapView removeAnnotations:_mapView.annotations];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // iOS 8 check, location authorisation
