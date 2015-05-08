@@ -37,6 +37,9 @@
 @property BOOL updateLocationDidFail;
 @property (strong, nonatomic) NSError *error;
 
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @end
 
@@ -51,6 +54,7 @@
     _mapViewOrigin = _mapView.frame;
     _containerViewOrigin = _containerView.frame;
     
+    [self startRefreshActivityIndicator];
     [self loadLocation];
 }
 
@@ -64,7 +68,20 @@
 
 // Top right refresh button
 - (IBAction)refreshLocation:(id)sender {
+    [self startRefreshActivityIndicator];
     [self loadLocation];
+}
+
+- (void)startRefreshActivityIndicator {
+    _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    UIBarButtonItem *activityButton = [[UIBarButtonItem alloc] initWithCustomView:_activityIndicator];
+    [self navigationItem].rightBarButtonItem = activityButton;
+    [_activityIndicator startAnimating];
+}
+
+- (void)stopRefreshActivityIndicator {
+    [_activityIndicator stopAnimating];
+    [self navigationItem].rightBarButtonItem = _refreshButton;
 }
 
 #pragma mark Find Park Logic
@@ -232,6 +249,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [self.locationManager stopUpdatingLocation];
+    [self stopRefreshActivityIndicator];
     _updateLocationDidFail = NO;
     self.currentLocation = [locations lastObject];
     NSArray *resultsArray = [self findNearestParksFromLocation:self.currentLocation];
@@ -249,6 +267,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     [_locationManager stopUpdatingLocation];
+    [self stopRefreshActivityIndicator];
     [_mapView removeAnnotations:_mapView.annotations];
     _updateLocationDidFail = YES;
     _error = error;
