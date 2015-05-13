@@ -21,6 +21,8 @@
 @property (nonatomic) BOOL ridden;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) Park *park;
+@property (nonatomic) BOOL isOpen;
+@property (nonatomic) int16_t year;
 
 - (void)toggleRidden;
 

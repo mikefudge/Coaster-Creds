@@ -24,7 +24,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     _countLabel.format = @"%d";
-    [_countLabel countFrom:0 to:64 withDuration:3.0f];
+    [_countLabel countFrom:0 to:64  withDuration:3.0f];
 }
 
 - (void)didReceiveMemoryWarning {

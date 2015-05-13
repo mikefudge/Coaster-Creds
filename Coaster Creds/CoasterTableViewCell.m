@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "CoreDataStack.h"
 #import "HCSStarRatingView.h"
+#import "Chameleon.h"
 
 @interface CoasterTableViewCell ()
 
@@ -31,13 +32,27 @@
 }
 
 - (void)configureCell {
-    // Change name, type and ride count, then configure buttons
     _nameLabel.text = self.coaster.name;
-    
+    // Set checked button
     if (_coaster.ridden) {
         [self.rideButton checkAnimated:NO];
     } else {
         [self.rideButton uncheckAnimated:NO];
+    }
+    // Set opening year label
+    if (_coaster.year != 0) {
+        _dateLabel.text = [NSString stringWithFormat:@"Opened in %hd", _coaster.year];
+    } else {
+        _dateLabel.text = @"";
+    }
+    // Set status label
+    if (_coaster.isOpen) {
+        _statusLabel.text = @"Operating";
+        _statusLabel.textColor = [UIColor flatGreenColorDark];
+        
+    } else {
+        _statusLabel.text = @"Closed/Removed";
+        _statusLabel.textColor = [UIColor flatRedColorDark];
     }
     _ratingView.value = [_coaster.rating floatValue];
     _typeLabel.text = [NSString stringWithFormat:@"%@", _coaster.type];

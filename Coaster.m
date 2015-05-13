@@ -20,6 +20,8 @@
 @dynamic ridden;
 @dynamic type;
 @dynamic park;
+@dynamic isOpen;
+@dynamic year;
 
 - (void)toggleRidden {
     self.ridden = !self.ridden;

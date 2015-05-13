@@ -24,5 +24,7 @@
 @dynamic hasImage;
 @dynamic imagePath;
 @dynamic year;
+@dynamic town;
+@dynamic isOpen;
 
 @end

@@ -14,6 +14,7 @@
 @interface Park : NSManagedObject
 
 @property (nonatomic, retain) NSString * country;
+@property (nonatomic, retain) NSString * town;
 @property (nonatomic) NSTimeInterval dateLastVisited;
 @property (nonatomic) double latitude;
 @property (nonatomic) double longitude;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL hasImage;
 @property (nonatomic, retain) NSString * imagePath;
 @property (nonatomic) int16_t year;
+@property (nonatomic) BOOL isOpen;
 @end
 
 @interface Park (CoreDataGeneratedAccessors)

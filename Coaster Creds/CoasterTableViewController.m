@@ -162,12 +162,15 @@
 }
 
 - (void)updateNumCoastersLabel {
-    int total = (int)[_park.coasters count];
-    int rideCount = 0;
+    int total = 0;
+    int count = 0;
     NSString *grammar;
     for (Coaster *coaster in _park.coasters) {
-        if (coaster.ridden) {
-            rideCount++;
+        if (coaster.isOpen == YES) {
+            total++;
+            if (coaster.ridden == YES) {
+                count++;
+            }
         }
     }
     if (total == 1) {
@@ -175,10 +178,13 @@
     } else {
         grammar = @"coasters";
     }
-    if (total-rideCount == 0) {
-        _parkNumCoastersLabel.text = @"All coasters ridden!";
+    if (total-count == 0) {
+        _parkNumCoastersLabel.text = @"All current coasters ridden!";
     } else {
-        _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d out of %d %@ remaining", total-rideCount, total, grammar];
+        _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d out of %d %@ remaining", total-count, total, grammar];
+    }
+    if (!_park.isOpen) {
+        _parkNumCoastersLabel.text = @"Park closed/removed";
     }
 }
 
@@ -218,12 +224,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    if (_fetchedResultsController.fetchedObjects > 0) {
+        return [[_fetchedResultsController sections] count];
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.fetchedResultsController.fetchedObjects.count > 0) {
-        return self.fetchedResultsController.fetchedObjects.count;
+    if (_fetchedResultsController.fetchedObjects > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
+        return [sectionInfo numberOfObjects];
     } else {
         return 1;
     }
@@ -252,7 +263,7 @@
     }
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *fetchRequest = [self coasterFetchRequest];
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"isOpen" cacheName:nil];
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;
 }
@@ -261,7 +272,7 @@
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Coaster"];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"park.name like %@ && park.state like %@ && park.country like %@", self.park.name, self.park.state, self.park.country];
     fetchRequest.predicate = predicate;
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"isOpen" ascending:NO], [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
     return fetchRequest;
 }
 

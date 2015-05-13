@@ -19,7 +19,7 @@
 #import "Chameleon.h"
 
 #define METERS_PER_MILE 1609.344
-#define NUMBER_OF_PARKS 10
+#define NUMBER_OF_PARKS 5
 
 @interface HomeViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -123,21 +123,29 @@
 
 - (NSString *)setNumCoastersLabelForPark:(Park *)park {
     int count = 0;
+    int total = 0;
+    
     for (Coaster *coaster in park.coasters) {
-        if (coaster.ridden == YES) {
-            count++;
+        if (coaster.isOpen == YES) {
+            total++;
+            if (coaster.ridden == YES) {
+                count++;
+            }
         }
     }
-    NSString *string = [[NSString alloc] initWithFormat:@"%d/%lu", count, (unsigned long)[park.coasters count]];
+    NSString *string = [[NSString alloc] initWithFormat:@"%d/%d", count, total];
     return string;
 }
 
 - (UIColor *)getNumCoastersLabelColorForPark:(Park *)park {
     int count = 0;
-    float total = [park.coasters count];
+    float total = 0;
     for (Coaster *coaster in park.coasters) {
-        if (coaster.ridden == YES) {
-            count++;
+        if (coaster.isOpen == YES) {
+            total++;
+            if (coaster.ridden == YES) {
+                count++;
+            }
         }
     }
     float percentage = count / total;
@@ -332,7 +340,9 @@
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Park" inManagedObjectContext:coreDataStack.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isOpen == YES"];
     [request setEntity:entity];
+    [request setPredicate:predicate];
     NSArray *result = [coreDataStack.managedObjectContext executeFetchRequest:request error:nil];
     return result;
 }

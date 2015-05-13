@@ -13,11 +13,11 @@
 		2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */; };
 		272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 272B139F1AC0A240005B78D6 /* MapKit.framework */; };
 		272B13A31AC0B0EF005B78D6 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 272B13A21AC0B0EF005B78D6 /* Color.m */; };
-		2738F58F1AE617A100A4E12A /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2738F58E1AE617A100A4E12A /* data.sqlite */; };
 		2738F5921AE662C300A4E12A /* PopupRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5911AE662C300A4E12A /* PopupRatingViewController.m */; };
 		2738F5941AE6631A00A4E12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738F5931AE6631A00A4E12A /* QuartzCore.framework */; };
 		2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */; };
 		2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */; };
+		27516BAE1B02DD6E00CBED64 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27516BAD1B02DD6E00CBED64 /* data.sqlite */; };
 		27524F7D1AFD008000993A05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27524F7C1AFD008000993A05 /* CoreGraphics.framework */; };
 		27524F8C1AFD009100993A05 /* ChameleonStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F821AFD009100993A05 /* ChameleonStatusBar.m */; };
 		27524F8E1AFD009100993A05 /* NSArray+Chameleon.m in Sources */ = {isa = PBXBuildFile; fileRef = 27524F851AFD009100993A05 /* NSArray+Chameleon.m */; };
@@ -69,7 +69,6 @@
 		272B139F1AC0A240005B78D6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		272B13A11AC0B0EF005B78D6 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		272B13A21AC0B0EF005B78D6 /* Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
-		2738F58E1AE617A100A4E12A /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		2738F5901AE662C300A4E12A /* PopupRatingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopupRatingViewController.h; sourceTree = "<group>"; };
 		2738F5911AE662C300A4E12A /* PopupRatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopupRatingViewController.m; sourceTree = "<group>"; };
 		2738F5931AE6631A00A4E12A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -77,6 +76,7 @@
 		2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 		2738F59B1AEA103E00A4E12A /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
+		27516BAD1B02DD6E00CBED64 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		27524F7C1AFD008000993A05 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		27524F7F1AFD009100993A05 /* Chameleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chameleon.h; sourceTree = "<group>"; };
 		27524F801AFD009100993A05 /* ChameleonMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChameleonMacros.h; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 				27688E3A1ABC80B200A8D102 /* Park.m */,
 				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
 				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
-				2738F58E1AE617A100A4E12A /* data.sqlite */,
+				27516BAD1B02DD6E00CBED64 /* data.sqlite */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -401,7 +401,7 @@
 				27DC5B861AB7529C00E86C63 /* LaunchScreen.xib in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
 				27E2A9B01ABE35C700FDA170 /* ideas in Resources */,
-				2738F58F1AE617A100A4E12A /* data.sqlite in Resources */,
+				27516BAE1B02DD6E00CBED64 /* data.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7549" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Coaster" representedClassName="Coaster" syncable="YES">
         <attribute name="dateFirstRidden" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateLastRidden" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="design" attributeType="String" syncable="YES"/>
+        <attribute name="isOpen" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="rating" optional="YES" attributeType="Float" minValueString="0" maxValueString="5" defaultValueString="0" syncable="YES"/>
         <attribute name="ridden" attributeType="Boolean" defaultValueString="0" syncable="YES"/>
         <attribute name="type" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="park" maxCount="1" deletionRule="Nullify" destinationEntity="Park" inverseName="coasters" inverseEntity="Park" syncable="YES"/>
     </entity>
     <entity name="Park" representedClassName="Park" syncable="YES">
@@ -16,16 +18,18 @@
         <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="hasImage" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="longitude" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="isOpen" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="numberOfVisits" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="state" attributeType="String" syncable="YES"/>
+        <attribute name="town" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <relationship name="coasters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Coaster" inverseName="park" inverseEntity="Coaster" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Coaster" positionX="-324" positionY="-333" width="128" height="163"/>
-        <element name="Park" positionX="-533" positionY="-315" width="128" height="223"/>
+        <element name="Coaster" positionX="-324" positionY="-325" width="128" height="193"/>
+        <element name="Park" positionX="-533" positionY="-387" width="128" height="253"/>
     </elements>
 </model>
