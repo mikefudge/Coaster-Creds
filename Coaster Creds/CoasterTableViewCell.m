@@ -40,18 +40,22 @@
         [self.rideButton uncheckAnimated:NO];
     }
     // Set opening year label
-    if (_coaster.year != 0) {
+    if (_coaster.year != 0  && _coaster.status == 1) {
         _dateLabel.text = [NSString stringWithFormat:@"Opened in %hd", _coaster.year];
+    } else if (_coaster.year != 0 && _coaster.status == 2) {
+        _dateLabel.text = [NSString stringWithFormat:@"Opening in %hd", _coaster.year];
     } else {
         _dateLabel.text = @"";
     }
     // Set status label
-    if (_coaster.isOpen) {
+    if (_coaster.status == 1) {
         _statusLabel.text = @"Operating";
         _statusLabel.textColor = [UIColor flatGreenColorDark];
-        
+    } else if (_coaster.status == 2) {
+        _statusLabel.text = @"Under Construction";
+        _statusLabel.textColor = [UIColor flatYellowColorDark];
     } else {
-        _statusLabel.text = @"Closed/Removed";
+        _statusLabel.text = @"Closed";
         _statusLabel.textColor = [UIColor flatRedColorDark];
     }
     _ratingView.value = [_coaster.rating floatValue];

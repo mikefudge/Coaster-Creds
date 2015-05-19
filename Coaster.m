@@ -2,7 +2,7 @@
 //  Coaster.m
 //  Coaster Creds
 //
-//  Created by Mike Fudge on 10/04/2015.
+//  Created by Mike Fudge on 14/05/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
@@ -19,9 +19,10 @@
 @dynamic rating;
 @dynamic ridden;
 @dynamic type;
-@dynamic park;
-@dynamic isOpen;
 @dynamic year;
+@dynamic coasterid;
+@dynamic status;
+@dynamic park;
 
 - (void)toggleRidden {
     self.ridden = !self.ridden;

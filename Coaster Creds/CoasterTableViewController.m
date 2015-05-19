@@ -24,11 +24,10 @@
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *parkOpenedDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *parkWebsiteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *parkNumCoastersLabel;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
-@property (weak, nonatomic) IBOutlet UIView *headerDarkView;
 
 @property (weak, nonatomic) IBOutlet UIView *parkLabelsDarkView;
 @property (strong, nonatomic) PopupRatingViewController *popupRatingViewController;
@@ -74,7 +73,7 @@
 // Returns image associated with park. If there is no image, will return a random image from a selection of default images
 - (UIImage *)getParkImage {
     if (self.park.hasImage == YES) {
-        NSString *filename = [NSString stringWithFormat:@"header_%@.png", self.park.imagePath];
+        NSString *filename = [[NSString stringWithFormat:@"header_%@.png", self.park.imagePath] lowercaseString];
         UIImage *image = [UIImage imageNamed:filename];
         return image;
     } else {
@@ -110,14 +109,14 @@
         
     } else if (yOffset > 50 && yOffset < 73) {
         // Fade out labels, move park name down slightly
-        _parkOpenedDateLabel.alpha = (3 - (yOffset / 25));
+        _parkWebsiteLabel.alpha = (3 - (yOffset / 25));
         _parkNumCoastersLabel.alpha = (3 - (yOffset / 25));
         [self moveElement:_parkNameLabel toYValue: ((25 * ((200 * yOffset) - 10037)) / 4074)];
         [self moveElement:_headerImageView toYValue:-64.0 xValue:0 width:self.tableView.frame.size.width height:214];
         
     } else if (yOffset >= 73) {
         // Remove opened and num coaster labels, set park name to center, scroll header & dark view
-        _parkOpenedDateLabel.alpha = 0;
+        _parkWebsiteLabel.alpha = 0;
         _parkNumCoastersLabel.alpha = 0;
         [self moveElement:_headerImageView toYValue:yOffset-137 xValue:0 width:self.tableView.frame.size.width height:214];
         [self moveElement:_parkLabelsDarkView toYValue:yOffset];
@@ -125,7 +124,7 @@
         
     } else {
         // Reset elements to default positions & alphas
-        _parkOpenedDateLabel.alpha = 1;
+        _parkWebsiteLabel.alpha = 1;
         _parkNumCoastersLabel.alpha = 1;
         [self moveElement:_parkNameLabel toYValue:0];
         [self moveElement:_parkLabelsDarkView toYValue:73.0];
@@ -150,14 +149,10 @@
 
 - (void)setLabels {
     _parkNameLabel.text = self.park.name;
+    _parkWebsiteLabel.text = self.park.website;
     [self updateNumCoastersLabel];
-    if (self.park.year != 0) {
-        _parkOpenedDateLabel.text = [NSString stringWithFormat:@"Opened in %hd", self.park.year];
-    } else {
-        _parkOpenedDateLabel.text = [NSString stringWithFormat:@"Opening year not known"];
-    }
     [_parkNameLabel setAlpha:0];
-    [_parkOpenedDateLabel setAlpha:0];
+    [_parkWebsiteLabel setAlpha:0];
     [_parkNumCoastersLabel setAlpha:0];
 }
 
@@ -166,7 +161,7 @@
     int count = 0;
     NSString *grammar;
     for (Coaster *coaster in _park.coasters) {
-        if (coaster.isOpen == YES) {
+        if (coaster.status == 1) {
             total++;
             if (coaster.ridden == YES) {
                 count++;
@@ -183,7 +178,7 @@
     } else {
         _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d out of %d %@ remaining", total-count, total, grammar];
     }
-    if (!_park.isOpen) {
+    if (_park.status != 1 ) {
         _parkNumCoastersLabel.text = @"Park closed/removed";
     }
 }
@@ -191,7 +186,7 @@
 - (void)animateLabels {
     // Create origin frames and move labels offscreen
     CGRect parkNameFrame = [self prepareLabel:_parkNameLabel byMovingToX:200];
-    CGRect parkOpenedFrame = [self prepareLabel:_parkOpenedDateLabel byMovingToX:200];
+    CGRect parkOpenedFrame = [self prepareLabel:_parkWebsiteLabel byMovingToX:200];
     CGRect parkNumCoastersFrame = [self prepareLabel:_parkNumCoastersLabel byMovingToX:200];
     // Move labels back into view
     
@@ -201,8 +196,8 @@
             [_parkNameLabel setAlpha:1];
         }];
         [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.6 animations:^{
-            _parkOpenedDateLabel.frame = parkOpenedFrame;
-            [_parkOpenedDateLabel setAlpha:1];
+            _parkWebsiteLabel.frame = parkOpenedFrame;
+            [_parkWebsiteLabel setAlpha:1];
         }];
         [UIView addKeyframeWithRelativeStartTime:0.4 relativeDuration:0.5 animations:^{
             _parkNumCoastersLabel.frame = parkNumCoastersFrame;
@@ -263,16 +258,16 @@
     }
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *fetchRequest = [self coasterFetchRequest];
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:@"isOpen" cacheName:nil];
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     _fetchedResultsController.delegate = self;
     return _fetchedResultsController;
 }
 
 - (NSFetchRequest *)coasterFetchRequest {
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Coaster"];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"park.name like %@ && park.state like %@ && park.country like %@", self.park.name, self.park.state, self.park.country];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ANY self.park == %@", _park];
     fetchRequest.predicate = predicate;
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"isOpen" ascending:NO], [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"status" ascending:YES], [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
     return fetchRequest;
 }
 

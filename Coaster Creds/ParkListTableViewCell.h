@@ -14,7 +14,6 @@
 
 @property (strong, nonatomic) Park *park;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *parkLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numCoastersLabel;
 
 @end

@@ -14,7 +14,6 @@
 @interface PopupRatingViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIView *popupView;
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapGestureDismiss;
 @property (strong, nonatomic) Coaster *coaster;
 @property (strong, nonatomic) CoasterTableViewCell *cell;
 

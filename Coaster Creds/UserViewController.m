@@ -8,6 +8,7 @@
 
 #import "UserViewController.h"
 #import "UICountingLabel.h"
+#import "CoreDataStack.h"
 
 @interface UserViewController ()
 
@@ -24,7 +25,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     
     _countLabel.format = @"%d";
-    [_countLabel countFrom:0 to:64  withDuration:3.0f];
+    [_countLabel countFrom:0 to:[self getCoasterCount] withDuration:2.0f];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,12 +33,15 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-
-
-
-
+- (NSUInteger)getCoasterCount {
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Coaster" inManagedObjectContext:coreDataStack.managedObjectContext];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ridden == YES"];
+    [request setEntity:entity];
+    [request setPredicate:predicate];
+    NSArray *result = [coreDataStack.managedObjectContext executeFetchRequest:request error:nil];
+    return result.count;
+}
 
 @end

@@ -27,19 +27,14 @@
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) Park *selectedPark;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) NSMutableArray *parksArray;
-
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBackButton;
 @property (nonatomic) CGRect containerViewOrigin;
 @property (nonatomic) CGRect mapViewOrigin;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property BOOL updateLocationDidFail;
 @property (strong, nonatomic) NSError *error;
-
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @end
@@ -53,7 +48,6 @@
     _parksArray = [[NSMutableArray alloc] init];
     _mapBackButton.enabled = NO;
     _mapViewOrigin = _mapView.frame;
-    _containerViewOrigin = _containerView.frame;
     
     [self startRefreshActivityIndicator];
     [self loadLocation];
@@ -88,7 +82,7 @@
 #pragma mark Find Park Logic
 
 - (NSArray *)findNearestParksFromLocation:(CLLocation *)location {
-    NSArray *parkList = [self getAllParks];
+    NSArray *parkList = [self getAllOpenParksWithLocationData];
     Haversine *haversine = [[Haversine alloc] init];
     for (Park *park in parkList) {
         haversine.lat1 = park.latitude;
@@ -126,7 +120,7 @@
     int total = 0;
     
     for (Coaster *coaster in park.coasters) {
-        if (coaster.isOpen == YES) {
+        if (coaster.status == 1) {
             total++;
             if (coaster.ridden == YES) {
                 count++;
@@ -141,7 +135,7 @@
     int count = 0;
     float total = 0;
     for (Coaster *coaster in park.coasters) {
-        if (coaster.isOpen == YES) {
+        if (coaster.status == 1) {
             total++;
             if (coaster.ridden == YES) {
                 count++;
@@ -336,11 +330,11 @@
 
 #pragma mark Core Data
 
-- (NSArray *)getAllParks {
+- (NSArray *)getAllOpenParksWithLocationData {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Park" inManagedObjectContext:coreDataStack.managedObjectContext];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isOpen == YES"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(status == 1) AND (latitude != 0.0)"];
     [request setEntity:entity];
     [request setPredicate:predicate];
     NSArray *result = [coreDataStack.managedObjectContext executeFetchRequest:request error:nil];

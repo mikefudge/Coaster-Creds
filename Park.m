@@ -2,7 +2,7 @@
 //  Park.m
 //  Coaster Creds
 //
-//  Created by Mike Fudge on 20/03/2015.
+//  Created by Mike Fudge on 14/05/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
@@ -14,17 +14,19 @@
 
 @dynamic country;
 @dynamic dateLastVisited;
+@dynamic distance;
+@dynamic hasImage;
+@dynamic imagePath;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic name;
 @dynamic numberOfVisits;
 @dynamic state;
-@dynamic distance;
+@dynamic website;
+@dynamic parkid;
+@dynamic rcdbid;
+@dynamic status;
 @dynamic coasters;
-@dynamic hasImage;
-@dynamic imagePath;
-@dynamic year;
-@dynamic town;
-@dynamic isOpen;
+@dynamic continent;
 
 @end
