@@ -17,25 +17,27 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import "Chameleon.h"
+#import "HomeMapViewController.h"
 
 #define METERS_PER_MILE 1609.344
-#define NUMBER_OF_PARKS 5
 
 @interface HomeViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) Park *selectedPark;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) NSMutableArray *parksArray;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapBackButton;
+@property (strong, nonatomic) NSArray *parksArray;
 @property (nonatomic) CGRect containerViewOrigin;
 @property (nonatomic) CGRect mapViewOrigin;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *optionsTableView;
 @property BOOL updateLocationDidFail;
 @property (strong, nonatomic) NSError *error;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButton;
+@property (strong, nonatomic) NSString *postcode;
 
 @end
 
@@ -46,15 +48,14 @@
     _tableView.estimatedRowHeight = 98.0;
     _tableView.rowHeight = UITableViewAutomaticDimension;
     _parksArray = [[NSMutableArray alloc] init];
-    _mapBackButton.enabled = NO;
-    _mapViewOrigin = _mapView.frame;
-    
+    _postcode = @"you";
     [self startRefreshActivityIndicator];
     [self loadLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [_tableView reloadData];
+    [_optionsTableView reloadData];
+    [self loadLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,6 +66,10 @@
 - (IBAction)refreshLocation:(id)sender {
     [self startRefreshActivityIndicator];
     [self loadLocation];
+}
+
+- (IBAction)gotoMap:(id)sender {
+    [self performSegueWithIdentifier:@"map" sender:self];
 }
 
 - (void)startRefreshActivityIndicator {
@@ -83,6 +88,7 @@
 
 - (NSArray *)findNearestParksFromLocation:(CLLocation *)location {
     NSArray *parkList = [self getAllOpenParksWithLocationData];
+    NSMutableArray *parksWithinDistance = [[NSMutableArray alloc] init];
     Haversine *haversine = [[Haversine alloc] init];
     for (Park *park in parkList) {
         haversine.lat1 = park.latitude;
@@ -90,9 +96,12 @@
         haversine.lat2 = location.coordinate.latitude;
         haversine.lon2 = location.coordinate.longitude;
         park.distance = [haversine toMiles];
+        if (park.distance <= [[[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"] floatValue]) {
+            [parksWithinDistance addObject:park];
+        }
     }
     NSArray *sortDescriptor = @[[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES]];
-    NSArray *sortedArray = [parkList sortedArrayUsingDescriptors:sortDescriptor];
+    NSArray *sortedArray = [parksWithinDistance sortedArrayUsingDescriptors:sortDescriptor];
     return sortedArray;
 }
 
@@ -184,69 +193,11 @@
     }
 }
 
-#pragma mark Map View
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *identifier = @"Park";
-    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-    if (annotationView == nil) {
-        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
-        annotationView.animatesDrop = YES;
-        [annotationView setSelected:YES animated:YES];
-    } else {
-        annotationView.annotation = annotation;
-        annotationView.animatesDrop = YES;
-    }
-    
-    return annotationView;
-}
-
-- (void)zoomToFitMapAnnotations:(MKMapView *)mapView withPadding:(CGFloat)padding {
-    if ([mapView.annotations count] == 0) {
-        return;
-    }
-    
-    CLLocationCoordinate2D topLeftCoord;
-    topLeftCoord.latitude = -90;
-    topLeftCoord.longitude = 180;
-    CLLocationCoordinate2D bottomRightCoord;
-    bottomRightCoord.latitude = 90;
-    bottomRightCoord.longitude = -180;
-    
-    for (id <MKAnnotation> annotation in mapView.annotations) {
-        topLeftCoord.longitude = fmin(topLeftCoord.longitude, annotation.coordinate.longitude);
-        topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
-        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
-        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
-    }
-    
-    MKCoordinateRegion region;
-    region.center.latitude = topLeftCoord.latitude - (topLeftCoord.latitude - bottomRightCoord.latitude) * 0.5;
-    region.center.longitude = topLeftCoord.longitude + (bottomRightCoord.longitude - topLeftCoord.longitude) * 0.5;
-    // Add a little space on the sides
-    region.span.latitudeDelta = fabs(topLeftCoord.latitude - bottomRightCoord.latitude) * padding;
-    region.span.longitudeDelta = fabs(bottomRightCoord.longitude - topLeftCoord.longitude) * padding;
-    region = [mapView regionThatFits:region];
-    [mapView setRegion:region animated:YES];
-}
-
-- (void)addAnnotationsToMap:(MKMapView *)mapView fromArray:(NSArray *)array {
-    for (Park *park in array) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(park.latitude, park.longitude);
-        annotation.coordinate = coord;
-        annotation.title = park.name;
-        [mapView addAnnotation:annotation];
-    }
-}
-
 #pragma mark Location Services
 
 - (void)loadLocation {
     self.locationManager = [[CLLocationManager alloc] init];
-    [_mapView removeAnnotations:_mapView.annotations];
+    //[_mapView removeAnnotations:_mapView.annotations];
     self.locationManager.delegate = self;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     // iOS 8 check, location authorisation
@@ -262,22 +213,24 @@
     _updateLocationDidFail = NO;
     self.currentLocation = [locations lastObject];
     NSArray *resultsArray = [self findNearestParksFromLocation:self.currentLocation];
-    // Refresh parks array with results
-    [self.parksArray removeAllObjects];
-    for (int i = 0; i < NUMBER_OF_PARKS; i++) {
-        Park *park = [resultsArray objectAtIndex:i];
-        [self.parksArray addObject:park];
-    }
-    
-    [self addAnnotationsToMap:_mapView fromArray:_parksArray];
-    [self zoomToFitMapAnnotations:_mapView withPadding:1.2];
+    _parksArray = resultsArray;
+    [_optionsTableView reloadData];
     [_tableView reloadData];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!(error)) {
+            CLPlacemark *placemark = [placemarks objectAtIndex:0];
+            _postcode = placemark.postalCode;
+            [_optionsTableView reloadData];
+        }
+    }];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     [_locationManager stopUpdatingLocation];
     [self stopRefreshActivityIndicator];
-    [_mapView removeAnnotations:_mapView.annotations];
+    //[_mapView removeAnnotations:_mapView.annotations];
     _updateLocationDidFail = YES;
     _error = error;
     [_tableView reloadData];
@@ -291,41 +244,60 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_updateLocationDidFail) {
+    if (tableView == _optionsTableView) {
         return 1;
     } else {
-        return [_parksArray count];
+        if (_updateLocationDidFail) {
+            return 1;
+        } else {
+            return [_parksArray count];
+        }
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (_updateLocationDidFail) {
-        ErrorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ErrorCell" forIndexPath:indexPath];
-        cell.errorLabel.text = [self getErrorMessage:_error];
+    if (tableView == _optionsTableView) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OptionsCell"];
+        NSNumber *searchValue = [[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"];
+        if ([searchValue intValue] == 1) {
+            cell.textLabel.text = [[NSString alloc] initWithFormat: @"All parks within %@ mile of %@", searchValue, _postcode];
+        } else {
+            cell.textLabel.text = [[NSString alloc] initWithFormat: @"All parks within %@ miles of %@", searchValue, _postcode];
+        }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.userInteractionEnabled = NO;
         return cell;
     } else {
-        HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-        Park *park = [_parksArray objectAtIndex:indexPath.row];
-        cell.userInteractionEnabled = YES;
-        cell.parkNameLabel.text = park.name;
-        cell.parkDistanceLabel.text = [[NSString alloc] initWithFormat:@"%.1f mi", park.distance];
-        cell.numCoastersLabel.layer.cornerRadius = 25;
-        cell.numCoastersLabel.clipsToBounds = YES;
-        cell.numCoastersLabel.backgroundColor = [self getNumCoastersLabelColorForPark:park];
-        cell.numCoastersLabel.text = [self setNumCoastersLabelForPark:park];
-        cell.parkAreaLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", park.state, park.country];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cell;
+        if (_updateLocationDidFail) {
+            ErrorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ErrorCell" forIndexPath:indexPath];
+            cell.errorLabel.text = [self getErrorMessage:_error];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.userInteractionEnabled = NO;
+            return cell;
+    } else {
+            HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+            Park *park = [_parksArray objectAtIndex:indexPath.row];
+            cell.userInteractionEnabled = YES;
+            cell.parkNameLabel.text = park.name;
+            cell.parkDistanceLabel.text = [[NSString alloc] initWithFormat:@"%.1f mi", park.distance];
+            cell.numCoastersLabel.layer.cornerRadius = 25;
+            cell.numCoastersLabel.clipsToBounds = YES;
+            cell.numCoastersLabel.backgroundColor = [self getNumCoastersLabelColorForPark:park];
+            cell.numCoastersLabel.text = [self setNumCoastersLabelForPark:park];
+            cell.parkAreaLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", park.state, park.country];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    _selectedPark = [_parksArray objectAtIndex:indexPath.row];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+    if (tableView == _optionsTableView) {
+        [self performSegueWithIdentifier:@"locationSettings" sender:self];
+    } else {
+        _selectedPark = [_parksArray objectAtIndex:indexPath.row];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+    }
 }
 
 #pragma mark Core Data
@@ -359,6 +331,13 @@
         CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
         coasterTableViewController.hidesBottomBarWhenPushed = YES;
         coasterTableViewController.park = _selectedPark;
+    } else if ([segue.identifier isEqualToString:@"locationSettings"]) {
+        
+        
+        
+    } else if ([segue.identifier isEqualToString:@"map"]) {
+        HomeMapViewController *mapVC = segue.destinationViewController;
+        mapVC.parksArray = _parksArray;
     }
 }
 

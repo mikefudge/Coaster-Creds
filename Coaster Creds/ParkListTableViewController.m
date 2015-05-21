@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = _state;
     [self.fetchedResultsController performFetch:nil];
 }
 

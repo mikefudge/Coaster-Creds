@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CoreDataStack.h"
 #import "Color.h"
+#import "Chameleon.h"
 
 @interface AppDelegate ()
 
@@ -20,8 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // Set default preferences
+    NSURL *defaultPrefsFile = [[NSBundle mainBundle] URLForResource:@"DefaultPreferences" withExtension:@"plist"];
+    NSDictionary *defaultPrefs = [NSDictionary dictionaryWithContentsOfURL:defaultPrefsFile];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultPrefs];
     
-    [[UINavigationBar appearance] setBarTintColor:[Color colorWithR:70 G:70 B:70 A:1]];
+    
+    
+    [[UINavigationBar appearance] setBarTintColor:[Color flatBlueColorDark]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
