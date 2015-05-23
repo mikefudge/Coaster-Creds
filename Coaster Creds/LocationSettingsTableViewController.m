@@ -8,6 +8,7 @@
 
 #import "LocationSettingsTableViewController.h"
 #import "SearchDistanceTableViewController.h"
+#import "HomeViewController.h"
 
 @interface LocationSettingsTableViewController ()
 
@@ -29,6 +30,14 @@
         _searchDistanceCell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ mile", _searchDistance];
     } else {
         _searchDistanceCell.detailTextLabel.text = [[NSString alloc] initWithFormat:@"%@ miles", _searchDistance];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    UIViewController *vc = self.navigationController.topViewController;
+    if ([HomeViewController class] == [vc class])
+    {
+        [self performSegueWithIdentifier:@"home" sender:self];
     }
 }
 

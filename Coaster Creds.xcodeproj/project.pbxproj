@@ -25,6 +25,7 @@
 		2738F5941AE6631A00A4E12A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2738F5931AE6631A00A4E12A /* QuartzCore.framework */; };
 		2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */; };
 		2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */; };
+		274780EA1B10B1F3008E7304 /* ODRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 274780E91B10B1F3008E7304 /* ODRefreshControl.m */; };
 		27516BD61B05457700CBED64 /* Coaster.m in Sources */ = {isa = PBXBuildFile; fileRef = 27516BD51B05457700CBED64 /* Coaster.m */; };
 		27516BD91B05457800CBED64 /* Park.m in Sources */ = {isa = PBXBuildFile; fileRef = 27516BD81B05457800CBED64 /* Park.m */; };
 		27524F7D1AFD008000993A05 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27524F7C1AFD008000993A05 /* CoreGraphics.framework */; };
@@ -99,6 +100,8 @@
 		2738F5961AE89E2400A4E12A /* HCSStarRatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCSStarRatingView.m; sourceTree = "<group>"; };
 		2738F59B1AEA103E00A4E12A /* BFPaperCheckbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperCheckbox.h; sourceTree = "<group>"; };
 		2738F59C1AEA103E00A4E12A /* BFPaperCheckbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperCheckbox.m; sourceTree = "<group>"; };
+		274780E81B10B1F3008E7304 /* ODRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODRefreshControl.h; sourceTree = "<group>"; };
+		274780E91B10B1F3008E7304 /* ODRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODRefreshControl.m; sourceTree = "<group>"; };
 		27516BD41B05457700CBED64 /* Coaster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Coaster.h; sourceTree = "<group>"; };
 		27516BD51B05457700CBED64 /* Coaster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Coaster.m; sourceTree = "<group>"; };
 		27516BD71B05457800CBED64 /* Park.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Park.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 		27524F7E1AFD009100993A05 /* Chameleon */ = {
 			isa = PBXGroup;
 			children = (
+				274780E81B10B1F3008E7304 /* ODRefreshControl.h */,
+				274780E91B10B1F3008E7304 /* ODRefreshControl.m */,
 				276654611AFD128400C2B8BA /* UICountingLabel.h */,
 				276654621AFD128400C2B8BA /* UICountingLabel.m */,
 				27524F7F1AFD009100993A05 /* Chameleon.h */,
@@ -486,6 +491,7 @@
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				276654661AFD132000C2B8BA /* UserViewController.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,
+				274780EA1B10B1F3008E7304 /* ODRefreshControl.m in Sources */,
 				27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */,
 				2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */,
 				27524F8E1AFD009100993A05 /* NSArray+Chameleon.m in Sources */,

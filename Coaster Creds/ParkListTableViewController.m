@@ -59,7 +59,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     _selectedPark = [_fetchedResultsController objectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+    });
 }
 
 - (NSString *)formatStringForNumber:(long)number {

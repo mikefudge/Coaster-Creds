@@ -18,10 +18,11 @@
 #import <MapKit/MapKit.h>
 #import "Chameleon.h"
 #import "HomeMapViewController.h"
+#import "ODRefreshControl.h"
 
 #define METERS_PER_MILE 1609.344
 
-@interface HomeViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *currentLocation;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButton;
 @property (strong, nonatomic) NSString *postcode;
+@property (strong, nonatomic) ODRefreshControl *refreshControl;
 
 @end
 
@@ -49,23 +51,38 @@
     _tableView.rowHeight = UITableViewAutomaticDimension;
     _parksArray = [[NSMutableArray alloc] init];
     _postcode = @"you";
+    _refreshControl = [[ODRefreshControl alloc] initInScrollView:_tableView];
+    [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+
     [self startRefreshActivityIndicator];
     [self loadLocation];
 }
 
+- (void)refresh:(ODRefreshControl *)refreshControl {
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self loadLocation];
+    });
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [_optionsTableView reloadData];
-    [self loadLocation];
+    [_tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-// Top right refresh button
-- (IBAction)refreshLocation:(id)sender {
-    [self startRefreshActivityIndicator];
-    [self loadLocation];
+- (IBAction)sortParks:(id)sender {
+    
+    
+    
+    
+    
+    
+    
 }
 
 - (IBAction)gotoMap:(id)sender {
@@ -193,6 +210,12 @@
     }
 }
 
+- (IBAction)sortParksActionSheet:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Sort parks by.." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Distance", @"Name", @"Number of Coasters", nil];
+    [actionSheet showInView:self.view];
+}
+
+
 #pragma mark Location Services
 
 - (void)loadLocation {
@@ -208,6 +231,7 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
     [self.locationManager stopUpdatingLocation];
     [self stopRefreshActivityIndicator];
     _updateLocationDidFail = NO;
@@ -216,7 +240,7 @@
     _parksArray = resultsArray;
     [_optionsTableView reloadData];
     [_tableView reloadData];
-    
+    [_refreshControl endRefreshing];
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:_currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!(error)) {
@@ -229,6 +253,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     [_locationManager stopUpdatingLocation];
+    [_refreshControl endRefreshing];
     [self stopRefreshActivityIndicator];
     //[_mapView removeAnnotations:_mapView.annotations];
     _updateLocationDidFail = YES;
@@ -296,7 +321,9 @@
     } else {
         _selectedPark = [_parksArray objectAtIndex:indexPath.row];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+        });
     }
 }
 
@@ -338,6 +365,11 @@
     } else if ([segue.identifier isEqualToString:@"map"]) {
         HomeMapViewController *mapVC = segue.destinationViewController;
         mapVC.parksArray = _parksArray;
+    }
+}
+- (IBAction)prepareForUnwind:(UIStoryboardSegue *)segue {
+    if ([segue.identifier isEqualToString:@"home"]) {
+        [self loadLocation];
     }
 }
 

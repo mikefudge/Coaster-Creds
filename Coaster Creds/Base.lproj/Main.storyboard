@@ -151,23 +151,23 @@
                     <tabBarItem key="tabBarItem" title="Item" id="cVb-4l-bsu"/>
                     <navigationItem key="navigationItem" title="Nearby Parks" id="B2Z-Tj-k8e">
                         <barButtonItem key="backBarButtonItem" title=" " id="GtS-MD-lvq"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="job-T2-s4w">
+                        <barButtonItem key="leftBarButtonItem" title="Map" style="plain" id="job-T2-s4w">
                             <connections>
                                 <action selector="gotoMap:" destination="vXZ-lx-hvc" id="ORT-yI-K2i"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="AEF-rD-frC">
+                        <barButtonItem key="rightBarButtonItem" title="Sort" id="AEF-rD-frC">
                             <connections>
-                                <action selector="refreshLocation:" destination="vXZ-lx-hvc" id="UhS-Jv-U1l"/>
+                                <action selector="sortParksActionSheet:" destination="vXZ-lx-hvc" id="6jT-of-aM0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapButton" destination="job-T2-s4w" id="zmS-yu-V80"/>
                         <outlet property="optionsTableView" destination="wM2-5a-I5w" id="nCB-fI-oih"/>
-                        <outlet property="refreshButton" destination="AEF-rD-frC" id="tht-oi-N6V"/>
+                        <outlet property="refreshButton" destination="AEF-rD-frC" id="dBb-gq-QbZ"/>
                         <outlet property="tableView" destination="i4s-9H-0UL" id="sbP-Da-O5p"/>
-                        <segue destination="74J-mS-SQA" kind="push" identifier="coastersInPark" id="biM-vw-Mqn"/>
+                        <segue destination="74J-mS-SQA" kind="modal" identifier="coastersInPark" modalTransitionStyle="coverVertical" id="biM-vw-Mqn"/>
                         <segue destination="wbN-Gi-FCe" kind="push" identifier="locationSettings" id="XHP-4a-GIf"/>
                         <segue destination="aba-aM-eTr" kind="push" identifier="map" id="waQ-bp-V7B"/>
                     </connections>
@@ -200,7 +200,7 @@
                             <constraint firstItem="0e4-oQ-6Gp" firstAttribute="leading" secondItem="dzc-jw-1le" secondAttribute="leadingMargin" constant="-16" id="rQs-mI-RD8"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7ji-Tp-14l">
+                    <navigationItem key="navigationItem" title="Nearby Parks" id="7ji-Tp-14l">
                         <barButtonItem key="backBarButtonItem" title=" " id="bKp-ib-W2w"/>
                     </navigationItem>
                     <connections>
@@ -299,9 +299,11 @@
                     <connections>
                         <outlet property="searchDistanceCell" destination="p3a-8g-EmW" id="sQU-Xo-wOc"/>
                         <segue destination="TAK-Nb-E9a" kind="push" identifier="searchDistance" id="216-qd-NFO"/>
+                        <segue destination="cXr-Qd-hrh" kind="unwind" identifier="home" unwindAction="prepareForUnwind:" id="Bcp-OP-ImO"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVe-mv-goa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cXr-Qd-hrh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1188" y="-15"/>
         </scene>
@@ -395,7 +397,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Pry-LU-94o"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="74J-mS-SQA" kind="push" identifier="coastersInPark" id="nXh-0j-MqH"/>
+                        <segue destination="74J-mS-SQA" kind="modal" identifier="coastersInPark" id="nXh-0j-MqH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFd-Ls-sma" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -509,62 +511,73 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="qGL-Nm-KkO">
-                            <rect key="frame" x="0.0" y="64" width="320" height="150"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="qGL-Nm-KkO" userLabel="Top View">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yU6-pM-ERB">
-                                    <rect key="frame" x="0.0" y="-64" width="320" height="214"/>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yU6-pM-ERB" userLabel="Header Image View">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UcU-2a-1ed">
-                                    <rect key="frame" x="0.0" y="73" width="320" height="77"/>
+                                <view alpha="0.39999999999999963" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GlE-N3-c0c" userLabel="Darken View">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
+                                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oIU-WZ-zIx">
+                                    <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                    <color key="barTintColor" red="0.85043728350000003" green="0.21816034619999999" blue="0.15920260550000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <items>
+                                        <navigationItem id="tLe-dP-Wr0">
+                                            <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="u3o-ku-Epk">
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="backWasPressed:" destination="74J-mS-SQA" id="Od3-sd-Ps4"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </navigationItem>
+                                    </items>
+                                </navigationBar>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0N-sy-B8t" userLabel="Website &amp; Directions View">
+                                    <rect key="frame" x="204" y="182" width="108" height="50"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 coasters remaining" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-ma-QtW">
-                                            <rect key="frame" x="8" y="49" width="304" height="20"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuP-4t-TD0">
-                                            <rect key="frame" x="8" y="30" width="304" height="20"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="14"/>
-                                            <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alton Towers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="d3r-lw-aI6">
-                                            <rect key="frame" x="32" y="0.0" width="256" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="B6R-EV-Baj"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="23"/>
-                                            <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_button_directions" translatesAutoresizingMaskIntoConstraints="NO" id="NN3-Ua-aQw">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_button_web" translatesAutoresizingMaskIntoConstraints="NO" id="ds0-d6-bX3">
+                                            <rect key="frame" x="58" y="0.0" width="50" height="50"/>
+                                        </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="77" id="5Mp-00-TVb"/>
-                                        <constraint firstItem="tuP-4t-TD0" firstAttribute="top" secondItem="d3r-lw-aI6" secondAttribute="bottom" constant="-2" id="BUM-42-6pB"/>
-                                        <constraint firstItem="pkz-ma-QtW" firstAttribute="top" secondItem="tuP-4t-TD0" secondAttribute="bottom" constant="-1" id="DN8-Xt-SWf"/>
-                                        <constraint firstItem="d3r-lw-aI6" firstAttribute="top" secondItem="UcU-2a-1ed" secondAttribute="top" id="F7a-iv-Eb6"/>
-                                        <constraint firstItem="pkz-ma-QtW" firstAttribute="leading" secondItem="UcU-2a-1ed" secondAttribute="leading" constant="8" id="LiJ-Qw-JET"/>
-                                        <constraint firstAttribute="bottom" secondItem="pkz-ma-QtW" secondAttribute="bottom" constant="8" id="QLE-7i-0R9"/>
-                                        <constraint firstItem="tuP-4t-TD0" firstAttribute="leading" secondItem="UcU-2a-1ed" secondAttribute="leading" constant="8" id="bPG-Sf-bD5"/>
-                                        <constraint firstAttribute="trailing" secondItem="tuP-4t-TD0" secondAttribute="trailing" constant="8" id="bdb-Zh-Mqt"/>
-                                        <constraint firstItem="d3r-lw-aI6" firstAttribute="leading" secondItem="UcU-2a-1ed" secondAttribute="leading" constant="32" id="dyN-JG-Ugm"/>
-                                        <constraint firstAttribute="trailing" secondItem="pkz-ma-QtW" secondAttribute="trailing" constant="8" id="h72-4Z-NDb"/>
-                                        <constraint firstAttribute="trailing" secondItem="d3r-lw-aI6" secondAttribute="trailing" constant="32" id="pVZ-sZ-Osz"/>
+                                        <constraint firstAttribute="width" constant="108" id="PWC-Wf-nnx"/>
+                                        <constraint firstAttribute="height" constant="50" id="eTq-Vc-hXy"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkz-ma-QtW">
+                                    <rect key="frame" x="126" y="189" width="70" height="36"/>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="26"/>
+                                    <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Theme Park Name" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3r-lw-aI6">
+                                    <rect key="frame" x="8" y="138" width="304" height="43"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="43" id="YPo-3v-l3x"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="31"/>
+                                    <color key="textColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="yU6-pM-ERB" secondAttribute="bottom" id="3XM-PL-ayB"/>
-                                <constraint firstAttribute="trailing" secondItem="UcU-2a-1ed" secondAttribute="trailing" id="40R-f3-Bgf"/>
-                                <constraint firstAttribute="bottom" secondItem="UcU-2a-1ed" secondAttribute="bottom" id="GJX-Ik-ywm"/>
-                                <constraint firstAttribute="trailing" secondItem="yU6-pM-ERB" secondAttribute="trailing" id="Lbq-Up-geE"/>
-                                <constraint firstItem="yU6-pM-ERB" firstAttribute="top" secondItem="qGL-Nm-KkO" secondAttribute="top" constant="-64" id="Lr5-8I-wTf"/>
-                                <constraint firstItem="yU6-pM-ERB" firstAttribute="leading" secondItem="qGL-Nm-KkO" secondAttribute="leading" id="n5O-aw-xnQ"/>
-                                <constraint firstItem="UcU-2a-1ed" firstAttribute="leading" secondItem="qGL-Nm-KkO" secondAttribute="leading" id="uP4-GL-w5q"/>
+                                <constraint firstAttribute="trailing" secondItem="Q0N-sy-B8t" secondAttribute="trailing" constant="8" id="6lz-g3-pE9"/>
+                                <constraint firstAttribute="trailing" secondItem="d3r-lw-aI6" secondAttribute="trailing" constant="8" id="858-bE-lcE"/>
+                                <constraint firstItem="pkz-ma-QtW" firstAttribute="centerY" secondItem="Q0N-sy-B8t" secondAttribute="centerY" id="Bqb-db-OkN"/>
+                                <constraint firstItem="Q0N-sy-B8t" firstAttribute="top" secondItem="d3r-lw-aI6" secondAttribute="bottom" constant="1" id="FFM-Ap-SN7"/>
+                                <constraint firstItem="d3r-lw-aI6" firstAttribute="leading" secondItem="qGL-Nm-KkO" secondAttribute="leading" constant="8" id="aeQ-ZZ-fl6"/>
+                                <constraint firstAttribute="bottom" secondItem="Q0N-sy-B8t" secondAttribute="bottom" constant="8" id="dAk-nR-an6"/>
+                                <constraint firstAttribute="trailing" secondItem="oIU-WZ-zIx" secondAttribute="trailing" id="lnQ-rn-8sx"/>
+                                <constraint firstItem="oIU-WZ-zIx" firstAttribute="top" secondItem="qGL-Nm-KkO" secondAttribute="top" constant="22" id="qgP-5l-DNY"/>
+                                <constraint firstItem="Q0N-sy-B8t" firstAttribute="leading" secondItem="pkz-ma-QtW" secondAttribute="trailing" constant="8" id="vgy-Mn-vf5"/>
+                                <constraint firstItem="oIU-WZ-zIx" firstAttribute="leading" secondItem="qGL-Nm-KkO" secondAttribute="leading" id="ywm-lL-DMY"/>
                             </constraints>
                         </view>
                         <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zZo-u9-gkb">
@@ -756,11 +769,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="footerImageView" destination="zZo-u9-gkb" id="d7V-f6-8HM"/>
+                        <outlet property="headerDarkView" destination="GlE-N3-c0c" id="p5M-fc-PiV"/>
                         <outlet property="headerImageView" destination="yU6-pM-ERB" id="X37-Gl-QJg"/>
-                        <outlet property="parkLabelsDarkView" destination="UcU-2a-1ed" id="IGf-hL-dji"/>
+                        <outlet property="navigationBar" destination="oIU-WZ-zIx" id="nnv-ak-GQH"/>
                         <outlet property="parkNameLabel" destination="d3r-lw-aI6" id="TqY-mk-8iF"/>
                         <outlet property="parkNumCoastersLabel" destination="pkz-ma-QtW" id="yxs-e9-z0q"/>
-                        <outlet property="parkWebsiteLabel" destination="tuP-4t-TD0" id="y6X-5n-4xs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UqH-b9-wCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -967,12 +980,16 @@
             <point key="canvasLocation" x="-410" y="-1282"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_button_directions" width="50" height="50"/>
+        <image name="icon_button_web" width="50" height="50"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="biM-vw-Mqn"/>
+        <segue reference="nXh-0j-MqH"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -19,19 +19,18 @@
 
 #define NUMBER_OF_FOOTER_IMAGES 4
 #define NUMBER_OF_HEADER_IMAGES 14
+#define HEADER_IMAGE_HEIGHT 240
 
 @interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *parkWebsiteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *parkNumCoastersLabel;
-
 @property (weak, nonatomic) IBOutlet UIImageView *headerImageView;
-
-@property (weak, nonatomic) IBOutlet UIView *parkLabelsDarkView;
+@property (weak, nonatomic) IBOutlet UIView *headerDarkView;
 @property (strong, nonatomic) PopupRatingViewController *popupRatingViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 @end
 
@@ -39,16 +38,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Automatic table row height
     self.tableView.estimatedRowHeight = 98.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    [self.fetchedResultsController performFetch:nil];
+    // Get coasters
+     [self.fetchedResultsController performFetch:nil];
+    // Set header and footer images, and labels
     [_headerImageView setImage:[self getParkImage]];
     [_footerImageView setImage:[self getFooterImage]];
-    // Disable scroll until animation is completed
-    self.tableView.scrollEnabled = NO;
     [self setLabels];
-    [self animateLabels];
-    [(TranslucentNavigationController *)self.navigationController presentTranslucentNavigationBar];
+    // Set navigation bar to be transparent
+    [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.shadowImage = [UIImage new];
+    self.navigationBar.translucent = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,10 +64,11 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+   
     [self.tableView reloadData];
     
 }
@@ -103,32 +106,18 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
-    if (yOffset <= -64.0) {
+    if (yOffset <= 0) {
         // Expand header image on scroll up
-        [self moveElement:_headerImageView toYValue:yOffset xValue:((yOffset + 64) / 2) width:(self.tableView.frame.size.width + (-yOffset-64)) height:150 + -yOffset];
-        
-    } else if (yOffset > 50 && yOffset < 73) {
-        // Fade out labels, move park name down slightly
-        _parkWebsiteLabel.alpha = (3 - (yOffset / 25));
-        _parkNumCoastersLabel.alpha = (3 - (yOffset / 25));
-        [self moveElement:_parkNameLabel toYValue: ((25 * ((200 * yOffset) - 10037)) / 4074)];
-        [self moveElement:_headerImageView toYValue:-64.0 xValue:0 width:self.tableView.frame.size.width height:214];
-        
-    } else if (yOffset >= 73) {
-        // Remove opened and num coaster labels, set park name to center, scroll header & dark view
-        _parkWebsiteLabel.alpha = 0;
-        _parkNumCoastersLabel.alpha = 0;
-        [self moveElement:_headerImageView toYValue:yOffset-137 xValue:0 width:self.tableView.frame.size.width height:214];
-        [self moveElement:_parkLabelsDarkView toYValue:yOffset];
-        [self moveElement:_parkNameLabel toYValue:28];
-        
+        [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        [self moveElement:_headerDarkView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        [self moveElement:_navigationBar toYValue:22 + (yOffset)];
     } else {
         // Reset elements to default positions & alphas
-        _parkWebsiteLabel.alpha = 1;
-        _parkNumCoastersLabel.alpha = 1;
-        [self moveElement:_parkNameLabel toYValue:0];
-        [self moveElement:_parkLabelsDarkView toYValue:73.0];
-        [self moveElement:_headerImageView toYValue:-64.0 xValue:0 width:self.tableView.frame.size.width height:214];
+        [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        [self moveElement:_headerDarkView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        
+        [self moveElement:_navigationBar toYValue:22 + (yOffset)];
+
     }
 }
 
@@ -149,17 +138,12 @@
 
 - (void)setLabels {
     _parkNameLabel.text = self.park.name;
-    _parkWebsiteLabel.text = self.park.website;
     [self updateNumCoastersLabel];
-    [_parkNameLabel setAlpha:0];
-    [_parkWebsiteLabel setAlpha:0];
-    [_parkNumCoastersLabel setAlpha:0];
 }
 
 - (void)updateNumCoastersLabel {
     int total = 0;
     int count = 0;
-    NSString *grammar;
     for (Coaster *coaster in _park.coasters) {
         if (coaster.status == 1) {
             total++;
@@ -168,52 +152,7 @@
             }
         }
     }
-    if (total == 1) {
-        grammar = @"coaster";
-    } else {
-        grammar = @"coasters";
-    }
-    if (total-count == 0) {
-        _parkNumCoastersLabel.text = @"All current coasters ridden!";
-    } else {
-        _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d out of %d %@ remaining", total-count, total, grammar];
-    }
-    if (_park.status != 1 ) {
-        _parkNumCoastersLabel.text = @"Park closed/removed";
-    }
-}
-
-- (void)animateLabels {
-    // Create origin frames and move labels offscreen
-    CGRect parkNameFrame = [self prepareLabel:_parkNameLabel byMovingToX:200];
-    CGRect parkOpenedFrame = [self prepareLabel:_parkWebsiteLabel byMovingToX:200];
-    CGRect parkNumCoastersFrame = [self prepareLabel:_parkNumCoastersLabel byMovingToX:200];
-    // Move labels back into view
-    
-    [UIView animateKeyframesWithDuration:1.0 delay:0.0 options:0 animations:^{
-        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.6 animations:^{
-            _parkNameLabel.frame = parkNameFrame;
-            [_parkNameLabel setAlpha:1];
-        }];
-        [UIView addKeyframeWithRelativeStartTime:0.2 relativeDuration:0.6 animations:^{
-            _parkWebsiteLabel.frame = parkOpenedFrame;
-            [_parkWebsiteLabel setAlpha:1];
-        }];
-        [UIView addKeyframeWithRelativeStartTime:0.4 relativeDuration:0.5 animations:^{
-            _parkNumCoastersLabel.frame = parkNumCoastersFrame;
-            [_parkNumCoastersLabel setAlpha:1];
-        }];
-    } completion: ^(BOOL finished) {
-        self.tableView.scrollEnabled = YES;
-    }];
-}
-
-- (CGRect)prepareLabel:(UILabel *)label byMovingToX:(CGFloat)value {
-    CGRect initialFrame = label.frame;
-    CGRect displacedFrame = initialFrame;
-    displacedFrame.origin.x = value;
-    label.frame = displacedFrame;
-    return initialFrame;
+    _parkNumCoastersLabel.text = [NSString stringWithFormat:@"%d/%d", count, total];
 }
 
 #pragma mark - Table view data source
@@ -312,7 +251,7 @@
 }
 
 - (IBAction)backWasPressed:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
