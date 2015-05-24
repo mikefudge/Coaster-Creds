@@ -7,17 +7,48 @@
 //
 
 #import "ParkListTableViewCell.h"
+#import "Chameleon.h"
+
+@interface ParkListTableViewCell ()
+
+@property (strong, nonatomic) UIColor *defaultParkNameLabelColor;
+@property (strong, nonatomic) UIColor *defaultParkNumCoastersLabelColor;
+@property (strong, nonatomic) UIColor *defaultBgColor;
+
+@end
 
 @implementation ParkListTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    _defaultParkNameLabelColor = _parkNameLabel.textColor;
+    _defaultParkNumCoastersLabelColor = _numCoastersLabel.textColor;
+    _defaultBgColor = self.backgroundColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    if (selected) {
+        _parkNameLabel.textColor = [UIColor whiteColor];
+        _numCoastersLabel.textColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor flatBlueColorDark];
+    }
+    else {
+        _parkNameLabel.textColor = _defaultParkNameLabelColor;
+        _numCoastersLabel.textColor = _defaultParkNumCoastersLabelColor;
+        self.backgroundColor = _defaultBgColor;
+    }
+}
 
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
+        _parkNameLabel.textColor = [UIColor whiteColor];
+        _numCoastersLabel.textColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor flatBlueColorDark];
+    }
+    else {
+        _parkNameLabel.textColor = _defaultParkNameLabelColor;
+        _numCoastersLabel.textColor = _defaultParkNumCoastersLabelColor;
+        self.backgroundColor = _defaultBgColor;
+    }
 }
 
 @end

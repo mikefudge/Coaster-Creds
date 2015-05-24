@@ -298,7 +298,7 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.userInteractionEnabled = NO;
             return cell;
-    } else {
+        } else {
             HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
             Park *park = [_parksArray objectAtIndex:indexPath.row];
             cell.userInteractionEnabled = YES;
@@ -319,8 +319,10 @@
     if (tableView == _optionsTableView) {
         [self performSegueWithIdentifier:@"locationSettings" sender:self];
     } else {
+        
+        
         _selectedPark = [_parksArray objectAtIndex:indexPath.row];
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:@"coastersInPark" sender:self];
         });

@@ -7,17 +7,42 @@
 //
 
 #import "ParkContinentTableViewCell.h"
+#import "Chameleon.h"
+
+@interface ParkContinentTableViewCell ()
+
+@property (strong, nonatomic) UIColor *defaultContinentLabelColor;
+@property (strong, nonatomic) UIColor *defaultBgColor;
+
+@end
 
 @implementation ParkContinentTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    _defaultContinentLabelColor = _continentLabel.textColor;
+    _defaultBgColor = self.backgroundColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    if (selected) {
+        _continentLabel.textColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor flatBlueColorDark];
+    }
+    else {
+        _continentLabel.textColor = _defaultContinentLabelColor;
+        self.backgroundColor = _defaultBgColor;
+    }
+}
 
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
+        _continentLabel.textColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor flatBlueColorDark];
+    }
+    else {
+        _continentLabel.textColor = _defaultContinentLabelColor;
+        self.backgroundColor = _defaultBgColor;
+    }
 }
 
 @end

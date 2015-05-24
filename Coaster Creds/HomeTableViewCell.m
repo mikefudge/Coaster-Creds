@@ -7,17 +7,60 @@
 //
 
 #import "HomeTableViewCell.h"
+#import "Chameleon.h"
+
+@interface HomeTableViewCell ()
+
+@property (strong, nonatomic) UIColor *defaultParkNameLabelColor;
+@property (strong, nonatomic) UIColor *defaultParkAreaLabelColor;
+@property (strong, nonatomic) UIColor *defaultParkDistanceLabelColor;
+@property (strong, nonatomic) UIColor *defaultBgColor;
+
+@end
 
 @implementation HomeTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    _defaultParkNameLabelColor = _parkNameLabel.textColor;
+    _defaultParkAreaLabelColor = _parkAreaLabel.textColor;
+    _defaultParkDistanceLabelColor = _parkDistanceLabel.textColor;
+    _defaultBgColor = self.contentView.backgroundColor;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    //[super setSelected:selected animated:animated];
+    if (selected) {
+        _parkNameLabel.textColor = [UIColor whiteColor];
+        _parkAreaLabel.textColor = [UIColor whiteColor];
+        _parkDistanceLabel.textColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor flatBlueColorDark];
+    }
+     else {
+         _parkNameLabel.textColor = _defaultParkNameLabelColor;
+         _parkAreaLabel.textColor = _defaultParkAreaLabelColor;
+         _parkDistanceLabel.textColor = _defaultParkDistanceLabelColor;
+        self.contentView.backgroundColor = _defaultBgColor;
+    }
+    
+}
 
-    // Configure the view for the selected state
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    if (highlighted) {
+        _parkNameLabel.textColor = [UIColor whiteColor];
+        _parkAreaLabel.textColor = [UIColor whiteColor];
+        _parkDistanceLabel.textColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor flatBlueColorDark];
+    }
+    
+    else {
+        _parkNameLabel.textColor = _defaultParkNameLabelColor;
+        _parkAreaLabel.textColor = _defaultParkAreaLabelColor;
+        _parkDistanceLabel.textColor = _defaultParkDistanceLabelColor;
+        self.contentView.backgroundColor = _defaultBgColor;
+        
+    }
+    
 }
 
 @end
