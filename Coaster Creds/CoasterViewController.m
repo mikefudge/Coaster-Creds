@@ -20,6 +20,7 @@
 #define NUMBER_OF_FOOTER_IMAGES 4
 #define NUMBER_OF_HEADER_IMAGES 14
 #define HEADER_IMAGE_HEIGHT 240
+#define DARK_VIEW_DEFAULT_ALPHA 0.5
 
 @interface CoasterViewController () <NSFetchedResultsControllerDelegate>
 
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *parkButtonsView;
 
 @end
 
@@ -108,17 +110,28 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
     if (yOffset <= 0) {
-        // Expand header image on scroll up
+        // Expand header views on scroll up
         [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        // Expand header dark view
         [self moveElement:_headerDarkView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        // Pin navigation bar
         [self moveElement:_navigationBar toYValue:22 + (yOffset)];
+        // Fade out labels & dark view
+        _parkNameLabel.alpha = (1 + (yOffset / 100));
+        _parkNumCoastersLabel.alpha = (1 + (yOffset / 100));
+        _parkButtonsView.alpha = (1 + (yOffset / 100));
+        _headerDarkView.alpha = (DARK_VIEW_DEFAULT_ALPHA + (yOffset / 100));
     } else {
-        // Reset elements to default positions & alphas
+        // Reset header views
         [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
         [self moveElement:_headerDarkView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
-        
+        // Pin navigation bar
         [self moveElement:_navigationBar toYValue:22 + (yOffset)];
-
+        // Reset labels & dark view alphas
+        _parkNameLabel.alpha = 1;
+        _parkNumCoastersLabel.alpha = 1;
+        _parkButtonsView.alpha = 1;
+        _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
     }
 }
 

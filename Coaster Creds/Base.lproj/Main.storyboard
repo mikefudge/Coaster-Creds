@@ -366,7 +366,7 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sRe-7P-8Ae" userLabel="Header Image View">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                         </imageView>
-                                        <view alpha="0.40000000596046448" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIG-YR-ax4" userLabel="Darken View">
+                                        <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIG-YR-ax4" userLabel="Darken View">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
@@ -428,11 +428,6 @@
                                         <constraint firstAttribute="trailing" secondItem="Van-RE-0v4" secondAttribute="trailing" constant="8" id="r8d-pv-crG"/>
                                     </constraints>
                                 </view>
-                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="1YH-2v-Ri3">
-                                    <rect key="frame" x="0.0" y="383" width="320" height="80"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
-                                </imageView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="116" id="ubv-Lu-tC7" customClass="CoasterTableViewCell">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -614,10 +609,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="footerImageView" destination="1YH-2v-Ri3" id="27K-mF-yna"/>
                         <outlet property="headerDarkView" destination="TIG-YR-ax4" id="o26-As-rVk"/>
                         <outlet property="headerImageView" destination="sRe-7P-8Ae" id="yYD-Di-Q8X"/>
                         <outlet property="navigationBar" destination="9nW-Bc-J2Y" id="9kd-y9-f4L"/>
+                        <outlet property="parkButtonsView" destination="9bf-AG-eeh" id="UwC-31-MHJ"/>
                         <outlet property="parkNameLabel" destination="Van-RE-0v4" id="Nqd-Zu-wTu"/>
                         <outlet property="parkNumCoastersLabel" destination="nPB-Nz-L9D" id="Lfm-Te-zqh"/>
                         <outlet property="tableView" destination="JNw-EO-yut" id="WRU-S2-hs9"/>
