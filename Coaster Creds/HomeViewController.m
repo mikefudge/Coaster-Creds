@@ -11,7 +11,7 @@
 #import "Park.h"
 #import "CoreDataStack.h"
 #import "Haversine.h"
-#import "CoasterTableViewController.h"
+#import "CoasterViewController.h"
 #import "HomeTableViewCell.h"
 #import "ErrorTableViewCell.h"
 #import <CoreLocation/CoreLocation.h>
@@ -357,7 +357,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"coastersInPark"]) {
-        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        CoasterViewController *coasterTableViewController = segue.destinationViewController;
         coasterTableViewController.hidesBottomBarWhenPushed = YES;
         coasterTableViewController.park = _selectedPark;
     } else if ([segue.identifier isEqualToString:@"locationSettings"]) {

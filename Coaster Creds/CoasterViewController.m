@@ -1,12 +1,12 @@
 //
-//  CoasterTableViewController.m
+//  CoasterViewController.m
 //  Coaster Creds
 //
 //  Created by Mike Fudge on 20/03/2015.
 //  Copyright (c) 2015 Mike Fudge. All rights reserved.
 //
 
-#import "CoasterTableViewController.h"
+#import "CoasterViewController.h"
 #import "Coaster.h"
 #import "CoreDataStack.h"
 #import "Park.h"
@@ -21,7 +21,7 @@
 #define NUMBER_OF_HEADER_IMAGES 14
 #define HEADER_IMAGE_HEIGHT 240
 
-@interface CoasterTableViewController () <NSFetchedResultsControllerDelegate>
+@interface CoasterViewController () <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
@@ -31,10 +31,11 @@
 @property (strong, nonatomic) PopupRatingViewController *popupRatingViewController;
 @property (weak, nonatomic) IBOutlet UIImageView *footerImageView;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
-@implementation CoasterTableViewController
+@implementation CoasterViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

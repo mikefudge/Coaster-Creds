@@ -7,7 +7,7 @@
 //
 
 #import "ParkListTableViewController.h"
-#import "CoasterTableViewController.h"
+#import "CoasterViewController.h"
 #import "ParkListTableViewCell.h"
 #import "CoreDataStack.h"
 #import "Park.h"
@@ -104,7 +104,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"coastersInPark"]) {
-        CoasterTableViewController *coasterTableViewController = segue.destinationViewController;
+        CoasterViewController *coasterTableViewController = segue.destinationViewController;
         coasterTableViewController.hidesBottomBarWhenPushed = YES;
         coasterTableViewController.park = _selectedPark;
     }

@@ -41,7 +41,7 @@
 		2779F1A01AD9B39700215D79 /* ParkListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F19F1AD9B39700215D79 /* ParkListTableViewController.m */; };
 		2779F1A31AD9D0F900215D79 /* ParkListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
-		279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279453961ABCA69300801760 /* CoasterTableViewController.m */; };
+		279453971ABCA69300801760 /* CoasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279453961ABCA69300801760 /* CoasterViewController.m */; };
 		27D2D3421B0DE2640028E6CC /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27D2D3411B0DE2640028E6CC /* DefaultPreferences.plist */; };
 		27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D753D21ABD970E00484615 /* CoasterTableViewCell.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
@@ -133,8 +133,8 @@
 		2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkListTableViewCell.m; sourceTree = "<group>"; };
 		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "Coaster Creds/CoreDataStack.h"; sourceTree = "<group>"; };
 		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
-		279453951ABCA69300801760 /* CoasterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterTableViewController.h; sourceTree = "<group>"; };
-		279453961ABCA69300801760 /* CoasterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterTableViewController.m; sourceTree = "<group>"; };
+		279453951ABCA69300801760 /* CoasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterViewController.h; sourceTree = "<group>"; };
+		279453961ABCA69300801760 /* CoasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterViewController.m; sourceTree = "<group>"; };
 		27D2D3411B0DE2640028E6CC /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		27D753D11ABD970E00484615 /* CoasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterTableViewCell.h; sourceTree = "<group>"; };
 		27D753D21ABD970E00484615 /* CoasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterTableViewCell.m; sourceTree = "<group>"; };
@@ -257,8 +257,8 @@
 				276736DB1ACF107A0078A54D /* MainTabBarController.m */,
 				27DC5B7C1AB7529C00E86C63 /* HomeViewController.h */,
 				27DC5B7D1AB7529C00E86C63 /* HomeViewController.m */,
-				279453951ABCA69300801760 /* CoasterTableViewController.h */,
-				279453961ABCA69300801760 /* CoasterTableViewController.m */,
+				279453951ABCA69300801760 /* CoasterViewController.h */,
+				279453961ABCA69300801760 /* CoasterViewController.m */,
 				276654641AFD132000C2B8BA /* UserViewController.h */,
 				276654651AFD132000C2B8BA /* UserViewController.m */,
 				270509501B0C989A00A08055 /* SearchDistanceTableViewController.h */,
@@ -474,7 +474,7 @@
 				27524F901AFD009100993A05 /* UIColor+CIELAB.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* HomeViewController.m in Sources */,
 				27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */,
-				279453971ABCA69300801760 /* CoasterTableViewController.m in Sources */,
+				279453971ABCA69300801760 /* CoasterViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
 				270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */,
 				276654631AFD128400C2B8BA /* UICountingLabel.m in Sources */,

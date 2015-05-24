@@ -1,5 +1,5 @@
 //
-//  CoasterTableViewController.h
+//  CoasterViewController.h
 //  Coaster Creds
 //
 //  Created by Mike Fudge on 20/03/2015.
@@ -10,7 +10,7 @@
 
 @class Park;
 
-@interface CoasterTableViewController : UITableViewController
+@interface CoasterViewController : UIViewController
 
 @property (strong, nonatomic) Park *park;
 
