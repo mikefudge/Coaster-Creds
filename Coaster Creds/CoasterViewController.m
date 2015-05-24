@@ -120,7 +120,17 @@
         _parkNameLabel.alpha = (1 + (yOffset / 100));
         _parkNumCoastersLabel.alpha = (1 + (yOffset / 100));
         _parkButtonsView.alpha = (1 + (yOffset / 100));
+        _navigationBar.alpha = (1 + (yOffset / 100));
         _headerDarkView.alpha = (DARK_VIEW_DEFAULT_ALPHA + (yOffset / 100));
+        
+        
+    } else if (yOffset >= _headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) {
+        
+        [self moveElement:_headerImageView toYValue:yOffset - (_headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerImageView.frame.size.height];
+        [self moveElement:_headerDarkView toYValue:yOffset - (_headerDarkView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerDarkView.frame.size.height];
+        [self moveElement:_navigationBar toYValue:yOffset + _navigationBar.frame.size.height - 22];
+        _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
+        
     } else {
         // Reset header views
         [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
@@ -128,10 +138,12 @@
         // Pin navigation bar
         [self moveElement:_navigationBar toYValue:22 + (yOffset)];
         // Reset labels & dark view alphas
-        _parkNameLabel.alpha = 1;
-        _parkNumCoastersLabel.alpha = 1;
-        _parkButtonsView.alpha = 1;
+        
         _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
+        _navigationBar.alpha = 1;
+        _parkNameLabel.alpha = (1 - (yOffset / 100));
+        _parkNumCoastersLabel.alpha = (1 - (yOffset / 100));
+        _parkButtonsView.alpha = (1 - (yOffset / 100));
     }
 }
 
