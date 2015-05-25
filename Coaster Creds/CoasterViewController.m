@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Automatic table row height
     self.tableView.estimatedRowHeight = 98.0;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    //self.tableView.rowHeight = UITableViewAutomaticDimension;
     // Get coasters
      [self.fetchedResultsController performFetch:nil];
     // Set header and footer images, and labels
@@ -54,6 +54,7 @@
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
+    _tableView.backgroundView = _footerImageView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,9 +72,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-   
     [self.tableView reloadData];
-    
 }
 
 // Returns image associated with park. If there is no image, will return a random image from a selection of default images
@@ -109,6 +108,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
+    
     if (yOffset <= 0) {
         // Expand header views on scroll up
         [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
@@ -122,23 +122,16 @@
         _parkButtonsView.alpha = (1 + (yOffset / 100));
         _navigationBar.alpha = (1 + (yOffset / 100));
         _headerDarkView.alpha = (DARK_VIEW_DEFAULT_ALPHA + (yOffset / 100));
-        
-        
     } else if (yOffset >= _headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) {
-        
         [self moveElement:_headerImageView toYValue:yOffset - (_headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerImageView.frame.size.height];
         [self moveElement:_headerDarkView toYValue:yOffset - (_headerDarkView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerDarkView.frame.size.height];
-        [self moveElement:_navigationBar toYValue:yOffset + _navigationBar.frame.size.height - 22];
         _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
-        
+     
     } else {
         // Reset header views
         [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
         [self moveElement:_headerDarkView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
-        // Pin navigation bar
-        [self moveElement:_navigationBar toYValue:22 + (yOffset)];
         // Reset labels & dark view alphas
-        
         _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
         _navigationBar.alpha = 1;
         _parkNameLabel.alpha = (1 - (yOffset / 100));
@@ -184,24 +177,25 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if (_fetchedResultsController.fetchedObjects > 0) {
-        return [[_fetchedResultsController sections] count];
-    } else {
-        return 1;
-    }
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_fetchedResultsController.fetchedObjects > 0) {
+    
+    if (_fetchedResultsController.fetchedObjects.count > 0) {
+        /*
         id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
         return [sectionInfo numberOfObjects];
+         */
+        return _fetchedResultsController.fetchedObjects.count;
+        
     } else {
         return 1;
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.fetchedResultsController.fetchedObjects.count == 0) {
+    if (_fetchedResultsController.fetchedObjects.count == 0) {
         CoasterTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
@@ -212,6 +206,15 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell configureCell];
         return cell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (_fetchedResultsController.fetchedObjects.count == 0) {
+        return 118;
+    } else {
+        return 118;
     }
 }
 
