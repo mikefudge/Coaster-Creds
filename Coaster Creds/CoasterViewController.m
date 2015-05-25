@@ -41,9 +41,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Automatic table row height
+    // Tableview row height
     self.tableView.estimatedRowHeight = 98.0;
-    //self.tableView.rowHeight = UITableViewAutomaticDimension;
     // Get coasters
      [self.fetchedResultsController performFetch:nil];
     // Set header and footer images, and labels
@@ -54,7 +53,10 @@
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationBar.shadowImage = [UIImage new];
     self.navigationBar.translucent = YES;
+    // Set footerview as background of tableview
     _tableView.backgroundView = _footerImageView;
+    // Eliminate "extra" seperators
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)didReceiveMemoryWarning {
