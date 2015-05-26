@@ -623,10 +623,16 @@
                                 <color key="barTintColor" red="0.85043728350000003" green="0.21816034619999999" blue="0.15920260550000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem id="Ci6-GB-Md6">
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="rZo-gv-2Zd">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" style="plain" id="rZo-gv-2Zd">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
                                                 <action selector="backWasPressed:" destination="wtm-B0-kQw" id="SdX-s5-FyR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Sort" style="plain" id="Qc3-9L-ksf">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="sortWasPressed:" destination="wtm-B0-kQw" id="Elg-x4-gLT"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -655,6 +661,7 @@
                         <outlet property="parkButtonsView" destination="9bf-AG-eeh" id="UwC-31-MHJ"/>
                         <outlet property="parkNameLabel" destination="Van-RE-0v4" id="Nqd-Zu-wTu"/>
                         <outlet property="parkNumCoastersLabel" destination="nPB-Nz-L9D" id="Lfm-Te-zqh"/>
+                        <outlet property="sortButton" destination="Qc3-9L-ksf" id="lUK-bW-Yrk"/>
                         <outlet property="tableView" destination="JNw-EO-yut" id="WRU-S2-hs9"/>
                     </connections>
                 </viewController>

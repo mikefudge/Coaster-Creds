@@ -22,7 +22,7 @@
 #define HEADER_IMAGE_HEIGHT 240
 #define DARK_VIEW_DEFAULT_ALPHA 0.5
 
-@interface CoasterViewController () <NSFetchedResultsControllerDelegate>
+@interface CoasterViewController () <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (weak, nonatomic) IBOutlet UILabel *parkNameLabel;
@@ -34,6 +34,8 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *parkButtonsView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sortButton;
+@property (weak, nonatomic) NSString *currentSort;
 
 @end
 
@@ -57,6 +59,8 @@
     _tableView.backgroundView = _footerImageView;
     // Eliminate "extra" seperators
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    // Default to sorting coasters by name
+    _currentSort = @"name";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -274,7 +278,6 @@
     return cell;
 }
 
-
 - (void)showRatingViewForCell:(CoasterTableViewCell *)cell {
     _popupRatingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PopupRatingViewController"];
     _popupRatingViewController.cell = cell;
@@ -283,6 +286,67 @@
 
 - (IBAction)backWasPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)sortWasPressed:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sort parks by.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *name = [UIAlertAction actionWithTitle:@"Name" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // If controller is already sorted by name, reverse the order
+        if ([_currentSort isEqual:@"name"]) {
+            _currentSort = @"nameDescending";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        } else {
+            _currentSort = @"name";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        }
+        NSError *error;
+        if (![[self fetchedResultsController] performFetch:&error]) {
+        }
+        [_tableView reloadData];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *year = [UIAlertAction actionWithTitle:@"Year Opened" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if ([_currentSort isEqual:@"year"]) {
+            _currentSort = @"yearAscending";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:YES]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        } else {
+            _currentSort = @"year";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"year" ascending:NO]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        }
+        NSError *error;
+        if (![[self fetchedResultsController] performFetch:&error]) {
+        }
+        [_tableView reloadData];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *rating = [UIAlertAction actionWithTitle:@"Rating" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if ([_currentSort isEqual:@"rating"]) {
+            _currentSort = @"ratingAscending";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:YES]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        } else {
+            _currentSort = @"rating";
+            NSArray *sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"rating" ascending:NO]];
+            [[_fetchedResultsController fetchRequest] setSortDescriptors:sortDescriptors];
+        }
+        NSError *error;
+        if (![[self fetchedResultsController] performFetch:&error]) {
+        }
+        [_tableView reloadData];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:name];
+    [alertController addAction:year];
+    [alertController addAction:rating];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end
