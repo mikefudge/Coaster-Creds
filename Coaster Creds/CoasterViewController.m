@@ -349,4 +349,36 @@
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
+- (IBAction)websiteButtonWasPressed:(id)sender {
+    NSURL *url = [[NSURL alloc] initWithString:_park.website];
+    // Check to see if website can be opened
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Go to park's website?" message:@"This will open the park's website in your browser." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [[UIApplication sharedApplication] openURL:url];
+        }];
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    // If website can't be opened, open google and search for "park name, park state"
+    else {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"No website data for park." message:@"Search for park in Google?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            NSString *nameAndLocation = [NSString stringWithFormat:@"%@, %@", _park.name, _park.state];
+            NSString *urlString = [NSString stringWithFormat:@"http://www.google.com/search?q=%@", nameAndLocation];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+        }];
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 @end

@@ -390,16 +390,38 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bf-AG-eeh" userLabel="Website &amp; Directions View">
                                             <rect key="frame" x="204" y="182" width="108" height="50"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_button_directions" translatesAutoresizingMaskIntoConstraints="NO" id="god-w3-o38">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_button_directions" translatesAutoresizingMaskIntoConstraints="NO" id="god-w3-o38">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="m2D-wf-88R"/>
+                                                        <constraint firstAttribute="height" constant="50" id="mJg-E8-j6w"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icon_button_web" translatesAutoresizingMaskIntoConstraints="NO" id="n3K-gd-Uxd">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ls-Ir-UYJ">
                                                     <rect key="frame" x="58" y="0.0" width="50" height="50"/>
-                                                </imageView>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="MG5-3b-WX0"/>
+                                                        <constraint firstAttribute="width" constant="50" id="sPO-MT-gFc"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="icon_button_web">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="websiteButtonWasPressed:" destination="wtm-B0-kQw" eventType="touchUpInside" id="fhi-7c-MPW"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="0Ls-Ir-UYJ" firstAttribute="leading" secondItem="god-w3-o38" secondAttribute="trailing" constant="8" id="11a-8c-FPO"/>
+                                                <constraint firstAttribute="bottom" secondItem="god-w3-o38" secondAttribute="bottom" id="1hc-Gn-c6S"/>
                                                 <constraint firstAttribute="width" constant="108" id="FJK-IN-Nju"/>
                                                 <constraint firstAttribute="height" constant="50" id="Ld2-GW-iFo"/>
+                                                <constraint firstItem="0Ls-Ir-UYJ" firstAttribute="top" secondItem="9bf-AG-eeh" secondAttribute="top" id="Q87-aG-Exx"/>
+                                                <constraint firstItem="god-w3-o38" firstAttribute="top" secondItem="9bf-AG-eeh" secondAttribute="top" id="Xcl-gg-uzU"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Ls-Ir-UYJ" secondAttribute="trailing" id="YEu-xN-cSM"/>
+                                                <constraint firstAttribute="bottom" secondItem="0Ls-Ir-UYJ" secondAttribute="bottom" id="m8a-jD-DFg"/>
+                                                <constraint firstItem="god-w3-o38" firstAttribute="leading" secondItem="9bf-AG-eeh" secondAttribute="leading" id="v3e-dx-NSr"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10/10" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nPB-Nz-L9D">
