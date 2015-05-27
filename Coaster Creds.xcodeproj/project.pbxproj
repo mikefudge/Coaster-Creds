@@ -10,12 +10,10 @@
 		2705093F1B09043B00A08055 /* ParkContinentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705093E1B09043B00A08055 /* ParkContinentTableViewController.m */; };
 		270509421B091B3700A08055 /* ParkContinentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509411B091B3700A08055 /* ParkContinentTableViewCell.m */; };
 		270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509441B091E3400A08055 /* ParkCountryTableViewController.m */; };
-		2705094C1B09554B00A08055 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2705094B1B09554B00A08055 /* data.sqlite */; };
-		2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705094E1B0B193000A08055 /* ParkStateTableViewController.m */; };
+		2705094C1B09554B00A08055 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2705094B1B09554B0eme	2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705094E1B0B193000A08055 /* ParkStateTableViewController.m */; };
 		270509521B0C989A00A08055 /* SearchDistanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509511B0C989A00A08055 /* SearchDistanceTableViewController.m */; };
 		270509551B0C9B0500A08055 /* LocationSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509541B0C9B0500A08055 /* LocationSettingsTableViewController.m */; };
 		270509581B0CAD0D00A08055 /* HomeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509571B0CAD0D00A08055 /* HomeMapViewController.m */; };
-		2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */; };
 		2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */; };
 		2715A7981AFA4B0E00C0C9A5 /* ErrorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2715A7971AFA4B0E00C0C9A5 /* ErrorTableViewCell.m */; };
 		2721F73D1AE317A200AFAD5E /* TranslucentNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2721F73C1AE317A200AFAD5E /* TranslucentNavigationController.m */; };
@@ -42,6 +40,8 @@
 		2779F1A31AD9D0F900215D79 /* ParkListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
 		279453971ABCA69300801760 /* CoasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279453961ABCA69300801760 /* CoasterViewController.m */; };
+		27AE86A91B14C98600A81846 /* ParkPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE86A81B14C98600A81846 /* ParkPointAnnotation.m */; };
+		27AE86AC1B14CCC500A81846 /* ParkPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE86AB1B14CCC500A81846 /* ParkPinAnnotationView.m */; };
 		27D2D3421B0DE2640028E6CC /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27D2D3411B0DE2640028E6CC /* DefaultPreferences.plist */; };
 		27D753D31ABD970E00484615 /* CoasterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 27D753D21ABD970E00484615 /* CoasterTableViewCell.m */; };
 		27DC5B751AB7529C00E86C63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B741AB7529C00E86C63 /* main.m */; };
@@ -82,8 +82,6 @@
 		270509541B0C9B0500A08055 /* LocationSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSettingsTableViewController.m; sourceTree = "<group>"; };
 		270509561B0CAD0D00A08055 /* HomeMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeMapViewController.h; sourceTree = "<group>"; };
 		270509571B0CAD0D00A08055 /* HomeMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeMapViewController.m; sourceTree = "<group>"; };
-		2715A78A1AF112B000C0C9A5 /* ParkAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkAnnotation.h; sourceTree = "<group>"; };
-		2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkAnnotation.m; sourceTree = "<group>"; };
 		2715A78D1AF7B3DB00C0C9A5 /* HomeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		2715A78E1AF7B3DB00C0C9A5 /* HomeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		2715A7961AFA4B0E00C0C9A5 /* ErrorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorTableViewCell.h; sourceTree = "<group>"; };
@@ -135,6 +133,10 @@
 		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
 		279453951ABCA69300801760 /* CoasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterViewController.h; sourceTree = "<group>"; };
 		279453961ABCA69300801760 /* CoasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterViewController.m; sourceTree = "<group>"; };
+		27AE86A71B14C98600A81846 /* ParkPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkPointAnnotation.h; sourceTree = "<group>"; };
+		27AE86A81B14C98600A81846 /* ParkPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkPointAnnotation.m; sourceTree = "<group>"; };
+		27AE86AA1B14CCC500A81846 /* ParkPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkPinAnnotationView.h; sourceTree = "<group>"; };
+		27AE86AB1B14CCC500A81846 /* ParkPinAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkPinAnnotationView.m; sourceTree = "<group>"; };
 		27D2D3411B0DE2640028E6CC /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
 		27D753D11ABD970E00484615 /* CoasterTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterTableViewCell.h; sourceTree = "<group>"; };
 		27D753D21ABD970E00484615 /* CoasterTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterTableViewCell.m; sourceTree = "<group>"; };
@@ -271,6 +273,17 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		27AE86A61B14C94300A81846 /* Annotation Classes */ = {
+			isa = PBXGroup;
+			children = (
+				27AE86A71B14C98600A81846 /* ParkPointAnnotation.h */,
+				27AE86A81B14C98600A81846 /* ParkPointAnnotation.m */,
+				27AE86AA1B14CCC500A81846 /* ParkPinAnnotationView.h */,
+				27AE86AB1B14CCC500A81846 /* ParkPinAnnotationView.m */,
+			);
+			name = "Annotation Classes";
+			sourceTree = "<group>";
+		};
 		27D753D51ABD975F00484615 /* Table Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +326,7 @@
 		27DC5B711AB7529C00E86C63 /* Coaster Creds */ = {
 			isa = PBXGroup;
 			children = (
+				27AE86A61B14C94300A81846 /* Annotation Classes */,
 				278323A41AB9CF9A00F7B5A3 /* Application */,
 				278323A21AB9CF4300F7B5A3 /* Model and Model Classes */,
 				278323A51AB9CFF300F7B5A3 /* View Controllers */,
@@ -337,8 +351,6 @@
 				27688E321ABC74DB00A8D102 /* Haversine.m */,
 				27DC5B741AB7529C00E86C63 /* main.m */,
 				27E2A9AF1ABE35C700FDA170 /* ideas */,
-				2715A78A1AF112B000C0C9A5 /* ParkAnnotation.h */,
-				2715A78B1AF112B000C0C9A5 /* ParkAnnotation.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -472,12 +484,14 @@
 				27DC5B781AB7529C00E86C63 /* AppDelegate.m in Sources */,
 				270509521B0C989A00A08055 /* SearchDistanceTableViewController.m in Sources */,
 				27524F901AFD009100993A05 /* UIColor+CIELAB.m in Sources */,
+				27AE86AC1B14CCC500A81846 /* ParkPinAnnotationView.m in Sources */,
 				27DC5B7E1AB7529C00E86C63 /* HomeViewController.m in Sources */,
 				27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */,
 				279453971ABCA69300801760 /* CoasterViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
 				270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */,
 				276654631AFD128400C2B8BA /* UICountingLabel.m in Sources */,
+				27AE86A91B14C98600A81846 /* ParkPointAnnotation.m in Sources */,
 				2738F59D1AEA103E00A4E12A /* BFPaperCheckbox.m in Sources */,
 				2715A78F1AF7B3DB00C0C9A5 /* HomeTableViewCell.m in Sources */,
 				2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */,
@@ -487,7 +501,6 @@
 				27524F8F1AFD009100993A05 /* UIColor+Chameleon.m in Sources */,
 				27516BD61B05457700CBED64 /* Coaster.m in Sources */,
 				2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */,
-				2715A78C1AF112B000C0C9A5 /* ParkAnnotation.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
 				276654661AFD132000C2B8BA /* UserViewController.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,

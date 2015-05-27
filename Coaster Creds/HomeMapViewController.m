@@ -9,10 +9,14 @@
 #import "HomeMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "Park.h"
+#import "ParkPinAnnotationView.h"
+#import "ParkPointAnnotation.h"
+#import "CoasterViewController.h"
 
 @interface HomeMapViewController () <MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) Park *selectedPark;
 
 @end
 
@@ -20,8 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [_mapView setDelegate:self];
     [self addAnnotationsToMap:_mapView fromArray:_parksArray];
     [self zoomToFitMapAnnotations:_mapView withPadding:1.2];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,20 +35,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [_mapView removeAnnotations:_mapView.annotations];
+    [self addAnnotationsToMap:_mapView fromArray:_parksArray];
+}
+
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
-    static NSString *identifier = @"Park";
-    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
-    if (annotationView == nil) {
-        annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-        annotationView.enabled = YES;
-        annotationView.canShowCallout = YES;
-        annotationView.animatesDrop = YES;
-        [annotationView setSelected:YES animated:YES];
-    } else {
-        annotationView.annotation = annotation;
-        annotationView.animatesDrop = YES;
-    }
     
+    if ([annotation isKindOfClass:[MKUserLocation class]]) return nil;
+    
+    Park *park = ((ParkPointAnnotation *)annotation).park;
+    ParkPinAnnotationView *annotationView = [[ParkPinAnnotationView alloc] initWithAnnotation:annotation park:park];
     return annotationView;
 }
 
@@ -77,22 +80,34 @@
 
 - (void)addAnnotationsToMap:(MKMapView *)mapView fromArray:(NSArray *)array {
     for (Park *park in array) {
-        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        
+        ParkPointAnnotation *annotation = [[ParkPointAnnotation alloc] init];
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(park.latitude, park.longitude);
         annotation.coordinate = coord;
+        annotation.park = park;
         annotation.title = park.name;
+        annotation.subtitle = [NSString stringWithFormat:@"%.2f mi away", park.distance];
         [mapView addAnnotation:annotation];
     }
 }
 
-/*
+- (void)mapView:(MKMapView *)mapView annotationView:(ParkPinAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    if ([view.annotation isKindOfClass:[MKUserLocation class]]) return;
+    _selectedPark = view.park;
+    [self performSegueWithIdentifier:@"coastersInPark" sender:view];
+}
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"coastersInPark"]) {
+        CoasterViewController *coasterTableViewController = segue.destinationViewController;
+        coasterTableViewController.hidesBottomBarWhenPushed = YES;
+        coasterTableViewController.park = _selectedPark;
+    }
 }
-*/
 
 @end

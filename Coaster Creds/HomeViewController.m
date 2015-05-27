@@ -169,7 +169,6 @@
         }
     }
     float percentage = count / total;
-    
     // Red - < 25% ridden
     if (percentage >= 0 && percentage < 0.25 && total != 0) {
         return [UIColor flatRedColor];

@@ -218,6 +218,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="0e4-oQ-6Gp" id="7u2-LH-AY6"/>
+                        <segue destination="wtm-B0-kQw" kind="modal" identifier="coastersInPark" id="0KW-AX-xHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtA-c4-8KC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1087,6 +1088,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="q8r-hS-0dx"/>
+        <segue reference="0KW-AX-xHG"/>
     </inferredMetricsTieBreakers>
 </document>

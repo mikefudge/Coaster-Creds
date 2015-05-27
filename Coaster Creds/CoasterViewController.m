@@ -132,7 +132,6 @@
         [self moveElement:_headerImageView toYValue:yOffset - (_headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerImageView.frame.size.height];
         [self moveElement:_headerDarkView toYValue:yOffset - (_headerDarkView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerDarkView.frame.size.height];
         _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
-     
     } else {
         // Reset header views
         [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
@@ -187,14 +186,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
     if (_fetchedResultsController.fetchedObjects.count > 0) {
         /*
         id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
         return [sectionInfo numberOfObjects];
          */
         return _fetchedResultsController.fetchedObjects.count;
-        
     } else {
         return 1;
     }
@@ -215,8 +212,7 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_fetchedResultsController.fetchedObjects.count == 0) {
         return 118;
     } else {
