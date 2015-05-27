@@ -33,7 +33,7 @@
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
-                                                           [UIFont fontWithName:@"AvenirNextRegular" size:20.0], NSFontAttributeName,
+                                                           [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                                            nil]];
      
     

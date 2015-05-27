@@ -61,6 +61,9 @@
     _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // Default to sorting coasters by name
     _currentSort = @"name";
+    [_sortButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
+                                            nil] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

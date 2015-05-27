@@ -53,6 +53,15 @@
     _postcode = @"you";
     _refreshControl = [[ODRefreshControl alloc] initInScrollView:_tableView];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    [_refreshButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
+                                            nil] forState:UIControlStateNormal];
+    [_mapButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
+                                            nil] forState:UIControlStateNormal];
+    
 
     [self startRefreshActivityIndicator];
     [self loadLocation];
