@@ -8,6 +8,7 @@
 
 #import "ParkListTableViewCell.h"
 #import "Chameleon.h"
+#import "Color.h"
 
 @interface ParkListTableViewCell ()
 
@@ -29,7 +30,7 @@
     if (selected) {
         _parkNameLabel.textColor = [UIColor whiteColor];
         _numCoastersLabel.textColor = [UIColor whiteColor];
-        self.backgroundColor = [UIColor flatBlueColorDark];
+        self.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
     else {
         _parkNameLabel.textColor = _defaultParkNameLabelColor;
@@ -42,7 +43,7 @@
     if (highlighted) {
         _parkNameLabel.textColor = [UIColor whiteColor];
         _numCoastersLabel.textColor = [UIColor whiteColor];
-        self.backgroundColor = [UIColor flatBlueColorDark];
+        self.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
     else {
         _parkNameLabel.textColor = _defaultParkNameLabelColor;

@@ -350,7 +350,9 @@
                             <outlet property="delegate" destination="TAK-Nb-E9a" id="g8B-S5-ztd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search Distance" id="y13-TI-nxW"/>
+                    <navigationItem key="navigationItem" title="Search Distance" id="y13-TI-nxW">
+                        <barButtonItem key="backBarButtonItem" title=" " id="8Cd-sX-8yS"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OM5-UQ-UJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

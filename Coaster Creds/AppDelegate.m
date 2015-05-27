@@ -28,7 +28,7 @@
     
     
     
-    [[UINavigationBar appearance] setBarTintColor:[Color flatBlueColorDark]];
+    [[UINavigationBar appearance] setBarTintColor:[Color colorWithR:43 G:131 B:190 A:1]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:

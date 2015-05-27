@@ -8,6 +8,7 @@
 
 #import "ParkContinentTableViewCell.h"
 #import "Chameleon.h"
+#import "Color.h"
 
 @interface ParkContinentTableViewCell ()
 
@@ -26,7 +27,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     if (selected) {
         _continentLabel.textColor = [UIColor whiteColor];
-        self.backgroundColor = [UIColor flatBlueColorDark];
+        self.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
     else {
         _continentLabel.textColor = _defaultContinentLabelColor;
@@ -37,7 +38,7 @@
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
     if (highlighted) {
         _continentLabel.textColor = [UIColor whiteColor];
-        self.backgroundColor = [UIColor flatBlueColorDark];
+        self.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
     else {
         _continentLabel.textColor = _defaultContinentLabelColor;

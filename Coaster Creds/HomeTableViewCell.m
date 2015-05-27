@@ -8,6 +8,7 @@
 
 #import "HomeTableViewCell.h"
 #import "Chameleon.h"
+#import "Color.h"
 
 @interface HomeTableViewCell ()
 
@@ -34,7 +35,7 @@
         _parkNameLabel.textColor = [UIColor whiteColor];
         _parkAreaLabel.textColor = [UIColor whiteColor];
         _parkDistanceLabel.textColor = [UIColor whiteColor];
-        self.contentView.backgroundColor = [UIColor flatBlueColorDark];
+        self.contentView.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
      else {
          _parkNameLabel.textColor = _defaultParkNameLabelColor;
@@ -50,7 +51,7 @@
         _parkNameLabel.textColor = [UIColor whiteColor];
         _parkAreaLabel.textColor = [UIColor whiteColor];
         _parkDistanceLabel.textColor = [UIColor whiteColor];
-        self.contentView.backgroundColor = [UIColor flatBlueColorDark];
+        self.contentView.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
     
     else {
