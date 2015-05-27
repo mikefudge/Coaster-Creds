@@ -91,11 +91,12 @@
     }
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(ParkPinAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
+- (void)mapView:(MKMapView *)mapView annotationView:(ParkPinAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     if ([view.annotation isKindOfClass:[MKUserLocation class]]) return;
     _selectedPark = view.park;
-    [self performSegueWithIdentifier:@"coastersInPark" sender:view];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSegueWithIdentifier:@"coastersInPark" sender:self];
+    });
 }
 
 
