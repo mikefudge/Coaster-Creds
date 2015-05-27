@@ -10,7 +10,8 @@
 		2705093F1B09043B00A08055 /* ParkContinentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705093E1B09043B00A08055 /* ParkContinentTableViewController.m */; };
 		270509421B091B3700A08055 /* ParkContinentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509411B091B3700A08055 /* ParkContinentTableViewCell.m */; };
 		270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509441B091E3400A08055 /* ParkCountryTableViewController.m */; };
-		2705094C1B09554B00A08055 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2705094B1B09554B0eme	2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705094E1B0B193000A08055 /* ParkStateTableViewController.m */; };
+		2705094C1B09554B00A08055 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2705094B1B09554B00A08055 /* data.sqlite */; };
+		2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705094E1B0B193000A08055 /* ParkStateTableViewController.m */; };
 		270509521B0C989A00A08055 /* SearchDistanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509511B0C989A00A08055 /* SearchDistanceTableViewController.m */; };
 		270509551B0C9B0500A08055 /* LocationSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509541B0C9B0500A08055 /* LocationSettingsTableViewController.m */; };
 		270509581B0CAD0D00A08055 /* HomeMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509571B0CAD0D00A08055 /* HomeMapViewController.m */; };
