@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *state;
 @property (strong, nonatomic) NSString *country;
+@property BOOL isAllParks;
 
 @end

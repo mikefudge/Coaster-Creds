@@ -82,6 +82,7 @@
         ParkListTableViewController *parkListViewController = segue.destinationViewController;
         parkListViewController.country = _country;
         parkListViewController.state = _selectedState;
+        parkListViewController.isAllParks = NO;
     }
 }
 

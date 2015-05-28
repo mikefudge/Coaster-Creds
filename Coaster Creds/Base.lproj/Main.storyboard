@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uVR-qv-Wqu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="uVR-qv-Wqu">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -161,7 +161,6 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="cVb-4l-bsu"/>
                     <navigationItem key="navigationItem" title="Nearby Parks" id="B2Z-Tj-k8e">
                         <barButtonItem key="backBarButtonItem" title=" " id="GtS-MD-lvq"/>
                         <barButtonItem key="leftBarButtonItem" title="Map" style="plain" id="job-T2-s4w">
@@ -187,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1188" y="-664"/>
+            <point key="canvasLocation" x="-1206" y="-664"/>
         </scene>
         <!--Map View-->
         <scene sceneID="ceE-ME-Zgg">
@@ -223,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jtA-c4-8KC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-797" y="-664"/>
+            <point key="canvasLocation" x="-815" y="-664"/>
         </scene>
         <!--User-->
         <scene sceneID="9qb-an-XXH">
@@ -692,7 +691,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DxT-El-LVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="-664"/>
+            <point key="canvasLocation" x="-50" y="-664"/>
         </scene>
         <!--Park List-->
         <scene sceneID="PNV-HL-gaO">
@@ -702,6 +701,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for parks" showsCancelButton="YES" id="s3m-sG-d6W">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <scopeButtonTitles>
+                                <string>Title</string>
+                                <string>Title</string>
+                            </scopeButtonTitles>
+                            <connections>
+                                <outlet property="delegate" destination="UxQ-CT-H5u" id="6Yz-gl-LSQ"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="63" id="kA0-iU-z53" customClass="ParkListTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -749,12 +760,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Pry-LU-94o"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="s3m-sG-d6W" id="Hwo-eJ-kMZ"/>
                         <segue destination="wtm-B0-kQw" kind="modal" identifier="coastersInPark" id="CqV-Y4-anq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFd-Ls-sma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="-1282"/>
+            <point key="canvasLocation" x="309" y="-1282"/>
         </scene>
         <!--Park List-->
         <scene sceneID="Uad-jS-50X">
@@ -803,13 +815,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hnP-xd-5bN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1188" y="-1282"/>
+            <point key="canvasLocation" x="-815" y="-1282"/>
         </scene>
         <!--Home Navigation-->
         <scene sceneID="Cio-yb-agT">
             <objects>
                 <navigationController id="poN-Ki-3o4" userLabel="Home Navigation" customClass="TranslucentNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="ffV-nm-eLq"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab_home_grey" id="ffV-nm-eLq"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dWL-It-LDZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -941,13 +953,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UwE-XN-V5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="327" y="-670"/>
+            <point key="canvasLocation" x="309" y="-670"/>
         </scene>
         <!--Park List Navigation-->
         <scene sceneID="uy7-OH-3e8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NsX-mK-cwU" userLabel="Park List Navigation" customClass="TranslucentNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Park List" id="xz4-tg-vfL"/>
+                    <tabBarItem key="tabBarItem" title="Park List" image="tab_list_grey" id="xz4-tg-vfL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kfb-hI-Hi6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -955,12 +967,83 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="fUB-hE-uNf" kind="relationship" relationship="rootViewController" id="wlj-hG-kXS"/>
+                        <segue destination="lL1-0Q-ETx" kind="relationship" relationship="rootViewController" id="Dma-cA-dHg"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5C-eE-TBt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1572" y="-1282"/>
+            <point key="canvasLocation" x="-1572" y="-1288"/>
+        </scene>
+        <!--Park List-->
+        <scene sceneID="ynf-JC-mwQ">
+            <objects>
+                <tableViewController id="lL1-0Q-ETx" customClass="ParkListOptionsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="48" sectionHeaderHeight="22" sectionFooterHeight="22" id="1df-Hm-WQJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="Qhv-Z9-xGU">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="b83-bj-ERm" customClass="ParkContinentTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b83-bj-ERm" id="kRw-HW-eN5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse parks by region" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tki-3z-GQc">
+                                                    <rect key="frame" x="8" y="8" width="279" height="31"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Tki-3z-GQc" firstAttribute="bottom" secondItem="kRw-HW-eN5" secondAttribute="bottomMargin" id="6C7-wc-N1b"/>
+                                                <constraint firstItem="Tki-3z-GQc" firstAttribute="top" secondItem="kRw-HW-eN5" secondAttribute="topMargin" id="Rwe-oQ-DAp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Tki-3z-GQc" secondAttribute="trailing" constant="-8" id="aGt-A8-dUE"/>
+                                                <constraint firstItem="Tki-3z-GQc" firstAttribute="leading" secondItem="kRw-HW-eN5" secondAttribute="leadingMargin" id="sej-CU-axK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="D00-JP-cPt" customClass="ParkContinentTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="D00-JP-cPt" id="4Kl-kL-Rum">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse all parks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oq4-oM-zYE">
+                                                    <rect key="frame" x="8" y="8" width="279" height="31"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Oq4-oM-zYE" firstAttribute="top" secondItem="4Kl-kL-Rum" secondAttribute="topMargin" id="3Qg-8l-KFn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Oq4-oM-zYE" secondAttribute="trailing" constant="-8" id="dIw-a3-nyg"/>
+                                                <constraint firstItem="Oq4-oM-zYE" firstAttribute="bottom" secondItem="4Kl-kL-Rum" secondAttribute="bottomMargin" id="dQg-pF-Djh"/>
+                                                <constraint firstItem="Oq4-oM-zYE" firstAttribute="leading" secondItem="4Kl-kL-Rum" secondAttribute="leadingMargin" id="r5U-Ym-6yF"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="lL1-0Q-ETx" id="CTK-H4-w1b"/>
+                            <outlet property="delegate" destination="lL1-0Q-ETx" id="u9b-LJ-OTR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Park List" id="X8b-d9-hzi">
+                        <barButtonItem key="backBarButtonItem" title=" " id="VL4-hw-OSj"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="fUB-hE-uNf" kind="push" identifier="region" id="DvH-tv-GMY"/>
+                        <segue destination="UxQ-CT-H5u" kind="push" identifier="allParks" id="OmM-gQ-Hra"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IPC-tA-WvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1206" y="-1282"/>
         </scene>
         <!--User-->
         <scene sceneID="99W-Xy-1wz">
@@ -1028,7 +1111,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8sv-7m-qI2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-797" y="-1282"/>
+            <point key="canvasLocation" x="-419" y="-1282"/>
         </scene>
         <!--Park State Table View Controller-->
         <scene sceneID="w1T-QE-Tmv">
@@ -1077,12 +1160,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOr-iZ-Ky7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="-1282"/>
+            <point key="canvasLocation" x="-50" y="-1282"/>
         </scene>
     </scenes>
     <resources>
         <image name="icon_button_directions" width="50" height="50"/>
         <image name="icon_button_web" width="50" height="50"/>
+        <image name="tab_home_grey" width="30" height="24"/>
+        <image name="tab_list_grey" width="30" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1090,6 +1175,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="q8r-hS-0dx"/>
+        <segue reference="OmM-gQ-Hra"/>
+        <segue reference="CqV-Y4-anq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,6 +40,7 @@
 		2779F1A01AD9B39700215D79 /* ParkListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F19F1AD9B39700215D79 /* ParkListTableViewController.m */; };
 		2779F1A31AD9D0F900215D79 /* ParkListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */; };
 		278323A11AB9CCD500F7B5A3 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */; };
+		279069331B17418C000021D2 /* ParkListOptionsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279069321B17418C000021D2 /* ParkListOptionsTableViewController.m */; };
 		279453971ABCA69300801760 /* CoasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 279453961ABCA69300801760 /* CoasterViewController.m */; };
 		27AE86A91B14C98600A81846 /* ParkPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE86A81B14C98600A81846 /* ParkPointAnnotation.m */; };
 		27AE86AC1B14CCC500A81846 /* ParkPinAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27AE86AB1B14CCC500A81846 /* ParkPinAnnotationView.m */; };
@@ -131,6 +132,8 @@
 		2779F1A21AD9D0F900215D79 /* ParkListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkListTableViewCell.m; sourceTree = "<group>"; };
 		2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataStack.h; path = "Coaster Creds/CoreDataStack.h"; sourceTree = "<group>"; };
 		278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataStack.m; path = "Coaster Creds/CoreDataStack.m"; sourceTree = "<group>"; };
+		279069311B17418C000021D2 /* ParkListOptionsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkListOptionsTableViewController.h; sourceTree = "<group>"; };
+		279069321B17418C000021D2 /* ParkListOptionsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkListOptionsTableViewController.m; sourceTree = "<group>"; };
 		279453951ABCA69300801760 /* CoasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoasterViewController.h; sourceTree = "<group>"; };
 		279453961ABCA69300801760 /* CoasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoasterViewController.m; sourceTree = "<group>"; };
 		27AE86A71B14C98600A81846 /* ParkPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkPointAnnotation.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				270509541B0C9B0500A08055 /* LocationSettingsTableViewController.m */,
 				270509561B0CAD0D00A08055 /* HomeMapViewController.h */,
 				270509571B0CAD0D00A08055 /* HomeMapViewController.m */,
+				279069311B17418C000021D2 /* ParkListOptionsTableViewController.h */,
+				279069321B17418C000021D2 /* ParkListOptionsTableViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -486,6 +491,7 @@
 				27524F911AFD009100993A05 /* UIViewController+Chameleon.m in Sources */,
 				279453971ABCA69300801760 /* CoasterViewController.m in Sources */,
 				276736DC1ACF107A0078A54D /* MainTabBarController.m in Sources */,
+				279069331B17418C000021D2 /* ParkListOptionsTableViewController.m in Sources */,
 				270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */,
 				276654631AFD128400C2B8BA /* UICountingLabel.m in Sources */,
 				27AE86A91B14C98600A81846 /* ParkPointAnnotation.m in Sources */,
@@ -576,7 +582,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -611,7 +617,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -624,8 +630,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coaster Creds/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -635,8 +643,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "Coaster Creds/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
