@@ -758,6 +758,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="R6B-rE-kNX">
                         <barButtonItem key="backBarButtonItem" title=" " id="Pry-LU-94o"/>
+                        <barButtonItem key="rightBarButtonItem" title="Sort" style="plain" id="o3g-BU-yVZ">
+                            <connections>
+                                <action selector="sortWasPressed:" destination="UxQ-CT-H5u" id="jPT-QJ-eYe"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="s3m-sG-d6W" id="Hwo-eJ-kMZ"/>

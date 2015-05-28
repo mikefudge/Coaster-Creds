@@ -10,7 +10,6 @@
 		2705093F1B09043B00A08055 /* ParkContinentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705093E1B09043B00A08055 /* ParkContinentTableViewController.m */; };
 		270509421B091B3700A08055 /* ParkContinentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509411B091B3700A08055 /* ParkContinentTableViewCell.m */; };
 		270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509441B091E3400A08055 /* ParkCountryTableViewController.m */; };
-		2705094C1B09554B00A08055 /* data.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 2705094B1B09554B00A08055 /* data.sqlite */; };
 		2705094F1B0B193000A08055 /* ParkStateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705094E1B0B193000A08055 /* ParkStateTableViewController.m */; };
 		270509521B0C989A00A08055 /* SearchDistanceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509511B0C989A00A08055 /* SearchDistanceTableViewController.m */; };
 		270509551B0C9B0500A08055 /* LocationSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509541B0C9B0500A08055 /* LocationSettingsTableViewController.m */; };
@@ -53,6 +52,7 @@
 		27DC5B811AB7529C00E86C63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27DC5B7F1AB7529C00E86C63 /* Main.storyboard */; };
 		27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DC5B821AB7529C00E86C63 /* Images.xcassets */; };
 		27DC5B921AB7529C00E86C63 /* Coaster_CredsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */; };
+		27DD90F11B1791B10097E8FB /* data_1.0.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27DD90F01B1791B10097E8FB /* data_1.0.sqlite */; };
 		27E2A9B01ABE35C700FDA170 /* ideas in Resources */ = {isa = PBXBuildFile; fileRef = 27E2A9AF1ABE35C700FDA170 /* ideas */; };
 		27F614581AB88E9A00D7D5AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F614571AB88E9A00D7D5AC /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -74,7 +74,6 @@
 		270509411B091B3700A08055 /* ParkContinentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkContinentTableViewCell.m; sourceTree = "<group>"; };
 		270509431B091E3400A08055 /* ParkCountryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkCountryTableViewController.h; sourceTree = "<group>"; };
 		270509441B091E3400A08055 /* ParkCountryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkCountryTableViewController.m; sourceTree = "<group>"; };
-		2705094B1B09554B00A08055 /* data.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data.sqlite; sourceTree = "<group>"; };
 		2705094D1B0B193000A08055 /* ParkStateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkStateTableViewController.h; sourceTree = "<group>"; };
 		2705094E1B0B193000A08055 /* ParkStateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkStateTableViewController.m; sourceTree = "<group>"; };
 		270509501B0C989A00A08055 /* SearchDistanceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchDistanceTableViewController.h; sourceTree = "<group>"; };
@@ -156,6 +155,7 @@
 		27DC5B8B1AB7529C00E86C63 /* Coaster CredsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Coaster CredsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27DC5B901AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coaster_CredsTests.m; sourceTree = "<group>"; };
+		27DD90F01B1791B10097E8FB /* data_1.0.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_1.0.sqlite; sourceTree = "<group>"; };
 		27E2A9AF1ABE35C700FDA170 /* ideas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas; path = ../ideas; sourceTree = "<group>"; };
 		27F614571AB88E9A00D7D5AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -215,7 +215,7 @@
 				27DC5B791AB7529C00E86C63 /* Coaster_Creds.xcdatamodeld */,
 				2783239F1AB9CCD500F7B5A3 /* CoreDataStack.h */,
 				278323A01AB9CCD500F7B5A3 /* CoreDataStack.m */,
-				2705094B1B09554B00A08055 /* data.sqlite */,
+				27DD90F01B1791B10097E8FB /* data_1.0.sqlite */,
 			);
 			name = "Model and Model Classes";
 			path = ..;
@@ -458,7 +458,7 @@
 				27DC5B811AB7529C00E86C63 /* Main.storyboard in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
 				27E2A9B01ABE35C700FDA170 /* ideas in Resources */,
-				2705094C1B09554B00A08055 /* data.sqlite in Resources */,
+				27DD90F11B1791B10097E8FB /* data_1.0.sqlite in Resources */,
 				27D2D3421B0DE2640028E6CC /* DefaultPreferences.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

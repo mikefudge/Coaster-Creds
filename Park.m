@@ -28,5 +28,6 @@
 @dynamic status;
 @dynamic coasters;
 @dynamic continent;
+@dynamic count;
 
 @end

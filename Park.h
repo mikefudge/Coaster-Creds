@@ -29,6 +29,7 @@
 @property (nonatomic) int32_t rcdbid;
 @property (nonatomic) int16_t status;
 @property (nonatomic, retain) NSSet *coasters;
+@property (nonatomic) int16_t count;
 @end
 
 @interface Park (CoreDataGeneratedAccessors)

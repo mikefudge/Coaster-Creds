@@ -288,7 +288,7 @@
 }
 
 - (IBAction)sortWasPressed:(id)sender {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sort parks by.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sort coasters by.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *name = [UIAlertAction actionWithTitle:@"Name" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         // If controller is already sorted by name, reverse the order
         if ([_currentSort isEqual:@"name"]) {

@@ -20,6 +20,7 @@
 @property (strong, nonatomic) Park *selectedPark;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) NSMutableArray *resultsArray;
+@property (strong, nonatomic) NSSortDescriptor *currentSort;
 
 @end
 
@@ -34,7 +35,8 @@
     }
     
     // Perform initial fetch with no search
-    [self filter:@""];
+    _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    [self filter:@"" sort:_currentSort];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,12 +93,12 @@
 
 #pragma mark - Core Data
 
-- (void)filter:(NSString *)text {
+- (void)filter:(NSString *)text sort:(NSSortDescriptor *)sortDescriptors {
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Park" inManagedObjectContext:coreDataStack.managedObjectContext];
     fetchRequest.entity = entity;
-    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    fetchRequest.sortDescriptors = @[sortDescriptors];
     // If coming from "browse all parks"..
     if (_isAllParks) {
         // If using search..
@@ -127,17 +129,50 @@
 #pragma mark - Search Bar Delegate Methods
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)text {
-    [self filter:text];
+    [self filter:text sort:_currentSort];
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     searchBar.text = @"";
-    [self filter:searchBar.text];
+    [self filter:searchBar.text sort:_currentSort];
     [searchBar resignFirstResponder];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
+}
+
+#pragma mark - Sort
+
+- (IBAction)sortWasPressed:(id)sender {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Sort parks by.." message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *name = [UIAlertAction actionWithTitle:@"Name" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // If controller is already sorted by name, reverse the order
+        if ([_currentSort isEqual:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]]) {
+            _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:NO];
+        } else {
+            _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+        }
+        [self filter:_searchBar.text sort:_currentSort];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    UIAlertAction *numCoasters = [UIAlertAction actionWithTitle:@"Number of Coasters" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if ([_currentSort isEqual:[NSSortDescriptor sortDescriptorWithKey:@"count" ascending:NO]]) {
+            _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"count" ascending:YES];
+        } else {
+            _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"count" ascending:NO];
+        }
+        [self filter:_searchBar.text sort:_currentSort];
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:name];
+    [alertController addAction:numCoasters];
+    [alertController addAction:cancel];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Navigation
