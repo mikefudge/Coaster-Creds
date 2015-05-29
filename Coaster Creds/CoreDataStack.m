@@ -56,10 +56,8 @@
     if (![[NSFileManager defaultManager] fileExistsAtPath:[storeURL path]]) {
         NSURL *preloadURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"data_1.0" ofType:@"sqlite"]];
         NSError* err = nil;
-        NSLog(@"Data has been loaded.");
         
         if (![[NSFileManager defaultManager] copyItemAtURL:preloadURL toURL:storeURL error:&err]) {
-            NSLog(@"Oops, couldn't copy preloaded data");
         }
     }
     

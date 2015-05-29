@@ -39,7 +39,7 @@
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     ((UITabBarItem *)tabBarController.tabBar.items[0]).selectedImage = [UIImage imageNamed:@"tab_list_blue"];
     ((UITabBarItem *)tabBarController.tabBar.items[1]).selectedImage = [UIImage imageNamed:@"tab_home_blue"];
-    //((UITabBarItem *)tabBarController.tabBar.items[2]).selectedImage = [UIImage imageNamed:@"config_filled"];
+    ((UITabBarItem *)tabBarController.tabBar.items[2]).selectedImage = [UIImage imageNamed:@"tab_user_blue"];
      
     
     return YES;

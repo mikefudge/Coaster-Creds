@@ -290,7 +290,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8if-h2-t5x" id="57w-9s-izX">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Only show currently open parks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dE6-QQ-Ysy">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Only show parks with coasters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dE6-QQ-Ysy">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -579,6 +579,7 @@
                                                 <constraint firstItem="wdo-wI-mSZ" firstAttribute="leading" secondItem="wsx-Kw-5V1" secondAttribute="leadingMargin" id="5x5-1b-X2s"/>
                                                 <constraint firstAttribute="centerY" secondItem="jFG-5X-R3H" secondAttribute="centerY" id="Cdq-4g-rNN"/>
                                                 <constraint firstItem="wdo-wI-mSZ" firstAttribute="trailing" secondItem="wsx-Kw-5V1" secondAttribute="trailingMargin" id="Gud-AS-hj2"/>
+                                                <constraint firstItem="kbz-Y2-JYq" firstAttribute="centerY" secondItem="oSP-XY-V12" secondAttribute="centerY" id="Ik0-hf-eA7"/>
                                                 <constraint firstItem="6Vy-TM-J4i" firstAttribute="leading" secondItem="wsx-Kw-5V1" secondAttribute="leadingMargin" id="KhF-Pv-A4b"/>
                                                 <constraint firstItem="oSP-XY-V12" firstAttribute="top" secondItem="wdo-wI-mSZ" secondAttribute="bottom" constant="-2" id="Kwa-DP-YMT"/>
                                                 <constraint firstItem="wdo-wI-mSZ" firstAttribute="top" secondItem="wsx-Kw-5V1" secondAttribute="topMargin" id="MRC-1n-Ija"/>
@@ -1054,7 +1055,7 @@
         <scene sceneID="99W-Xy-1wz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yyU-CJ-yFP" customClass="TranslucentNavigationController" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="User" id="2o3-QK-GpT"/>
+                    <tabBarItem key="tabBarItem" title="User" image="tab_user_grey" id="2o3-QK-GpT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ac5-Jy-rme">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1173,6 +1174,7 @@
         <image name="icon_button_web" width="50" height="50"/>
         <image name="tab_home_grey" width="30" height="24"/>
         <image name="tab_list_grey" width="30" height="24"/>
+        <image name="tab_user_grey" width="30" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -1181,6 +1183,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="OmM-gQ-Hra"/>
-        <segue reference="CqV-Y4-anq"/>
+        <segue reference="q8r-hS-0dx"/>
     </inferredMetricsTieBreakers>
 </document>
