@@ -66,7 +66,7 @@
 }
 
 - (UIImage *)getTypeIconImage {
-    NSString *type = [_coaster.type lowercaseString];
+    NSString *type = [[_coaster.type lowercaseString] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSString *imagePath = [[NSString alloc] initWithFormat:@"icon_type_%@", type];
     return [UIImage imageNamed:imagePath];
 }

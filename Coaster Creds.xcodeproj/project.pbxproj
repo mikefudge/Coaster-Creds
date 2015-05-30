@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06BFB411FA12A960D07A68F5 /* libPods-Coaster Creds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C99DAAC2E21EDCAF41BB43 /* libPods-Coaster Creds.a */; };
 		2705093F1B09043B00A08055 /* ParkContinentTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2705093E1B09043B00A08055 /* ParkContinentTableViewController.m */; };
 		270509421B091B3700A08055 /* ParkContinentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509411B091B3700A08055 /* ParkContinentTableViewCell.m */; };
 		270509451B091E3400A08055 /* ParkCountryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 270509441B091E3400A08055 /* ParkCountryTableViewController.m */; };
@@ -53,6 +54,7 @@
 		27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DC5B821AB7529C00E86C63 /* Images.xcassets */; };
 		27DC5B921AB7529C00E86C63 /* Coaster_CredsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */; };
 		27DD90F11B1791B10097E8FB /* data_1.0.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27DD90F01B1791B10097E8FB /* data_1.0.sqlite */; };
+		27DD90F41B18AC890097E8FB /* MFGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD90F31B18AC890097E8FB /* MFGradient.m */; };
 		27E2A9B01ABE35C700FDA170 /* ideas in Resources */ = {isa = PBXBuildFile; fileRef = 27E2A9AF1ABE35C700FDA170 /* ideas */; };
 		27F614581AB88E9A00D7D5AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F614571AB88E9A00D7D5AC /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18C99DAAC2E21EDCAF41BB43 /* libPods-Coaster Creds.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Coaster Creds.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2705093D1B09043B00A08055 /* ParkContinentTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkContinentTableViewController.h; sourceTree = "<group>"; };
 		2705093E1B09043B00A08055 /* ParkContinentTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkContinentTableViewController.m; sourceTree = "<group>"; };
 		270509401B091B3700A08055 /* ParkContinentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkContinentTableViewCell.h; sourceTree = "<group>"; };
@@ -156,8 +159,12 @@
 		27DC5B901AB7529C00E86C63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coaster_CredsTests.m; sourceTree = "<group>"; };
 		27DD90F01B1791B10097E8FB /* data_1.0.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_1.0.sqlite; sourceTree = "<group>"; };
+		27DD90F21B18AC890097E8FB /* MFGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGradient.h; sourceTree = "<group>"; };
+		27DD90F31B18AC890097E8FB /* MFGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGradient.m; sourceTree = "<group>"; };
 		27E2A9AF1ABE35C700FDA170 /* ideas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas; path = ../ideas; sourceTree = "<group>"; };
 		27F614571AB88E9A00D7D5AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8FC9AA420A8D230354E14A49 /* Pods-Coaster Creds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coaster Creds.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coaster Creds/Pods-Coaster Creds.release.xcconfig"; sourceTree = "<group>"; };
+		CC2AD1F26C8EFE54E85414B7 /* Pods-Coaster Creds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coaster Creds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coaster Creds/Pods-Coaster Creds.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +176,7 @@
 				2738F5941AE6631A00A4E12A /* QuartzCore.framework in Frameworks */,
 				272B13A01AC0A240005B78D6 /* MapKit.framework in Frameworks */,
 				27F614581AB88E9A00D7D5AC /* CoreLocation.framework in Frameworks */,
+				06BFB411FA12A960D07A68F5 /* libPods-Coaster Creds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +322,8 @@
 				27DC5B711AB7529C00E86C63 /* Coaster Creds */,
 				27DC5B8E1AB7529C00E86C63 /* Coaster CredsTests */,
 				27DC5B701AB7529C00E86C63 /* Products */,
+				B77225E4A512439E2B36D870 /* Pods */,
+				2B789BAE73E45042F68A7CA3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -354,6 +364,8 @@
 				27688E321ABC74DB00A8D102 /* Haversine.m */,
 				27DC5B741AB7529C00E86C63 /* main.m */,
 				27E2A9AF1ABE35C700FDA170 /* ideas */,
+				27DD90F21B18AC890097E8FB /* MFGradient.h */,
+				27DD90F31B18AC890097E8FB /* MFGradient.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -375,6 +387,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2B789BAE73E45042F68A7CA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18C99DAAC2E21EDCAF41BB43 /* libPods-Coaster Creds.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B77225E4A512439E2B36D870 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC2AD1F26C8EFE54E85414B7 /* Pods-Coaster Creds.debug.xcconfig */,
+				8FC9AA420A8D230354E14A49 /* Pods-Coaster Creds.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,9 +411,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27DC5B951AB7529C00E86C63 /* Build configuration list for PBXNativeTarget "Coaster Creds" */;
 			buildPhases = (
+				BCB61CECE7AF56EC64378DFF /* Check Pods Manifest.lock */,
 				27DC5B6B1AB7529C00E86C63 /* Sources */,
 				27DC5B6C1AB7529C00E86C63 /* Frameworks */,
 				27DC5B6D1AB7529C00E86C63 /* Resources */,
+				52F8BD8C5CBAA400369202F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -472,6 +503,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52F8BD8C5CBAA400369202F8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Coaster Creds/Pods-Coaster Creds-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BCB61CECE7AF56EC64378DFF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		27DC5B6B1AB7529C00E86C63 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -505,6 +569,7 @@
 				27516BD61B05457700CBED64 /* Coaster.m in Sources */,
 				2738F5971AE89E2400A4E12A /* HCSStarRatingView.m in Sources */,
 				27DC5B751AB7529C00E86C63 /* main.m in Sources */,
+				27DD90F41B18AC890097E8FB /* MFGradient.m in Sources */,
 				276654661AFD132000C2B8BA /* UserViewController.m in Sources */,
 				272B13A31AC0B0EF005B78D6 /* Color.m in Sources */,
 				274780EA1B10B1F3008E7304 /* ODRefreshControl.m in Sources */,
@@ -585,7 +650,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lc++";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/";
 			};
 			name = Debug;
 		};
@@ -619,13 +686,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-lc++";
+				"OTHER_LDFLAGS[arch=*]" = "-lc++";
 				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		27DC5B961AB7529C00E86C63 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC2AD1F26C8EFE54E85414B7 /* Pods-Coaster Creds.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -639,6 +710,7 @@
 		};
 		27DC5B971AB7529C00E86C63 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FC9AA420A8D230354E14A49 /* Pods-Coaster Creds.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
