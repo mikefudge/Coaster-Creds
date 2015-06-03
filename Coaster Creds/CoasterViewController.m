@@ -93,7 +93,7 @@
             UIImage *image = [UIImage imageNamed:imageName];
             [defaultHeaderImages addObject:image];
         }
-        int r = arc4random_uniform(NUMBER_OF_HEADER_IMAGES-1);
+        int r = arc4random_uniform(NUMBER_OF_HEADER_IMAGES);
         return [defaultHeaderImages objectAtIndex:r];
     }
 }

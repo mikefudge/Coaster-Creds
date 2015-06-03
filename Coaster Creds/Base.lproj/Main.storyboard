@@ -157,7 +157,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Nearby Parks" id="B2Z-Tj-k8e">
                         <barButtonItem key="backBarButtonItem" title=" " id="GtS-MD-lvq"/>
-                        <barButtonItem key="leftBarButtonItem" title="Map" id="job-T2-s4w">
+                        <barButtonItem key="leftBarButtonItem" image="icon_button_map" id="job-T2-s4w">
                             <connections>
                                 <action selector="gotoMap:" destination="vXZ-lx-hvc" id="ORT-yI-K2i"/>
                             </connections>
@@ -1611,6 +1611,7 @@
     </scenes>
     <resources>
         <image name="icon_button_directions" width="50" height="50"/>
+        <image name="icon_button_map" width="22" height="22"/>
         <image name="icon_button_web" width="50" height="50"/>
         <image name="icon_design_bobsled" width="50" height="50"/>
         <image name="icon_design_flying" width="50" height="50"/>
@@ -1634,6 +1635,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3xH-AL-cZ4"/>
-        <segue reference="CqV-Y4-anq"/>
+        <segue reference="q8r-hS-0dx"/>
     </inferredMetricsTieBreakers>
 </document>
