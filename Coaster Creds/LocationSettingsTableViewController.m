@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSNumber *searchDistance;
 @property (weak, nonatomic) IBOutlet UITableViewCell *searchDistanceCell;
+@property BOOL onlyShowParksWithCoasters;
 
 @end
 
@@ -21,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _onlyShowParksWithCoasters = [[NSUserDefaults standardUserDefaults] boolForKey:@"onlyShowParksWithCoasters"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -33,6 +35,8 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [[NSUserDefaults standardUserDefaults] setBool:_onlyShowParksWithCoasters forKey:@"onlyShowParksWithCoasters"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     UIViewController *vc = self.navigationController.topViewController;
     if ([HomeViewController class] == [vc class])
     {
@@ -55,10 +59,25 @@
     return 2;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 1) {
+        if (_onlyShowParksWithCoasters) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:@"searchDistance" sender:self];
+    }
+    if (indexPath.row == 1) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        _onlyShowParksWithCoasters = !_onlyShowParksWithCoasters;
+        [tableView reloadData];
     }
 }
 

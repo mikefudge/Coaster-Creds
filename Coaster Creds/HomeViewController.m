@@ -107,8 +107,15 @@
         haversine.lat2 = location.coordinate.latitude;
         haversine.lon2 = location.coordinate.longitude;
         park.distance = [haversine toMiles];
+        // First check if park is within distance
         if (park.distance <= [[[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"] floatValue]) {
-            [parksWithinDistance addObject:park];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"onlyShowParksWithCoasters"]) {
+                if (park.coasters.count > 0) {
+                    [parksWithinDistance addObject:park];
+                }
+            } else {
+                [parksWithinDistance addObject:park];
+            }
         }
     }
     NSArray *sortDescriptor = @[[NSSortDescriptor sortDescriptorWithKey:@"distance" ascending:YES]];
