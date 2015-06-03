@@ -16,9 +16,10 @@
 #import "PopupRatingViewController.h"
 
 #import <CoreData/CoreData.h>
+#import <MapKit/MapKit.h>
 
 #define NUMBER_OF_FOOTER_IMAGES 4
-#define NUMBER_OF_HEADER_IMAGES 14
+#define NUMBER_OF_HEADER_IMAGES 13
 #define HEADER_IMAGE_HEIGHT 240
 #define DARK_VIEW_DEFAULT_ALPHA 0.5
 
@@ -383,5 +384,24 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
+
+- (IBAction)locationButtonWasPressed:(id)sender {
+    if (_park.latitude) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Go to Apple Maps?" message:@"This will show the park's location in Apple Maps." preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+        }];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            MKPlacemark *placemark = [[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake(_park.latitude, _park.longitude) addressDictionary:nil];
+            MKMapItem *item = [[MKMapItem alloc] initWithPlacemark:placemark];
+            item.name = _park.name;
+            [item openInMapsWithLaunchOptions:nil];
+        }];
+        [alertController addAction:cancel];
+        [alertController addAction:ok];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
 
 @end
