@@ -42,7 +42,6 @@
          _parkDistanceLabel.textColor = _defaultParkDistanceLabelColor;
         self.contentView.backgroundColor = _defaultBgColor;
     }
-    
 }
 
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {

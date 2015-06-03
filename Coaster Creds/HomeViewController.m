@@ -35,7 +35,6 @@
 @property BOOL updateLocationDidFail;
 @property (strong, nonatomic) NSError *error;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButton;
 @property (strong, nonatomic) NSString *postcode;
@@ -53,16 +52,12 @@
     _postcode = @"you";
     _refreshControl = [[ODRefreshControl alloc] initInScrollView:_tableView];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    
-    
     [_refreshButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                             nil] forState:UIControlStateNormal];
     [_mapButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                             nil] forState:UIControlStateNormal];
-    
-
     [self startRefreshActivityIndicator];
     [self loadLocation];
 }
@@ -82,16 +77,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-- (IBAction)sortParks:(id)sender {
-    
-    
-    
-    
-    
-    
-    
 }
 
 - (IBAction)gotoMap:(id)sender {
@@ -153,7 +138,6 @@
 - (NSString *)setNumCoastersLabelForPark:(Park *)park {
     int count = 0;
     int total = 0;
-    
     for (Coaster *coaster in park.coasters) {
         if (coaster.status == 1) {
             total++;
@@ -330,10 +314,7 @@
     if (tableView == _optionsTableView) {
         [self performSegueWithIdentifier:@"locationSettings" sender:self];
     } else {
-        
-        
         _selectedPark = [_parksArray objectAtIndex:indexPath.row];
-        
         dispatch_async(dispatch_get_main_queue(), ^{
             [self performSegueWithIdentifier:@"coastersInPark" sender:self];
         });

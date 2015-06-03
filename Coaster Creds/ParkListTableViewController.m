@@ -33,7 +33,6 @@
     } else {
         self.navigationItem.title = _state;
     }
-    
     // Perform initial fetch with no search
     _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [self filter:@"" sort:_currentSort];
@@ -72,7 +71,6 @@
     // Return the number of rows in the section.
     return _resultsArray.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ParkListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -165,7 +163,6 @@
         [self filter:_searchBar.text sort:_currentSort];
         [alertController dismissViewControllerAnimated:YES completion:nil];
     }];
-    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
             [alertController dismissViewControllerAnimated:YES completion:nil];
     }];

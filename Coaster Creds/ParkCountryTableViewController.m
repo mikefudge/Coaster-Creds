@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = _continent;
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +43,6 @@
     return [_countries count];
 }
 
-
 - (ParkContinentTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ParkContinentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.continentLabel.text = [_countries objectAtIndex:indexPath.row];
@@ -64,6 +62,5 @@
         parkStateViewController.country = _selectedCountry;
     }
 }
-
 
 @end

@@ -15,7 +15,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *numCoastersLabel;
 @property (weak, nonatomic) IBOutlet UILabel *parkAreaLabel;
 
-
-
-
 @end

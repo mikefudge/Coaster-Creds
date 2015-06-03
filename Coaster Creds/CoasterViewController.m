@@ -76,15 +76,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-
-}
-
-
-- (void)viewWillAppear:(BOOL)animated {
-    
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
 }
@@ -122,7 +113,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
-    
     if (yOffset <= 0) {
         // Expand header views on scroll up
         [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
@@ -195,10 +185,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_fetchedResultsController.fetchedObjects.count > 0) {
-        /*
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[[self fetchedResultsController] sections] objectAtIndex:section];
-        return [sectionInfo numberOfObjects];
-         */
         return _fetchedResultsController.fetchedObjects.count;
     } else {
         return 1;
@@ -258,7 +244,6 @@
     [cell.coaster toggleRidden];
     if (cell.coaster.ridden) {
         [cell configureCell];
-        //[self showRatingViewForCell:cell];
     } else {
         cell.coaster.rating = 0;
         [cell configureCell];
@@ -402,6 +387,5 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
 }
-
 
 @end

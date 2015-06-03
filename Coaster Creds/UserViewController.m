@@ -90,7 +90,6 @@
     _coasters = [self getRiddenCoasters];
     // Set count values
     [self getCoasterCounts:_coasters];
-    
     [_topRatedCoasters removeAllObjects];
     for (Coaster *coaster in _coasters) {
         if ([coaster.rating isEqualToNumber:[NSNumber numberWithInt:5]]) {
@@ -98,7 +97,6 @@
         }
     }
     [_tableView reloadData];
-    
 }
 
 - (void)didReceiveMemoryWarning {

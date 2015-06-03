@@ -15,8 +15,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *dismissViewButton;
 @property (weak, nonatomic) IBOutlet HCSStarRatingView *ratingView;
 
-
-
 @end
 
 @implementation PopupRatingViewController
@@ -68,15 +66,12 @@
 }
 
 - (IBAction)viewWasDismissed:(id)sender {
-    
-    
     [self removeAnimate];
 }
 
 - (IBAction)didChangeValue:(HCSStarRatingView *)sender {
     _cell.coaster.rating = [NSNumber numberWithFloat:sender.value];
     [_cell configureCell];
-    
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
 }
