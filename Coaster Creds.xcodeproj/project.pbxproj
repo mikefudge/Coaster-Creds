@@ -55,7 +55,6 @@
 		27DC5B921AB7529C00E86C63 /* Coaster_CredsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DC5B911AB7529C00E86C63 /* Coaster_CredsTests.m */; };
 		27DD90F11B1791B10097E8FB /* data_1.0.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 27DD90F01B1791B10097E8FB /* data_1.0.sqlite */; };
 		27DD90F41B18AC890097E8FB /* MFGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27DD90F31B18AC890097E8FB /* MFGradient.m */; };
-		27E2A9B01ABE35C700FDA170 /* ideas in Resources */ = {isa = PBXBuildFile; fileRef = 27E2A9AF1ABE35C700FDA170 /* ideas */; };
 		27F614581AB88E9A00D7D5AC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F614571AB88E9A00D7D5AC /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
@@ -161,7 +160,6 @@
 		27DD90F01B1791B10097E8FB /* data_1.0.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = data_1.0.sqlite; sourceTree = "<group>"; };
 		27DD90F21B18AC890097E8FB /* MFGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFGradient.h; sourceTree = "<group>"; };
 		27DD90F31B18AC890097E8FB /* MFGradient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFGradient.m; sourceTree = "<group>"; };
-		27E2A9AF1ABE35C700FDA170 /* ideas */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ideas; path = ../ideas; sourceTree = "<group>"; };
 		27F614571AB88E9A00D7D5AC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8FC9AA420A8D230354E14A49 /* Pods-Coaster Creds.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coaster Creds.release.xcconfig"; path = "Pods/Target Support Files/Pods-Coaster Creds/Pods-Coaster Creds.release.xcconfig"; sourceTree = "<group>"; };
 		CC2AD1F26C8EFE54E85414B7 /* Pods-Coaster Creds.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Coaster Creds.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Coaster Creds/Pods-Coaster Creds.debug.xcconfig"; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				27688E311ABC74DB00A8D102 /* Haversine.h */,
 				27688E321ABC74DB00A8D102 /* Haversine.m */,
 				27DC5B741AB7529C00E86C63 /* main.m */,
-				27E2A9AF1ABE35C700FDA170 /* ideas */,
 				27DD90F21B18AC890097E8FB /* MFGradient.h */,
 				27DD90F31B18AC890097E8FB /* MFGradient.m */,
 			);
@@ -488,7 +485,6 @@
 			files = (
 				27DC5B811AB7529C00E86C63 /* Main.storyboard in Resources */,
 				27DC5B831AB7529C00E86C63 /* Images.xcassets in Resources */,
-				27E2A9B01ABE35C700FDA170 /* ideas in Resources */,
 				27DD90F11B1791B10097E8FB /* data_1.0.sqlite in Resources */,
 				27D2D3421B0DE2640028E6CC /* DefaultPreferences.plist in Resources */,
 			);

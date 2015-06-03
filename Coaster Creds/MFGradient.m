@@ -13,7 +13,7 @@
 
 + (MFGradient *)blueGradientLayer {
     UIColor *topColor = [Color colorWithR:52 G:152 B:219 A:1];
-    UIColor *bottomColor = [Color colorWithR:32 G:103 B:149 A:1];
+    UIColor *bottomColor = [Color colorWithR:106 G:172 B:219 A:1];
     
     NSArray *gradientColors = [NSArray arrayWithObjects:(id)topColor.CGColor, (id)bottomColor.CGColor, nil];
     NSArray *gradientLocations = [NSArray arrayWithObjects:[NSNumber numberWithInt:0.0],[NSNumber numberWithInt:1.0], nil];

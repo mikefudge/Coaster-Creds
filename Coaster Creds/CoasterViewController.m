@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *parkButtonsView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sortButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) NSString *currentSort;
 
 @end
@@ -64,6 +65,9 @@
     [_sortButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                             nil] forState:UIControlStateNormal];
+    [_doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                         [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
+                                         nil] forState:UIControlStateNormal];
 }
 
 - (void)didReceiveMemoryWarning {

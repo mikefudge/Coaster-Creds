@@ -263,7 +263,6 @@
     [_locationManager stopUpdatingLocation];
     [_refreshControl endRefreshing];
     [self stopRefreshActivityIndicator];
-    //[_mapView removeAnnotations:_mapView.annotations];
     _updateLocationDidFail = YES;
     _error = error;
     [_tableView reloadData];
@@ -277,14 +276,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == _optionsTableView) {
+    if (_updateLocationDidFail || _parksArray.count == 0 || tableView == _optionsTableView) {
         return 1;
     } else {
-        if (_updateLocationDidFail) {
-            return 1;
-        } else {
-            return [_parksArray count];
-        }
+        return [_parksArray count];
     }
 }
 
@@ -307,18 +302,26 @@
             cell.userInteractionEnabled = NO;
             return cell;
         } else {
-            HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-            Park *park = [_parksArray objectAtIndex:indexPath.row];
-            cell.userInteractionEnabled = YES;
-            cell.parkNameLabel.text = park.name;
-            cell.parkDistanceLabel.text = [[NSString alloc] initWithFormat:@"%.1f mi", park.distance];
-            cell.numCoastersLabel.layer.cornerRadius = 25;
-            cell.numCoastersLabel.clipsToBounds = YES;
-            cell.numCoastersLabel.backgroundColor = [self getNumCoastersLabelColorForPark:park];
-            cell.numCoastersLabel.text = [self setNumCoastersLabelForPark:park];
-            cell.parkAreaLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", park.state, park.country];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
+            if (_parksArray.count == 0) {
+                ErrorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ErrorCell" forIndexPath:indexPath];
+                cell.errorLabel.text = @"No parks within range!";
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.userInteractionEnabled = NO;
+                return cell;
+            } else {
+                HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+                Park *park = [_parksArray objectAtIndex:indexPath.row];
+                cell.userInteractionEnabled = YES;
+                cell.parkNameLabel.text = park.name;
+                cell.parkDistanceLabel.text = [[NSString alloc] initWithFormat:@"%.1f mi", park.distance];
+                cell.numCoastersLabel.layer.cornerRadius = 25;
+                cell.numCoastersLabel.clipsToBounds = YES;
+                cell.numCoastersLabel.backgroundColor = [self getNumCoastersLabelColorForPark:park];
+                cell.numCoastersLabel.text = [self setNumCoastersLabelForPark:park];
+                cell.parkAreaLabel.text = [[NSString alloc] initWithFormat:@"%@, %@", park.state, park.country];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                return cell;
+            }
         }
     }
 }

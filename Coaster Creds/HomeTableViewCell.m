@@ -26,7 +26,6 @@
     _defaultParkAreaLabelColor = _parkAreaLabel.textColor;
     _defaultParkDistanceLabelColor = _parkDistanceLabel.textColor;
     _defaultBgColor = self.contentView.backgroundColor;
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -53,15 +52,12 @@
         _parkDistanceLabel.textColor = [UIColor whiteColor];
         self.contentView.backgroundColor = [Color colorWithR:43 G:131 B:190 A:1];
     }
-    
     else {
         _parkNameLabel.textColor = _defaultParkNameLabelColor;
         _parkAreaLabel.textColor = _defaultParkAreaLabelColor;
         _parkDistanceLabel.textColor = _defaultParkDistanceLabelColor;
         self.contentView.backgroundColor = _defaultBgColor;
-        
     }
-    
 }
 
 @end
