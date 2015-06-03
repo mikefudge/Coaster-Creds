@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = _continent;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)didReceiveMemoryWarning {

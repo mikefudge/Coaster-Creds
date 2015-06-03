@@ -30,6 +30,8 @@
                    @"North America" : @[@"Canada", @"Costa Rica", @"Cuba", @"Guatemala", @"Honduras", @"Mexico", @"Panama", @"USA"],
                    @"South America" : @[@"Argentina", @"Brazil", @"Chile", @"Colombia", @"Ecuador", @"Peru", @"Uruguay", @"Venezuela"]};
     _continents = [[_countries allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)didReceiveMemoryWarning {

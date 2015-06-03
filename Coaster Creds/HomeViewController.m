@@ -58,6 +58,9 @@
     [_mapButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                             nil] forState:UIControlStateNormal];
+    _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
+    
     [self startRefreshActivityIndicator];
     [self loadLocation];
 }

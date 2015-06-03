@@ -25,6 +25,8 @@
     _distances = @[@1, @5, @10, @25, @50, @100, @200];
     int indexValue = [_distances indexOfObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"]];
     _selectedRow = indexValue;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

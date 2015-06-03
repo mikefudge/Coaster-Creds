@@ -36,6 +36,8 @@
     // Perform initial fetch with no search
     _currentSort = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     [self filter:@"" sort:_currentSort];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+
 }
 
 - (void)didReceiveMemoryWarning {

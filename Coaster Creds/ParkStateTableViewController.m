@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = _country;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self getStates];
 }
 

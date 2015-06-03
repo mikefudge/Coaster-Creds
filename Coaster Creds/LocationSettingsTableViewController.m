@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _onlyShowParksWithCoasters = [[NSUserDefaults standardUserDefaults] boolForKey:@"onlyShowParksWithCoasters"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
