@@ -9,8 +9,12 @@
 #import "ParkListOptionsTableViewController.h"
 #import "ParkContinentTableViewController.h"
 #import "ParkListTableViewController.h"
+#import "ParkContinentTableViewCell.h"
 
 @interface ParkListOptionsTableViewController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *regionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *allLabel;
 
 @end
 
@@ -26,6 +30,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    _regionLabel.textColor = [UIColor blackColor];
+    _allLabel.textColor = [UIColor blackColor];
 }
 
 #pragma mark - Table view data source
@@ -38,12 +44,20 @@
     return 2;
 }
 
+- (void)tableView:(UITableView *)tableView didHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        _regionLabel.textColor = [UIColor whiteColor];
+    } else if (indexPath.row == 1) {
+        _allLabel.textColor = [UIColor whiteColor];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        _regionLabel.textColor = [UIColor whiteColor];
         [self performSegueWithIdentifier:@"region" sender:self];
     } else if (indexPath.row == 1) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        _allLabel.textColor = [UIColor whiteColor];
         [self performSegueWithIdentifier:@"allParks" sender:self];
     }
 }

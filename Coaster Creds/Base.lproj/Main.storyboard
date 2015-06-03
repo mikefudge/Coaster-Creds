@@ -1016,6 +1016,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="VL4-hw-OSj"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="allLabel" destination="Oq4-oM-zYE" id="aTn-QP-Lmt"/>
+                        <outlet property="regionLabel" destination="Tki-3z-GQc" id="sja-ie-lTg"/>
                         <segue destination="fUB-hE-uNf" kind="push" identifier="region" id="DvH-tv-GMY"/>
                         <segue destination="UxQ-CT-H5u" kind="push" identifier="allParks" id="OmM-gQ-Hra"/>
                     </connections>
@@ -1624,7 +1626,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="3xH-AL-cZ4"/>
+        <segue reference="OmM-gQ-Hra"/>
         <segue reference="q8r-hS-0dx"/>
     </inferredMetricsTieBreakers>
 </document>
