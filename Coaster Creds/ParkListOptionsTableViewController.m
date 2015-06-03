@@ -54,6 +54,14 @@
     }
 }
 
+- (void)tableView:(UITableView *)tableView didUnhighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        _regionLabel.textColor = [UIColor blackColor];
+    } else if (indexPath.row == 1) {
+        _allLabel.textColor = [UIColor blackColor];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
         _regionLabel.textColor = [UIColor whiteColor];
