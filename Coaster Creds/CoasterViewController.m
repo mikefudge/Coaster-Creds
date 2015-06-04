@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sortButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) NSString *currentSort;
+@property (weak, nonatomic) IBOutlet UIImageView *blurImageView;
 
 @end
 
@@ -50,7 +51,9 @@
     // Get coasters
      [self.fetchedResultsController performFetch:nil];
     // Set header and footer images, and labels
-    [_headerImageView setImage:[self getParkImage]];
+    UIImage *headerImage = [self getParkImage];
+    [_headerImageView setImage:headerImage];
+    [_blurImageView setImage:headerImage];
     [_footerImageView setImage:[self getFooterImage]];
     [self setLabels];
     // Set navigation bar to be transparent
@@ -69,6 +72,11 @@
     [_doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                          [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                          nil] forState:UIControlStateNormal];
+    // Create blur effect on blurHeaderView
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    blurView.frame = _blurImageView.frame;
+    [_blurImageView addSubview:blurView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,6 +121,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat yOffset = scrollView.contentOffset.y;
+    // Scroll up, expand header views
     if (yOffset <= 0) {
         // Expand header views on scroll up
         [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
@@ -126,20 +135,44 @@
         _parkButtonsView.alpha = (1 + (yOffset / 100));
         _navigationBar.alpha = (1 + (yOffset / 100));
         _headerDarkView.alpha = (DARK_VIEW_DEFAULT_ALPHA + (yOffset / 100));
-    } else if (yOffset >= _headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) {
-        [self moveElement:_headerImageView toYValue:yOffset - (_headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerImageView.frame.size.height];
-        [self moveElement:_headerDarkView toYValue:yOffset - (_headerDarkView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerDarkView.frame.size.height];
-        _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
-    } else {
-        // Reset header views
+    }
+    // Fade in blur view, fade in navigation bar title
+    else if (yOffset >= 135 && yOffset < _headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) {
+        _blurImageView.alpha = ((0.0263 * yOffset) - 3.5526);
         [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
         [self moveElement:_headerDarkView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        [self moveElement:_blurImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
         // Reset labels & dark view alphas
         _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
         _navigationBar.alpha = 1;
         _parkNameLabel.alpha = (1 - (yOffset / 100));
         _parkNumCoastersLabel.alpha = (1 - (yOffset / 100));
         _parkButtonsView.alpha = (1 - (yOffset / 100));
+        [self moveElement:_navigationBar toYValue:22];
+    }
+    // Pin blur, header, nav to top
+    else if (yOffset >= _headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) {
+        [self moveElement:_headerImageView toYValue:yOffset - (_headerImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerImageView.frame.size.height];
+        [self moveElement:_headerDarkView toYValue:yOffset - (_headerDarkView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_headerDarkView.frame.size.height];
+        [self moveElement:_blurImageView toYValue:yOffset - (_blurImageView.frame.size.height - _navigationBar.frame.size.height - 22) xValue:0 width:self.tableView.frame.size.width height:_blurImageView.frame.size.height];
+        _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
+        [self moveElement:_navigationBar toYValue:22];
+        _blurImageView.alpha = 1;
+    }
+    // y > 0, y < 135
+    else {
+        // Reset header views
+        [self moveElement:_headerImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        [self moveElement:_headerDarkView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        [self moveElement:_blurImageView toYValue:0 xValue:0 width:self.tableView.frame.size.width height:HEADER_IMAGE_HEIGHT];
+        // Reset labels & dark view alphas
+        _headerDarkView.alpha = DARK_VIEW_DEFAULT_ALPHA;
+        _navigationBar.alpha = 1;
+        _blurImageView.alpha = 0;
+        _parkNameLabel.alpha = (1 - (yOffset / 100));
+        _parkNumCoastersLabel.alpha = (1 - (yOffset / 100));
+        _parkButtonsView.alpha = (1 - (yOffset / 100));
+        [self moveElement:_navigationBar toYValue:22];
     }
 }
 

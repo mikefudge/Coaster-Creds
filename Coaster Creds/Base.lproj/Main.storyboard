@@ -352,6 +352,9 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sRe-7P-8Ae" userLabel="Header Image View">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vn4-Ld-m9D" userLabel="header Blur View">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                        </imageView>
                                         <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TIG-YR-ax4" userLabel="Darken View">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -420,9 +423,13 @@
                                         <constraint firstAttribute="bottom" secondItem="9bf-AG-eeh" secondAttribute="bottom" constant="8" id="6ed-Ws-BTS"/>
                                         <constraint firstAttribute="trailing" secondItem="TIG-YR-ax4" secondAttribute="trailing" id="7ni-e7-cHc"/>
                                         <constraint firstItem="Van-RE-0v4" firstAttribute="leading" secondItem="Ea6-Lm-Odd" secondAttribute="leading" constant="8" id="8D3-sM-lq8"/>
+                                        <constraint firstItem="vn4-Ld-m9D" firstAttribute="leading" secondItem="Ea6-Lm-Odd" secondAttribute="leading" id="DkF-Zy-o7K"/>
                                         <constraint firstItem="TIG-YR-ax4" firstAttribute="top" secondItem="Ea6-Lm-Odd" secondAttribute="top" id="HCG-si-B5e"/>
+                                        <constraint firstItem="vn4-Ld-m9D" firstAttribute="top" secondItem="Ea6-Lm-Odd" secondAttribute="top" id="Ipe-sT-RUt"/>
                                         <constraint firstItem="9bf-AG-eeh" firstAttribute="leading" secondItem="nPB-Nz-L9D" secondAttribute="trailing" constant="8" id="KDn-0p-4Yj"/>
                                         <constraint firstAttribute="trailing" secondItem="9bf-AG-eeh" secondAttribute="trailing" constant="8" id="Lgm-EX-Utr"/>
+                                        <constraint firstAttribute="bottom" secondItem="vn4-Ld-m9D" secondAttribute="bottom" id="MTv-YV-beM"/>
+                                        <constraint firstAttribute="trailing" secondItem="vn4-Ld-m9D" secondAttribute="trailing" id="Zrj-Ei-VuD"/>
                                         <constraint firstItem="nPB-Nz-L9D" firstAttribute="centerY" secondItem="9bf-AG-eeh" secondAttribute="centerY" id="dy9-ll-G2D"/>
                                         <constraint firstItem="9bf-AG-eeh" firstAttribute="top" secondItem="Van-RE-0v4" secondAttribute="bottom" constant="1" id="lZt-kv-UkR"/>
                                         <constraint firstAttribute="trailing" secondItem="sRe-7P-8Ae" secondAttribute="trailing" id="pLE-4p-gWZ"/>
@@ -652,6 +659,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blurImageView" destination="vn4-Ld-m9D" id="zqx-D1-aIZ"/>
                         <outlet property="doneButton" destination="rZo-gv-2Zd" id="b2n-66-Yum"/>
                         <outlet property="footerImageView" destination="pAL-sS-Ukd" id="yVA-cx-FIK"/>
                         <outlet property="headerDarkView" destination="TIG-YR-ax4" id="o26-As-rVk"/>
@@ -1635,6 +1643,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3xH-AL-cZ4"/>
-        <segue reference="q8r-hS-0dx"/>
+        <segue reference="CqV-Y4-anq"/>
     </inferredMetricsTieBreakers>
 </document>
