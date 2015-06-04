@@ -72,11 +72,6 @@
     [_doneButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                          [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                          nil] forState:UIControlStateNormal];
-    // Create blur effect on blurHeaderView
-    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
-    UIVisualEffectView *blurView = [[UIVisualEffectView alloc]initWithEffect:blur];
-    blurView.frame = _blurImageView.frame;
-    [_blurImageView addSubview:blurView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,6 +81,10 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [self.tableView reloadData];
+    UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+    UIVisualEffectView *blurView = [[UIVisualEffectView alloc]initWithEffect:blur];
+    blurView.frame = _blurImageView.frame;
+    [_blurImageView addSubview:blurView];
 }
 
 // Returns image associated with park. If there is no image, will return a random image from a selection of default images
@@ -124,9 +123,9 @@
     // Scroll up, expand header views
     if (yOffset <= 0) {
         // Expand header views on scroll up
-        [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        [self moveElement:_headerImageView toYValue:yOffset xValue:(yOffset / 1.5) width:(self.tableView.frame.size.width + ((-yOffset) * 1.5)) height:HEADER_IMAGE_HEIGHT + -yOffset];
         // Expand header dark view
-        [self moveElement:_headerDarkView toYValue:yOffset xValue:(yOffset / 2) width:(self.tableView.frame.size.width + (-yOffset)) height:HEADER_IMAGE_HEIGHT + -yOffset];
+        [self moveElement:_headerDarkView toYValue:yOffset xValue:(yOffset / 1.5) width:(self.tableView.frame.size.width + ((-yOffset) * 1.5)) height:HEADER_IMAGE_HEIGHT + -yOffset];
         // Pin navigation bar
         [self moveElement:_navigationBar toYValue:22 + (yOffset)];
         // Fade out labels & dark view

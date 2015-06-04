@@ -35,7 +35,6 @@
 @property BOOL updateLocationDidFail;
 @property (strong, nonatomic) NSError *error;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *mapButton;
 @property (strong, nonatomic) NSString *postcode;
 @property (strong, nonatomic) ODRefreshControl *refreshControl;
@@ -52,9 +51,6 @@
     _postcode = @"you";
     _refreshControl = [[ODRefreshControl alloc] initInScrollView:_tableView];
     [_refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [_refreshButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                            [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
-                                            nil] forState:UIControlStateNormal];
     [_mapButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                             [UIFont fontWithName:@"AvenirNext-Medium" size:18.0], NSFontAttributeName,
                                             nil] forState:UIControlStateNormal];
@@ -95,7 +91,6 @@
 
 - (void)stopRefreshActivityIndicator {
     [_activityIndicator stopAnimating];
-    [self navigationItem].rightBarButtonItem = _refreshButton;
 }
 
 #pragma mark Find Park Logic

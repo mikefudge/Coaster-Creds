@@ -13,7 +13,7 @@
 @interface SearchDistanceTableViewController ()
 
 @property (strong, nonatomic) NSArray *distances;
-@property int selectedRow;
+@property NSInteger selectedRow;
 @property (strong, nonatomic) NSString *grammar;
 
 @end
@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _distances = @[@1, @5, @10, @25, @50, @100, @200];
-    int indexValue = [_distances indexOfObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"]];
+    NSInteger indexValue = [_distances indexOfObject:[[NSUserDefaults standardUserDefaults] objectForKey:@"searchDistance"]];
     _selectedRow = indexValue;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 

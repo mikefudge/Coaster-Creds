@@ -67,6 +67,7 @@
         } else {
             cell.accessoryType = UITableViewCellAccessoryNone;
         }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 }
 

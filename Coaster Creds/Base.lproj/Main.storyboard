@@ -162,16 +162,10 @@
                                 <action selector="gotoMap:" destination="vXZ-lx-hvc" id="ORT-yI-K2i"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Sort" id="AEF-rD-frC">
-                            <connections>
-                                <action selector="sortParksActionSheet:" destination="vXZ-lx-hvc" id="6jT-of-aM0"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mapButton" destination="job-T2-s4w" id="zmS-yu-V80"/>
                         <outlet property="optionsTableView" destination="wM2-5a-I5w" id="nCB-fI-oih"/>
-                        <outlet property="refreshButton" destination="AEF-rD-frC" id="dBb-gq-QbZ"/>
                         <outlet property="tableView" destination="i4s-9H-0UL" id="sbP-Da-O5p"/>
                         <segue destination="wbN-Gi-FCe" kind="push" identifier="locationSettings" id="XHP-4a-GIf"/>
                         <segue destination="aba-aM-eTr" kind="push" identifier="map" id="waQ-bp-V7B"/>
@@ -1643,6 +1637,6 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3xH-AL-cZ4"/>
-        <segue reference="CqV-Y4-anq"/>
+        <segue reference="q8r-hS-0dx"/>
     </inferredMetricsTieBreakers>
 </document>
